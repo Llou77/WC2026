@@ -50,6 +50,11 @@ G = 1   ha a gólkülönbség ≤ 1
 A gólkülönbség-súlyozás miatt egy 4–0 jobban átrendezi az erősorrendet, mint
 egy 1–0.
 
+**Adaptív tanulási sebesség:** a becsült kiinduló Elo-jú csapatok
+(`elo_estimated: true`) első 3 mérkőzésén K=85 érvényes K=50 helyett — a
+bizonytalan kiindulópont így a csoportkör elején gyorsabban korrigálódik,
+a megbízhatóan bemért csapatok stabilitása pedig megmarad.
+
 ## 3. Tornaforma: támadó- és védekező-szorzók (xG-kevert)
 
 Az Elo lassan mozgó, eredményalapú mutató; a tornán mutatott *játékminőséget*
@@ -159,11 +164,11 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
    számszerű hatás kézi Elo-korrekcióval vihető be.
 5. **Annex C-közelítés**: a harmadikok ágra sorolása érvényes, de nem
    garantáltan a FIFA által választott hozzárendelés (lásd 6. pont).
-6. **Csoportrangsor-egyszerűsítés**: holtversenynél pont–gólkülönbség–lőtt gól
-   a sorrend; az egymás elleni eredmény és a fair play-rangsor mint további
-   FIFA-tiebreaker nincs implementálva — a valós tabellát a betöltött
-   eredmények így is helyesen tükrözik a gyakorlatban előforduló esetek
-   túlnyomó részében.
+6. **Csoportrangsor**: a sorrend pont → gólkülönbség → lőtt gól → **egymás
+   elleni eredmény** (pont, gólkülönbség, lőtt gól a holtversenyben állók
+   egymás elleni meccsein) a FIFA-szabálykönyv szerint; a fair play-rangsor
+   mint utolsó előtti tiebreaker nincs implementálva, teljes holtversenynél
+   determinisztikus (a Monte Carlóban sorsolásos) feloldás következik.
 
 ## 9. Monte Carlo tornaszimuláció
 
@@ -175,4 +180,8 @@ legjobb nyolc harmadik ágra sorolása feloldódik, a kieséses kör a kalibrál
 hosszabbítás/tizenegyes-modellel játszódik le. A már rögzített eredmények
 minden futásban változatlanok, így a frissítésekkel az eloszlások fokozatosan
 szűkülnek. A kimenet csapatonként: P(csoportgyőzelem), P(32 között),
-P(nyolcaddöntő) … P(döntő), P(világbajnoki cím).
+P(nyolcaddöntő) … P(döntő), P(világbajnoki cím) — a továbbjutási
+valószínűség a csoporttabellák „Tovább%" oszlopában is megjelenik. A
+szimulátor emellett minden kieséses mérkőzésre rögzíti az egyes párosítások
+előfordulási gyakoriságát; a vetített kártyákon ezért szerepel, hogy az adott
+párosítás a szimulációk hány százalékában jön létre.

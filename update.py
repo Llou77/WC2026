@@ -63,7 +63,10 @@ def main():
               for g in standings.GROUPS}
     bracket = standings.resolve_bracket(matches, observed, teams)
 
-    # 3) per-match predictions + Hungarian analysis
+    # 3) Monte Carlo tournament simulation (needed for pairing probabilities)
+    mc, pair_share = simulate.Simulator(teams, matches, observed).run(sims)
+
+    # 4) per-match predictions + Hungarian analysis
     entries = []
     for m in matches:
         e = {"match": m}
@@ -92,6 +95,8 @@ def main():
                                    knockout=(m["stage"] != "group"))
             e["pred"] = pred
             e["status"] = "proj" if proj else "sched"
+            if m["stage"] != "group":
+                e["pair_share"] = round(pair_share.get(m["id"], {}).get((h, a), 0.0), 4)
             ctx = None
             if m["stage"] == "group":
                 row_h = next(r for r in tables[m["group"]] if r["code"] == h)
@@ -101,9 +106,6 @@ def main():
                        f"{row_a['rank']}. ({row_a['pts']} pont).")
             e["analysis"] = analysis.build(m, pred, th, ta, ctx, form, projected=proj)
         entries.append(e)
-
-    # 4) Monte Carlo tournament simulation
-    mc = simulate.Simulator(teams, matches, observed).run(sims)
 
     # 5) render
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
