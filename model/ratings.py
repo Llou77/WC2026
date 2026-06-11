@@ -23,6 +23,23 @@ GD_SCALE = 160.0           # backtest-tuned Elo pts per goal of expected diff
 ET_SHRINK = 0.33           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
 MAX_GOALS = 8
 
+# shot-based pseudo-xG weights (literature averages: ~0.30 goal/shot on target,
+# ~0.03 for off-target attempts); used only when true xG is not supplied
+SOT_XG, OFF_XG = 0.30, 0.03
+RED_CARD_DISCOUNT = 0.80   # a result shaped by a red card is less informative
+
+def effective_xg(res, side):
+    """Best available xG-like signal for one side: true xG > shot-based proxy > None."""
+    xg = res.get(f"xg_{side}")
+    if xg is not None:
+        return float(xg)
+    sot = res.get(f"sot_{side}")
+    if sot is not None:
+        shots = res.get(f"shots_{side}")
+        off = (shots - sot) if shots is not None else sot * 1.5
+        return SOT_XG * sot + OFF_XG * max(0.0, off)
+    return None
+
 def _k(team):
     """Per-team K: estimated-seed teams learn faster for their first games."""
     if team.get("elo_estimated") and team.get("played", 0) < PROVISIONAL_GAMES:
@@ -91,13 +108,16 @@ def apply_result(team_h, team_a, res, venue_country):
     w = 1.0 if gh > ga else (0.5 if gh == ga else 0.0)
     d = abs(gh - ga)
     g = 1.0 if d <= 1 else (1.5 if d == 2 else (11 + d) / 8.0)
+    if res.get("red_h") or res.get("red_a"):
+        g *= RED_CARD_DISCOUNT
     team_h["elo"] = round(team_h["elo"] + _k(team_h) * g * (w - ev), 1)
     team_a["elo"] = round(team_a["elo"] - _k(team_a) * g * (w - ev), 1)
     team_h["played"] = team_h.get("played", 0) + 1
     team_a["played"] = team_a.get("played", 0) + 1
     # --- attack/defence multipliers, xG-blended when available ---
-    perf_h = 0.7 * gh + 0.3 * res["xg_h"] if res.get("xg_h") is not None else float(gh)
-    perf_a = 0.7 * ga + 0.3 * res["xg_a"] if res.get("xg_a") is not None else float(ga)
+    exg_h, exg_a = effective_xg(res, "h"), effective_xg(res, "a")
+    perf_h = 0.7 * gh + 0.3 * exg_h if exg_h is not None else float(gh)
+    perf_a = 0.7 * ga + 0.3 * exg_a if exg_a is not None else float(ga)
     lo, hi = ATTDEF_CLIP
     for team, perf, exp, opp in ((team_h, perf_h, lh, team_a), (team_a, perf_a, la, team_h)):
         ratio = (perf + 0.5) / (exp + 0.5)
