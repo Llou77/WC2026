@@ -32,11 +32,40 @@ def group_standings(matches, observed, teams, group):
             rows[m["home"]]["projected"] = rows[m["away"]]["projected"] = True
     out = sorted(rows.values(),
                  key=lambda r: (r["pts"], r["gf"] - r["ga"], r["gf"]), reverse=True)
+    _h2h_rerank(out, matches, observed, group)
     for i, r in enumerate(out):
         r["rank"] = i + 1
         r["gd"] = round(r["gf"] - r["ga"], 1)
         r["pts"] = round(r["pts"], 1); r["gf"] = round(r["gf"],1); r["ga"] = round(r["ga"],1)
     return out
+
+def _h2h_rerank(out, matches, observed, group):
+    """FIFA tiebreaker: teams level on points, GD and GF are re-ranked by their
+    head-to-head record (points, GD, GF) from played matches; deterministic
+    code-order as the final fallback."""
+    i = 0
+    key = lambda r: (round(r["pts"], 2), round(r["gf"] - r["ga"], 2), round(r["gf"], 2))
+    while i < len(out):
+        j = i + 1
+        while j < len(out) and key(out[j]) == key(out[i]):
+            j += 1
+        if j - i >= 2:
+            codes = {r["code"] for r in out[i:j]}
+            mini = {c: [0, 0, 0] for c in codes}
+            for m in matches:
+                if (m["stage"] == "group" and m["group"] == group
+                        and str(m["id"]) in observed
+                        and m["home"] in codes and m["away"] in codes):
+                    r = observed[str(m["id"])]
+                    gh, ga = r["gh"], r["ga"]
+                    mini[m["home"]][0] += 3 if gh > ga else (1 if gh == ga else 0)
+                    mini[m["away"]][0] += 3 if ga > gh else (1 if gh == ga else 0)
+                    mini[m["home"]][1] += gh; mini[m["home"]][2] += ga
+                    mini[m["away"]][1] += ga; mini[m["away"]][2] += gh
+            out[i:j] = sorted(out[i:j], key=lambda r: (
+                mini[r["code"]][0], mini[r["code"]][1] - mini[r["code"]][2],
+                mini[r["code"]][1], r["code"]), reverse=True)
+        i = j
 
 GROUPS = list("ABCDEFGHIJKL")
 

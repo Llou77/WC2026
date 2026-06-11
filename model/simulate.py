@@ -12,6 +12,29 @@ Pure stdlib; ~10k runs complete in a few seconds (grids are cached per pairing).
 import bisect, random
 from . import ratings, standings
 
+def _h2h_int(order, rows, h2h, rng):
+    """Head-to-head re-rank for fully tied (pts, gd, gf) clusters; random lots last."""
+    out, i = list(order), 0
+    key = lambda c: (rows[c][0], rows[c][1] - rows[c][2], rows[c][1])
+    while i < len(out):
+        j = i + 1
+        while j < len(out) and key(out[j]) == key(out[i]):
+            j += 1
+        if j - i >= 2:
+            codes = set(out[i:j])
+            mini = {c: [0, 0, 0] for c in codes}
+            for (h, a), (gh, ga) in h2h.items():
+                if h in codes and a in codes:
+                    mini[h][0] += 3 if gh > ga else (1 if gh == ga else 0)
+                    mini[a][0] += 3 if ga > gh else (1 if gh == ga else 0)
+                    mini[h][1] += gh; mini[h][2] += ga
+                    mini[a][1] += ga; mini[a][2] += gh
+            out[i:j] = sorted(out[i:j], key=lambda c: (
+                mini[c][0], mini[c][1] - mini[c][2], mini[c][1], rng.random()),
+                reverse=True)
+        i = j
+    return out
+
 ROUNDS = ["r32", "r16", "qf", "sf", "final", "champion", "group_win"]
 
 def _cdf(grid):
@@ -47,28 +70,33 @@ class Simulator:
 
     def run(self, n=10000):
         counts = {c: {r: 0 for r in ROUNDS} for c in self.teams}
+        pairs = {m["id"]: {} for m in self.ko}
         for _ in range(n):
-            self._one(counts)
-        return {c: {r: counts[c][r] / n for r in ROUNDS} for c in counts}
+            self._one(counts, pairs)
+        probs = {c: {r: counts[c][r] / n for r in ROUNDS} for c in counts}
+        pair_share = {mid: {k: v / n for k, v in d.items()} for mid, d in pairs.items()}
+        return probs, pair_share
 
-    def _one(self, counts):
+    def _one(self, counts, pairs):
         rng = self.rng
         # --- group stage ---
         tables = {}
         for g, ms in self.group_matches.items():
-            rows = {}
+            rows, h2h = {}, {}
             for m in ms:
                 for c in (m["home"], m["away"]):
                     rows.setdefault(c, [0, 0, 0])      # pts, gf, ga
                 o = self.observed.get(str(m["id"]))
                 gh, ga = (o["gh"], o["ga"]) if o else \
                     self._sample(m["home"], m["away"], m["venue_country"])
+                h2h[(m["home"], m["away"])] = (gh, ga)
                 rows[m["home"]][0] += 3 if gh > ga else (1 if gh == ga else 0)
                 rows[m["away"]][0] += 3 if ga > gh else (1 if gh == ga else 0)
                 rows[m["home"]][1] += gh; rows[m["home"]][2] += ga
                 rows[m["away"]][1] += ga; rows[m["away"]][2] += gh
             order = sorted(rows, key=lambda c: (rows[c][0], rows[c][1] - rows[c][2],
-                                                rows[c][1], rng.random()), reverse=True)
+                                                rows[c][1]), reverse=True)
+            order = _h2h_int(order, rows, h2h, rng)
             tables[g] = (order, rows)
             counts[order[0]]["group_win"] += 1
         # --- best 8 thirds + slot assignment ---
@@ -90,6 +118,7 @@ class Simulator:
                 elif kind == "M": sides.append(winners[int(ref)])
                 else:             sides.append(losers[int(ref)])
             h, a = sides
+            pairs[m["id"]][(h, a)] = pairs[m["id"]].get((h, a), 0) + 1
             counts[h][m["stage"]] += 1; counts[a][m["stage"]] += 1
             o = self.observed.get(str(m["id"]))
             if o:
