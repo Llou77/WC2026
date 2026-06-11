@@ -12,7 +12,7 @@ is well under one second.
 import copy, json, os, sys, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from model import ratings, standings, analysis
+from model import ratings, standings, analysis, simulate
 from render.render_site import render
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -22,6 +22,10 @@ def load(name):
         return json.load(f)
 
 def main():
+    sims = 10000
+    for a_ in sys.argv[1:]:
+        if a_.startswith("--sims="):
+            sims = int(a_.split("=")[1])
     teams = {t["code"]: copy.deepcopy(t) for t in load("teams.json")}
     matches = load("matches.json")
     observed = load("observed.json")   # {"<match_id>": {gh, ga, xg_h?, xg_a?, winner_home?}}
@@ -98,14 +102,18 @@ def main():
             e["analysis"] = analysis.build(m, pred, th, ta, ctx, form, projected=proj)
         entries.append(e)
 
-    # 4) render
+    # 4) Monte Carlo tournament simulation
+    mc = simulate.Simulator(teams, matches, observed).run(sims)
+
+    # 5) render
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-    html_out = render(entries, tables, teams, now, applied)
+    html_out = render(entries, tables, teams, now, applied, mc, sims)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html_out)
     with open(os.path.join(ROOT, "data", "predictions.json"), "w", encoding="utf-8") as f:
-        json.dump([{k: v for k, v in e.items() if k != "match"} |
-                   {"id": e["match"]["id"]} for e in entries],
+        json.dump(dict(matches=[{k: v for k, v in e.items() if k != "match"} |
+                                {"id": e["match"]["id"]} for e in entries],
+                       monte_carlo=dict(runs=sims, probabilities=mc)),
                   f, ensure_ascii=False, indent=1)
     print(f"OK — {applied} eredmény feldolgozva, {len(entries)} meccs renderelve -> index.html")
 

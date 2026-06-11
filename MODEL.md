@@ -81,15 +81,15 @@ rendelkezésre csapatonként, a túltanulás nagyobb kockázat, mint az alultanu
 A meccs előtti Elo-különbségből (`dr`, pályaelőnnyel együtt):
 
 ```
-várható gólkülönbség  gd    = clip(dr / 120, −2.5, +2.5)
-várható összgólszám   total = 2.55 + 0.45 · |gd|
+várható gólkülönbség  gd    = clip(dr / 160, −2.5, +2.5)
+várható összgólszám   total = 2.80 + 0.45 · |gd|
 λ_hazai  = max(0.15, (total + gd) / 2) · att_hazai  · def_vendég
 λ_vendég = max(0.15, (total − gd) / 2) · att_vendég · def_hazai
 ```
 
-A 2.55-ös alap a világbajnoki tornák hosszú távú gólátlaga; a `0.45·|gd|`
-tag azt a megfigyelést kódolja, hogy a nagy erőkülönbségű meccsek
-összgólszáma magasabb.
+A 160-as skála és a 2.80-as gólalap **backtesten hangolt** érték (lásd 9. pont
+és backtest/REPORT.md); a `0.45·|gd|` tag azt a megfigyelést kódolja, hogy a
+nagy erőkülönbségű meccsek összgólszáma magasabb.
 
 ## 5. Eredmény-eloszlás: Poisson-rács Dixon–Coles-korrekcióval
 
@@ -98,7 +98,7 @@ A két λ-ból független Poisson-feltevéssel 9×9-es pontszám-rács készül
 korreláció miatt korrekció:
 
 ```
-P(0–0), P(1–1)  × 1.08        P(1–0), P(0–1)  × 0.97
+P(0–0), P(1–1)  × 1.15        P(1–0), P(0–1)  × 0.97
 ```
 
 ezután a rács újranormálódik. Ebből származik minden kimeneti mutató:
@@ -122,13 +122,13 @@ ezután a rács újranormálódik. Ebből származik minden kimeneti mutató:
   kalibrált aránnyal:
 
 ```
-ET-arány = 0.5 + (E − 0.5) · 0.75
+ET-arány = 0.5 + (E − 0.5) · 0.33
 P(továbbjutás_hazai) = P(győzelem 90 perc) + P(döntetlen) · ET-arány
 ```
 
-  A 0.75-ös zsugorítás azt fejezi ki, hogy a hosszabbítás és különösen a
-  tizenegyespárbaj kimenetele közelebb van az érmefeldobáshoz, mint a rendes
-  játékidőé. Így a modell döntetlen-tipp esetén is mindig megjelöli a
+  A 0.33-as zsugorítás 541 valós tizenegyespárbajból kalibrált érték: a
+  magasabb Elo-jú fél a párbajok mindössze 53,8%-át nyeri, a hosszabbításban
+  pedig mérsékelt az erőérvényesülés (részletek: backtest/REPORT.md). Így a modell döntetlen-tipp esetén is mindig megjelöli a
   továbbjutásra esélyesebb felet.
 
 ## 7. Az elemzésszöveg felépítése
@@ -143,6 +143,10 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
 
 ## 8. Feltételezések és ismert korlátok
 
+0. **Validáció**: a modell valós történelmi adaton visszamérve és hangolva —
+   a 2022-es VB + 2024-es Eb/Copa független holdoutján Brier-score 0.6218
+   (uniform: 0.6667), log-loss 1.0499. Protokoll és részletek:
+   `backtest/REPORT.md`, újrafuttatás: `python backtest/backtest.py`.
 1. **Nagy szórás**: a futballmeccs alacsony gólszámú, nagy zajú folyamat; a
    legvalószínűbb pontos eredmény tipikus valószínűsége 8–13%. A modell
    kalibrált eloszlást ad, nem determinisztikus jóslatot.
@@ -160,3 +164,15 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
    FIFA-tiebreaker nincs implementálva — a valós tabellát a betöltött
    eredmények így is helyesen tükrözik a gyakorlatban előforduló esetek
    túlnyomó részében.
+
+## 9. Monte Carlo tornaszimuláció
+
+Az „Esélyek" fül értékei 10 000 teljes torna-szimulációból származnak
+(`model/simulate.py`, `update.py --sims=N` paraméterrel állítható). Futásonként:
+a még le nem játszott csoportmeccsek eredménye a meccs Poisson/DC-rácsából
+sorsolódik, a tabellák (pont → gólkülönbség → lőtt gól → sorsolás) és a
+legjobb nyolc harmadik ágra sorolása feloldódik, a kieséses kör a kalibrált
+hosszabbítás/tizenegyes-modellel játszódik le. A már rögzített eredmények
+minden futásban változatlanok, így a frissítésekkel az eloszlások fokozatosan
+szűkülnek. A kimenet csapatonként: P(csoportgyőzelem), P(32 között),
+P(nyolcaddöntő) … P(döntő), P(világbajnoki cím).
