@@ -13,6 +13,8 @@ import math
 
 HOME_ELO_BONUS = 80        # host nation playing in its own country
 K_BASE = 50                # World Cup importance (eloratings.net convention)
+K_PROVISIONAL = 85         # faster learning while a seed Elo is only an estimate
+PROVISIONAL_GAMES = 3      # provisional K applies to the first N matches
 TOTAL_GOALS_BASE = 2.80    # backtest-tuned (see backtest/REPORT.md)
 ATTDEF_LR = 0.35           # learning rate for attack/defence multipliers
 ATTDEF_CLIP = (0.70, 1.40)
@@ -20,6 +22,12 @@ DC_DRAW_BOOST = 1.15       # backtest-tuned draw inflation
 GD_SCALE = 160.0           # backtest-tuned Elo pts per goal of expected diff
 ET_SHRINK = 0.33           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
 MAX_GOALS = 8
+
+def _k(team):
+    """Per-team K: estimated-seed teams learn faster for their first games."""
+    if team.get("elo_estimated") and team.get("played", 0) < PROVISIONAL_GAMES:
+        return K_PROVISIONAL
+    return K_BASE
 
 def expectancy(elo_h, elo_a, home_bonus=0.0):
     return 1.0 / (1.0 + 10 ** (-((elo_h + home_bonus) - elo_a) / 400.0))
@@ -83,9 +91,10 @@ def apply_result(team_h, team_a, res, venue_country):
     w = 1.0 if gh > ga else (0.5 if gh == ga else 0.0)
     d = abs(gh - ga)
     g = 1.0 if d <= 1 else (1.5 if d == 2 else (11 + d) / 8.0)
-    delta = K_BASE * g * (w - ev)
-    team_h["elo"] = round(team_h["elo"] + delta, 1)
-    team_a["elo"] = round(team_a["elo"] - delta, 1)
+    team_h["elo"] = round(team_h["elo"] + _k(team_h) * g * (w - ev), 1)
+    team_a["elo"] = round(team_a["elo"] - _k(team_a) * g * (w - ev), 1)
+    team_h["played"] = team_h.get("played", 0) + 1
+    team_a["played"] = team_a.get("played", 0) + 1
     # --- attack/defence multipliers, xG-blended when available ---
     perf_h = 0.7 * gh + 0.3 * res["xg_h"] if res.get("xg_h") is not None else float(gh)
     perf_a = 0.7 * ga + 0.3 * res["xg_a"] if res.get("xg_a") is not None else float(ga)
