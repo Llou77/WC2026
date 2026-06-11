@@ -1,1 +1,760 @@
-
+[
+ {
+  "code": "MEX",
+  "name": "Mexikó",
+  "group": "A",
+  "elo": 1800,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Santiago Giménez",
+   "Edson Álvarez",
+   "Luis Malagón"
+  ],
+  "style": "Hazai pályán nyomást gyakorló, labdabirtoklásra törekvő csapat; az Azteca-faktor mérhető előny.",
+  "news": ""
+ },
+ {
+  "code": "RSA",
+  "name": "Dél-Afrika",
+  "group": "A",
+  "elo": 1640,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Ronwen Williams",
+   "Teboho Mokoena",
+   "Lyle Foster"
+  ],
+  "style": "Hugo Broos alatt stabil, szervezett blokk, gyors átmenetekkel.",
+  "news": ""
+ },
+ {
+  "code": "KOR",
+  "name": "Dél-Korea",
+  "group": "A",
+  "elo": 1745,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Son Heung-min",
+   "Lee Kang-in",
+   "Kim Min-jae"
+  ],
+  "style": "Technikás középpálya, veszélyes kontrák; a védelem Kim Min-jaéra épül.",
+  "news": ""
+ },
+ {
+  "code": "CZE",
+  "name": "Csehország",
+  "group": "A",
+  "elo": 1715,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Patrik Schick",
+   "Tomáš Souček",
+   "Adam Hložek"
+  ],
+  "style": "Fizikális, pontrúgásokban erős, mélyen védekező felállás.",
+  "news": ""
+ },
+ {
+  "code": "CAN",
+  "name": "Kanada",
+  "group": "B",
+  "elo": 1770,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Alphonso Davies",
+   "Jonathan David",
+   "Stephen Eustáquio"
+  ],
+  "style": "Atletikus, intenzív letámadás; hazai közönség előtt extra lendület.",
+  "news": ""
+ },
+ {
+  "code": "BIH",
+  "name": "Bosznia-Hercegovina",
+  "group": "B",
+  "elo": 1650,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Edin Džeko",
+   "Ermedin Demirović",
+   "Sead Kolašinac"
+  ],
+  "style": "Rutinos mag, beadásokra és Džeko fejjátékára építő támadójáték.",
+  "news": ""
+ },
+ {
+  "code": "QAT",
+  "name": "Katar",
+  "group": "B",
+  "elo": 1565,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Akram Afif",
+   "Almoez Ali"
+  ],
+  "style": "Türelmes labdajáratás, de a felkészülését régiós feszültségek zavarták meg.",
+  "news": "A felkészülést a régiós konfliktus zavarta: elmaradt felkészülési meccs, akadozó bajnokság."
+ },
+ {
+  "code": "SUI",
+  "name": "Svájc",
+  "group": "B",
+  "elo": 1897,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Granit Xhaka",
+   "Breel Embolo",
+   "Dan Ndoye"
+  ],
+  "style": "Kiegyensúlyozott, taktikailag fegyelmezett; tornákon rendre felülteljesít.",
+  "news": ""
+ },
+ {
+  "code": "BRA",
+  "name": "Brazília",
+  "group": "C",
+  "elo": 1991,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Vinícius Júnior",
+   "Raphinha",
+   "Alisson"
+  ],
+  "style": "Egyéni minőségben kiemelkedő szélső játék, Ancelotti alatt pragmatikusabb szerkezet.",
+  "news": ""
+ },
+ {
+  "code": "MAR",
+  "name": "Marokkó",
+  "group": "C",
+  "elo": 1860,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Achraf Hakimi",
+   "Brahim Díaz",
+   "Yassine Bounou"
+  ],
+  "style": "A 2022-es elődöntős váz együtt maradt: betonvédelem, halálos kontrák.",
+  "news": ""
+ },
+ {
+  "code": "HAI",
+  "name": "Haiti",
+  "group": "C",
+  "elo": 1500,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Duckens Nazon",
+   "Danley Jean Jacques"
+  ],
+  "style": "Fizikális, magas motivációjú együttes; 1974 óta első világbajnoki részvétel.",
+  "news": ""
+ },
+ {
+  "code": "SCO",
+  "name": "Skócia",
+  "group": "C",
+  "elo": 1745,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Scott McTominay",
+   "John McGinn",
+   "Andy Robertson"
+  ],
+  "style": "Középpályán letámadó, pontrúgás-erős brit stílus; 1998 óta első VB-jén.",
+  "news": ""
+ },
+ {
+  "code": "USA",
+  "name": "Egyesült Államok",
+  "group": "D",
+  "elo": 1785,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Christian Pulisic",
+   "Weston McKennie",
+   "Matt Turner"
+  ],
+  "style": "Hazai pályán, Pochettino irányításával intenzív, vertikális futball.",
+  "news": ""
+ },
+ {
+  "code": "PAR",
+  "name": "Paraguay",
+  "group": "D",
+  "elo": 1780,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Miguel Almirón",
+   "Julio Enciso",
+   "Antonio Sanabria"
+  ],
+  "style": "Alguacil-féle kemény, kompakt dél-amerikai iskola, erős párharcjáték.",
+  "news": ""
+ },
+ {
+  "code": "AUS",
+  "name": "Ausztrália",
+  "group": "D",
+  "elo": 1725,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Jackson Irvine",
+   "Mathew Ryan",
+   "Craig Goodwin"
+  ],
+  "style": "Szervezett mélyvédekezés, pontrúgások és bedobás-variációk.",
+  "news": ""
+ },
+ {
+  "code": "TUR",
+  "name": "Törökország",
+  "group": "D",
+  "elo": 1880,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Hakan Çalhanoğlu",
+   "Arda Güler",
+   "Kenan Yıldız"
+  ],
+  "style": "Montella irányítása alatt kreatív, támadószellemű generáció; a csoport legmagasabb potenciálú nem kiemelt csapata.",
+  "news": ""
+ },
+ {
+  "code": "GER",
+  "name": "Németország",
+  "group": "E",
+  "elo": 1910,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Jamal Musiala",
+   "Florian Wirtz",
+   "Joshua Kimmich"
+  ],
+  "style": "Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel.",
+  "news": ""
+ },
+ {
+  "code": "CUW",
+  "name": "Curaçao",
+  "group": "E",
+  "elo": 1460,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Leandro Bacuna",
+   "Kenji Gorré"
+  ],
+  "style": "A VB-történet legkisebb országa; Dick Advocaat pragmatikus mélyvédekezése.",
+  "news": "Felemás felkészülés: 1-4 Skócia ellen, 4-0 Aruba ellen."
+ },
+ {
+  "code": "CIV",
+  "name": "Elefántcsontpart",
+  "group": "E",
+  "elo": 1730,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Sébastien Haller",
+   "Franck Kessié",
+   "Simon Adingra"
+  ],
+  "style": "Afrikai bajnoki rutin (2024), fizikális középpálya, gyors szélsők.",
+  "news": ""
+ },
+ {
+  "code": "ECU",
+  "name": "Ecuador",
+  "group": "E",
+  "elo": 1933,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Moisés Caicedo",
+   "Piero Hincapié",
+   "Kendry Páez"
+  ],
+  "style": "A selejtezők egyik legjobb védelme; Caicedo köré épülő, érett csapat.",
+  "news": ""
+ },
+ {
+  "code": "NED",
+  "name": "Hollandia",
+  "group": "F",
+  "elo": 1959,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Virgil van Dijk",
+   "Frenkie de Jong",
+   "Cody Gakpo"
+  ],
+  "style": "Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem.",
+  "news": ""
+ },
+ {
+  "code": "JPN",
+  "name": "Japán",
+  "group": "F",
+  "elo": 1879,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Takefusa Kubo",
+   "Kaoru Mitoma",
+   "Wataru Endo"
+  ],
+  "style": "Magas intenzitás, gyors szélső rotációk; nagy csapatok ellen is bizonyított.",
+  "news": ""
+ },
+ {
+  "code": "SWE",
+  "name": "Svédország",
+  "group": "F",
+  "elo": 1715,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Viktor Gyökeres",
+   "Alexander Isak",
+   "Dejan Kulusevski"
+  ],
+  "style": "Pótselejtezőn keresztül kvalifikált; a Gyökeres–Isak támadópáros a mezőny egyik legmagasabb egyéni minőségét képviseli.",
+  "news": ""
+ },
+ {
+  "code": "TUN",
+  "name": "Tunézia",
+  "group": "F",
+  "elo": 1690,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Hannibal Mejbri",
+   "Youssef Msakni"
+  ],
+  "style": "Fegyelmezett, mélyen védekező észak-afrikai iskola.",
+  "news": ""
+ },
+ {
+  "code": "BEL",
+  "name": "Belgium",
+  "group": "G",
+  "elo": 1849,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Kevin De Bruyne",
+   "Jérémy Doku",
+   "Charles De Ketelaere"
+  ],
+  "style": "Generációváltás Garcia alatt: Doku-féle robbanékonyság, De Bruyne rutinja.",
+  "news": ""
+ },
+ {
+  "code": "EGY",
+  "name": "Egyiptom",
+  "group": "G",
+  "elo": 1690,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Mohamed Salah",
+   "Omar Marmoush",
+   "Mostafa Mohamed"
+  ],
+  "style": "Salah–Marmoush támadósor, mögötte konzervatív, mélyen védekező blokk.",
+  "news": ""
+ },
+ {
+  "code": "IRN",
+  "name": "Irán",
+  "group": "G",
+  "elo": 1755,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Mehdi Taremi",
+   "Sardar Azmoun",
+   "Alireza Beiranvand"
+  ],
+  "style": "Rutinos, kontrákra építő csapat — de a felkészülése súlyosan sérült.",
+  "news": "A felkészülés komolyan sérült: edzőtábor-áthelyezés Tijuanába, vízumproblémák az USA-ban."
+ },
+ {
+  "code": "NZL",
+  "name": "Új-Zéland",
+  "group": "G",
+  "elo": 1590,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Chris Wood",
+   "Liberato Cacace"
+  ],
+  "style": "Egyszerű, direkt játék Chris Wood célemberre; korlátozott mélységű keret.",
+  "news": ""
+ },
+ {
+  "code": "ESP",
+  "name": "Spanyolország",
+  "group": "H",
+  "elo": 2157,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Lamine Yamal",
+   "Pedri",
+   "Rodri"
+  ],
+  "style": "A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció.",
+  "news": ""
+ },
+ {
+  "code": "CPV",
+  "name": "Zöld-foki Köztársaság",
+  "group": "H",
+  "elo": 1545,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Ryan Mendes",
+   "Jamiro Monteiro"
+  ],
+  "style": "Történelmi első VB-részvétel; kompakt, lelkes, kontrázó csapat.",
+  "news": ""
+ },
+ {
+  "code": "KSA",
+  "name": "Szaúd-Arábia",
+  "group": "H",
+  "elo": 1620,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Salem Al-Dawsari",
+   "Firas Al-Buraikan"
+  ],
+  "style": "Technikás, labdabirtoklásra törekvő; nagy skalpra is képes (Argentína 2022).",
+  "news": ""
+ },
+ {
+  "code": "URU",
+  "name": "Uruguay",
+  "group": "H",
+  "elo": 1890,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Federico Valverde",
+   "Darwin Núñez",
+   "Ronald Araújo"
+  ],
+  "style": "Bielsa-féle intenzív letámadás, kiváló egyéni minőség minden csapatrészben.",
+  "news": ""
+ },
+ {
+  "code": "FRA",
+  "name": "Franciaország",
+  "group": "I",
+  "elo": 2063,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Kylian Mbappé",
+   "Ousmane Dembélé",
+   "Aurélien Tchouaméni"
+  ],
+  "style": "A mezőny legmélyebb kerete; két döntő az előző két VB-n.",
+  "news": ""
+ },
+ {
+  "code": "SEN",
+  "name": "Szenegál",
+  "group": "I",
+  "elo": 1869,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Sadio Mané",
+   "Pape Matar Sarr",
+   "Nicolas Jackson"
+  ],
+  "style": "Atletikus, átmenetekben elsöprő; Afrika legstabilabb válogatottja.",
+  "news": ""
+ },
+ {
+  "code": "IRQ",
+  "name": "Irak",
+  "group": "I",
+  "elo": 1605,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Aymen Hussein",
+   "Ali Jasim"
+  ],
+  "style": "Interkontinentális pótselejtezőről érkezett, harcos, hazafias lendület.",
+  "news": ""
+ },
+ {
+  "code": "NOR",
+  "name": "Norvégia",
+  "group": "I",
+  "elo": 1922,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Erling Haaland",
+   "Martin Ødegaard",
+   "Alexander Sørloth"
+  ],
+  "style": "Haaland 16 gólt lőtt a selejtezőben; direkt, gólerős gépezet, 1998 óta első VB.",
+  "news": ""
+ },
+ {
+  "code": "ARG",
+  "name": "Argentína",
+  "group": "J",
+  "elo": 2115,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Lionel Messi",
+   "Julián Álvarez",
+   "Enzo Fernández"
+  ],
+  "style": "Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment.",
+  "news": ""
+ },
+ {
+  "code": "ALG",
+  "name": "Algéria",
+  "group": "J",
+  "elo": 1755,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Riyad Mahrez",
+   "Amine Gouiri",
+   "Houssem Aouar"
+  ],
+  "style": "Technikás, kreatív támadósor; tornaformája hullámzó.",
+  "news": ""
+ },
+ {
+  "code": "AUT",
+  "name": "Ausztria",
+  "group": "J",
+  "elo": 1810,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "David Alaba",
+   "Christoph Baumgartner",
+   "Marcel Sabitzer"
+  ],
+  "style": "Rangnick-pressing: a mezőny egyik legintenzívebb letámadása.",
+  "news": ""
+ },
+ {
+  "code": "JOR",
+  "name": "Jordánia",
+  "group": "J",
+  "elo": 1550,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Mousa Al-Taamari",
+   "Yazan Al-Naimat"
+  ],
+  "style": "2024-es Ázsia-kupa-döntős; gyors ellentámadások, első VB-részvétel.",
+  "news": ""
+ },
+ {
+  "code": "POR",
+  "name": "Portugália",
+  "group": "K",
+  "elo": 1989,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Cristiano Ronaldo",
+   "Bruno Fernandes",
+   "Rafael Leão"
+  ],
+  "style": "Nemzetek Ligája-győztes mag; széles, kiegyensúlyozott keret, jelentős tornarutin.",
+  "news": ""
+ },
+ {
+  "code": "COD",
+  "name": "Kongói DK",
+  "group": "K",
+  "elo": 1610,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Cédric Bakambu",
+   "Yoane Wissa",
+   "Chancel Mbemba"
+  ],
+  "style": "Pótselejtező-hős; fizikális, lelkes, kontrákra veszélyes.",
+  "news": ""
+ },
+ {
+  "code": "UZB",
+  "name": "Üzbegisztán",
+  "group": "K",
+  "elo": 1640,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Abbosbek Fayzullaev",
+   "Eldor Shomurodov",
+   "Abdukodir Khusanov"
+  ],
+  "style": "Történelmi első VB; fegyelmezett védekezés, Khusanov vezérletével.",
+  "news": ""
+ },
+ {
+  "code": "COL",
+  "name": "Kolumbia",
+  "group": "K",
+  "elo": 1982,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Luis Díaz",
+   "James Rodríguez",
+   "Jhon Durán"
+  ],
+  "style": "Elo-alapon top-7 erő: hosszú veretlenségi sorozat, Díaz csúcsformában.",
+  "news": ""
+ },
+ {
+  "code": "ENG",
+  "name": "Anglia",
+  "group": "L",
+  "elo": 2024,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Harry Kane",
+   "Jude Bellingham",
+   "Bukayo Saka"
+  ],
+  "style": "Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység.",
+  "news": ""
+ },
+ {
+  "code": "CRO",
+  "name": "Horvátország",
+  "group": "L",
+  "elo": 1933,
+  "elo_estimated": false,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Luka Modrić",
+   "Joško Gvardiol",
+   "Mateo Kovačić"
+  ],
+  "style": "Az örök tornacsapat: Modrić utolsó VB-je, kontrollált középpálya.",
+  "news": ""
+ },
+ {
+  "code": "GHA",
+  "name": "Ghána",
+  "group": "L",
+  "elo": 1655,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Mohammed Kudus",
+   "Thomas Partey",
+   "Antoine Semenyo"
+  ],
+  "style": "Premier League-minőségű egyéniségek, hullámzó szervezettség.",
+  "news": ""
+ },
+ {
+  "code": "PAN",
+  "name": "Panama",
+  "group": "L",
+  "elo": 1655,
+  "elo_estimated": true,
+  "att": 1.0,
+  "deff": 1.0,
+  "players": [
+   "Adalberto Carrasquilla",
+   "José Fajardo"
+  ],
+  "style": "A CONCACAF-selejtező meglepetésgyőztese; kompakt, harcos egység.",
+  "news": ""
+ }
+]
