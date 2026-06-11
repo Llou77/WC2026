@@ -37,3 +37,19 @@ A 90 perc utáni döntetlen-tömeg megosztása ezért kevert zsugorítást kapot
 ```bash
 python backtest/backtest.py    # ~8 s, a két CSV a mappában van
 ```
+
+## Meta-learner kísérlet (2026-06-11, második kör)
+
+Az NFL-projekt 3. rétegének (meta-learner) adaptációja: 19 552 tétmeccsen
+(1995–) tanított softmax-osztályozó kimenete keverve a Poisson-modell
+1X2-jével. A keverési súly (w=0.8) a train-tornákon lett kiválasztva;
+tanítás reprodukálható: `python backtest/train_blend.py`.
+
+| Modell | Holdout Brier |
+|---|---|
+| Poisson (hangolt) | 0.6218 |
+| **Poisson + softmax keverék (élesítve)** | **0.5977** |
+
+Az élesített súlyok: `data/blend.json` — a predict() és a Monte Carlo közös,
+rács-szinten rekalibrált útvonalon használja, így az 1X2, a pontos eredmények
+és a szimuláció konzisztensek.
