@@ -12,7 +12,8 @@ keresztül, milyen feltételezésekkel és milyen ismert korlátokkal.
 |---|---|---|
 | Kiinduló Elo-erősség (48 csapat) | eloratings.net, 2026-06-11-i snapshot; ~30 csapatnál konzervatív becslés (`elo_estimated: true`) | A csapaterősség alapmutatója |
 | Mérkőzés-végeredmények | football-data.org API / kézi bevitel (`data/observed.json`) | Az inkrementális frissítés elsődleges jele |
-| xG és meccsstatisztikák (opcionális) | tetszőleges forrás, overlay-fájlként | A gólszám zaját csökkentő teljesítményjel |
+| Lövés, kapura lövés, piros lap, szöglet | football-data.org match-detail endpoint — **automatikusan letöltődik** a fetch lépésben | xG-proxy és eredmény-diszkont |
+| xG (opcionális) | tetszőleges forrás, overlay-fájlként | A legerősebb teljesítményjel, felülírja a proxyt |
 | Menetrend, helyszín, rendező ország | hivatalos menetrend (`data/matches.json`) | Pályaelőny és ágrajz-feloldás |
 | Csapatprofilok: kulcsjátékosok, játékstílus, `news` mező | szerkeszthető (`data/teams.json`) | Az elemzésszöveg kvalitatív rétege; a `news` kézzel frissíthető |
 
@@ -178,7 +179,27 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
    mint utolsó előtti tiebreaker nincs implementálva, teljes holtversenynél
    determinisztikus (a Monte Carlóban sorsolásos) feloldás következik.
 
-## 9. Monte Carlo tornaszimuláció
+## 9. Megbízhatósági címkék, pihenőnap-hatás, önellenőrzés
+
+**Megbízhatóság (confidence):** minden előrejelzés címkét kap (MAGAS / KÖZEPES /
+ALACSONY) — az NFL-predikciós projektből adaptált pontszám alapján:
+`0.55 · jel-erősség (a két legvalószínűbb kimenet közti rés) + 0.30 ·
+adatminőség (büntetés, ha valamelyik fél Elo-ja még becsült és <3 meccses) +
+0.15 · tornaminta (a két csapat lejátszott meccseinek száma)`. A címke nem
+módosítja a valószínűségeket, hanem azt jelzi, mennyire stabil lábakon állnak.
+
+**Pihenőnap-differencia (kieséses szakasz):** a két csapat előző mérkőzése óta
+eltelt napok különbsége kis Elo-korrekciót ad (8 pont/nap, ±24 pontra vágva) —
+heurisztikus együttható, a csoportkörben nem aktív, mert ott a terhelés
+kiegyenlített.
+
+**Önellenőrzés:** minden lejátszott meccsnél eltárolódik a meccs előtti
+predikció, és a frissítés futtatja a visszamérést: 1X2-találati arány, pontos
+eredmény-találat, átlagos Brier (`data/performance.json` + a fejléc
+összefoglaló sora). Így a torna alatt folyamatosan látszik, hogyan teljesít a
+modell éles adaton — a corners-projekt eredmény-ellenőrző mintájára.
+
+## 10. Monte Carlo tornaszimuláció
 
 Az „Esélyek" fül értékei 10 000 teljes torna-szimulációból származnak
 (`model/simulate.py`, `update.py --sims=N` paraméterrel állítható). Futásonként:
