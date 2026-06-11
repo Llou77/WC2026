@@ -60,8 +60,8 @@ class Simulator:
     def _grid(self, h, a, vc):
         key = (h, a, vc)
         if key not in self._grids:
-            lh, la = ratings.lambdas(self.teams[h], self.teams[a], vc)
-            self._grids[key] = _cdf(ratings.score_grid(lh, la))
+            grid, _, _ = ratings.calibrated_grid(self.teams[h], self.teams[a], vc)
+            self._grids[key] = _cdf(grid)
         return self._grids[key]
 
     def _sample(self, h, a, vc):

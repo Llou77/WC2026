@@ -9,7 +9,7 @@ Design goals:
 - Richer post-match data (xG, shots) is blended into the attack/defence
   multipliers when available; plain scores are enough as a fallback.
 """
-import math
+import json, math, os
 
 HOME_ELO_BONUS = 80        # host nation playing in its own country
 K_BASE = 50                # World Cup importance (eloratings.net convention)
@@ -46,6 +46,54 @@ def _k(team):
         return K_PROVISIONAL
     return K_BASE
 
+_BLEND = None
+def _load_blend():
+    """Lazy-load the trained 1X2 recalibration (backtest/train_blend.py)."""
+    global _BLEND
+    if _BLEND is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                            "data", "blend.json")
+        try:
+            with open(path) as f:
+                _BLEND = json.load(f)
+        except OSError:
+            _BLEND = False
+    return _BLEND
+
+def _softmax(z):
+    m = max(z); e = [math.exp(v - m) for v in z]; t = sum(e)
+    return [v / t for v in e]
+
+def _bonus(team_h, team_a, venue_country, extra=0.0):
+    b = extra
+    b += HOME_ELO_BONUS if team_h["code"] == venue_country else 0.0
+    b -= HOME_ELO_BONUS if team_a["code"] == venue_country else 0.0
+    return b
+
+def calibrated_grid(team_h, team_a, venue_country, extra_h_bonus=0.0):
+    """Poisson/DC grid, class-rescaled to the blended (softmax-mixed) 1X2.
+    Used by predict() AND the Monte Carlo sampler, so the two stay consistent."""
+    lh, la = lambdas(team_h, team_a, venue_country, extra_h_bonus)
+    grid = score_grid(lh, la)
+    b = _load_blend()
+    if b:
+        n = MAX_GOALS + 1
+        pw = sum(grid[i][j] for i in range(n) for j in range(n) if i > j)
+        pd = sum(grid[i][i] for i in range(n))
+        pl = 1.0 - pw - pd
+        dr = (team_h["elo"] + _bonus(team_h, team_a, venue_country, extra_h_bonus)
+              - team_a["elo"])
+        x = [1.0, dr / 400.0, abs(dr) / 400.0]
+        soft = _softmax([sum(b["W"][c][k] * x[k] for k in range(3)) for c in range(3)])
+        w = b["w"]
+        tgt = [(1 - w) * p + w * s for p, s in zip((pw, pd, pl), soft)]
+        t = sum(tgt); tgt = [v / t for v in tgt]
+        sc = [tgt[0] / max(pw, 1e-9), tgt[1] / max(pd, 1e-9), tgt[2] / max(pl, 1e-9)]
+        for i in range(n):
+            for j in range(n):
+                grid[i][j] *= sc[0] if i > j else (sc[1] if i == j else sc[2])
+    return grid, lh, la
+
 def expectancy(elo_h, elo_a, home_bonus=0.0):
     return 1.0 / (1.0 + 10 ** (-((elo_h + home_bonus) - elo_a) / 400.0))
 
@@ -78,8 +126,7 @@ REST_CAP = 24
 
 def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0):
     extra = max(-REST_CAP, min(REST_CAP, REST_ELO_PER_DAY * rest_diff_days)) if knockout else 0.0
-    lh, la = lambdas(team_h, team_a, venue_country, extra)
-    grid = score_grid(lh, la)
+    grid, lh, la = calibrated_grid(team_h, team_a, venue_country, extra)
     pw = sum(grid[i][j] for i in range(MAX_GOALS+1) for j in range(MAX_GOALS+1) if i > j)
     pd = sum(grid[i][i] for i in range(MAX_GOALS+1))
     pl = 1.0 - pw - pd
