@@ -60,15 +60,23 @@ a megbízhatóan bemért csapatok stabilitása pedig megmarad.
 Az Elo lassan mozgó, eredményalapú mutató; a tornán mutatott *játékminőséget*
 két csapatonkénti szorzó ragadja meg (`att`, `def`, kiindulás: 1.0).
 
-Teljesítményjel meccsenkként, ha van xG:
+Teljesítményjel meccsenkként, jelhierarchiával:
 
 ```
-perf = 0.7 · gólok + 0.3 · xG
+exg  = xG, ha elérhető
+       0.30 · kaput eltaláló lövés + 0.03 · mellé menő lövés, ha csak lövésadat van
+perf = 0.7 · gólok + 0.3 · exg        (statisztika híján: perf = gólok)
 ```
 
-xG hiányában `perf = gólok`. A 70/30 keverés célja a szerencsekomponens
-tompítása: egy 1–0-s győzelem 0.3 xG-vel kevésbé erősíti a támadóértéket,
-mint ugyanaz 2.5 xG-vel.
+A 70/30 keverés célja a szerencsekomponens tompítása: egy 1–0-s győzelem
+0.3 xG-vel kevésbé erősíti a támadóértéket, mint ugyanaz 2.5 xG-vel. A
+lövésalapú proxy súlyai szakirodalmi átlagok (≈0.30 gól/kapura lövés) —
+történelmi lövésadat híján backtesten nem validálhatók, ezért becslésként
+kezelendők. Piros lapos mérkőzésnél az Elo-frissítés gólkülönbség-szorzója
+0.8-szorosára csökken: az emberelőnyben kialakult eredmény kevésbé
+informatív a valós erőviszonyokról. A labdabirtoklást tudatosan **nem**
+használja a modell: a lövésadatok mellett a birtoklás prediktív többletértéke
+a kutatások szerint elhanyagolható, esetenként félrevezető.
 
 Frissítés a meccs előtti várakozáshoz képest:
 
