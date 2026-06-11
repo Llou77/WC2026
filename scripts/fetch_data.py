@@ -6,8 +6,15 @@ GitHub Actions where the network is open.
 
 Primary source : football-data.org v4 (free API key; set FOOTBALL_DATA_TOKEN)
 Stats overlay  : optional JSON file with xG/shots per match (see --stats)
-Manual fallback: edit data/observed.json by hand — the schema is one object
-                 per match id:  "5": {"gh":2,"ga":1,"xg_h":1.8,"xg_a":0.9}
+Manual fallback: edit data/observed.json by hand — one object per match id.
+Supported per-match stat fields (all optional, any subset works):
+    gh, ga          final score (required)
+    xg_h, xg_a      expected goals — the strongest signal, use when available
+    sot_h, sot_a    shots on target  -> shot-based xG proxy when xG is missing
+    shots_h, shots_a  total shots     -> refines the proxy
+    red_h, red_a    true if the side received a red card (discounts the result)
+    winner_home     knockout only: ET/pens winner when the score is level
+Example: "5": {"gh":2,"ga":1,"sot_h":7,"sot_a":3,"shots_h":15,"shots_a":9,"red_a":true}
 
 Usage:
     FOOTBALL_DATA_TOKEN=... python scripts/fetch_data.py
