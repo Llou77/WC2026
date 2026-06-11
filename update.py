@@ -30,6 +30,18 @@ def main():
     matches = load("matches.json")
     observed = load("observed.json")   # {"<match_id>": {gh, ga, xg_h?, xg_a?, winner_home?}}
     mby = {m["id"]: m for m in matches}
+    # érvénytelen bejegyzések kiszűrése — rossz adat ne törje a futást
+    clean = {}
+    for k, v in observed.items():
+        try:
+            if int(k) in mby and isinstance(v, dict) \
+                    and isinstance(v.get("gh"), int) and isinstance(v.get("ga"), int):
+                clean[k] = v
+            else:
+                print(f"! observed.json: érvénytelen bejegyzés átugorva: {k!r}")
+        except (ValueError, TypeError):
+            print(f"! observed.json: érvénytelen kulcs átugorva: {k!r}")
+    observed = clean
 
     # 1) incremental rating pass over observed results, chronological order
     form = {}
@@ -47,6 +59,9 @@ def main():
                                                       if order.index(k) < order.index(key)},
                                             teams)
             h, a, _ = res[m["id"]]
+        if h is None or a is None:
+            print(f"! #{m['id']}: a résztvevők még nem feloldhatók, eredmény későbbre halasztva")
+            continue
         bracket_seen[m["id"]] = (h, a)
         r = observed[key]
         pre_match_pred[m["id"]] = ratings.predict(
@@ -164,8 +179,10 @@ def main():
     # 5) render
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     html_out = render(entries, tables, teams, now, applied, mc, sims, perf)
-    with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
+    out_path = os.path.join(ROOT, "index.html")
+    with open(out_path + ".tmp", "w", encoding="utf-8") as f:
         f.write(html_out)
+    os.replace(out_path + ".tmp", out_path)
     with open(os.path.join(ROOT, "data", "predictions.json"), "w", encoding="utf-8") as f:
         json.dump(dict(matches=[{k: v for k, v in e.items() if k != "match"} |
                                 {"id": e["match"]["id"]} for e in entries],
