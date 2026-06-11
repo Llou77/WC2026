@@ -77,17 +77,27 @@ def main():
             hh, aa, _ = bracket.get(m["id"], (None, None, True))
             sides = tuple(x for x in (hh, aa) if x)
         for c in sides:
-            team_dates.setdefault(c, []).append(m["date"])
+            team_dates.setdefault(c, []).append((m["date"], m["id"], m["stage"]))
 
     def rest_diff(mdate, h, a):
         def last_before(c):
-            prev = [d for d in team_dates.get(c, []) if d < mdate]
+            prev = [t for t in team_dates.get(c, []) if t[0] < mdate]
             return prev[-1] if prev else None
-        lh_, la_ = last_before(h), last_before(a)
-        if not lh_ or not la_:
+        def eff_rest(c):
+            t = last_before(c)
+            if not t:
+                return None
+            d, mid, stage = t
+            days = lambda x: int(x[8:10]) + (0 if x[5:7] == "06" else 30)
+            rest = days(mdate) - days(d)
+            o = observed.get(str(mid))
+            went_et = bool(o and stage != "group"
+                           and (o.get("et") or o["gh"] == o["ga"]))
+            return rest - (1 if went_et else 0)   # 120 perc ~ egy nappal kevesebb pihenő
+        rh, ra = eff_rest(h), eff_rest(a)
+        if rh is None or ra is None:
             return 0
-        days = lambda d: int(d[8:10]) + (0 if d[5:7] == "06" else 30)
-        return (days(mdate) - days(lh_)) - (days(mdate) - days(la_))
+        return rh - ra
 
     perf = {"evaluated": 0, "hit_1x2": 0, "hit_exact": 0, "brier_sum": 0.0}
     entries = []

@@ -115,7 +115,17 @@ korreláció miatt korrekció:
 P(0–0), P(1–1)  × 1.15        P(1–0), P(0–1)  × 0.97
 ```
 
-ezután a rács újranormálódik. Ebből származik minden kimeneti mutató:
+ezután a rács újranormálódik.
+
+**Meta-learner rekalibráció (az NFL-projekt 3. rétegének adaptációja):** a
+Poisson-rácsból származó 1X2-t egy 19 552 tétmeccsen (1995–) tanított softmax-
+osztályozó kimenetével keverjük (`data/blend.json`; tanítás:
+`backtest/train_blend.py`). A keverési súly (w=0.8) a train-tornákon lett
+kiválasztva; az érintetlen holdouton a keverék Brier-score-ja 0.6218-ról
+**0.5977-re** javult. A rács osztályonként (győzelem/döntetlen/vereség)
+átskálázódik a kevert valószínűségekre, így a pontos eredmények és a Monte
+Carlo-mintavétel konzisztens marad az 1X2-vel. Ebből származik minden kimeneti
+mutató:
 
 - **1X2-valószínűségek**: a rács felső háromszöge / átlója / alsó háromszöge,
 - **legvalószínűbb pontos végeredmény**: a rács módusza (top-3 megjelenítve),
@@ -158,8 +168,8 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
 ## 8. Feltételezések és ismert korlátok
 
 0. **Validáció**: a modell valós történelmi adaton visszamérve és hangolva —
-   a 2022-es VB + 2024-es Eb/Copa független holdoutján Brier-score 0.6218
-   (uniform: 0.6667), log-loss 1.0499. Protokoll és részletek:
+   a 2022-es VB + 2024-es Eb/Copa független holdoutján a teljes (rekalibrált)
+   modell Brier-score-ja **0.5977** (Poisson-alap: 0.6218, uniform: 0.6667). Protokoll és részletek:
    `backtest/REPORT.md`, újrafuttatás: `python backtest/backtest.py`.
 1. **Nagy szórás**: a futballmeccs alacsony gólszámú, nagy zajú folyamat; a
    legvalószínűbb pontos eredmény tipikus valószínűsége 8–13%. A modell
@@ -191,7 +201,10 @@ módosítja a valószínűségeket, hanem azt jelzi, mennyire stabil lábakon á
 **Pihenőnap-differencia (kieséses szakasz):** a két csapat előző mérkőzése óta
 eltelt napok különbsége kis Elo-korrekciót ad (8 pont/nap, ±24 pontra vágva) —
 heurisztikus együttható, a csoportkörben nem aktív, mert ott a terhelés
-kiegyenlített.
+kiegyenlített. **Hosszabbítás-fáradtság:** ha egy csapat előző kieséses meccse
+120 percig tartott (a fetch a `duration` mezőből jelöli, tartalékként a
+döntetlen végeredmény jelzi), az effektív pihenője egy nappal csökken — a
++30 perc terhelés tapasztalati ökölszabály szerinti beárazása.
 
 **Önellenőrzés:** minden lejátszott meccsnél eltárolódik a meccs előtti
 predikció, és a frissítés futtatja a visszamérést: 1X2-találati arány, pontos
