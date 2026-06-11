@@ -5,6 +5,8 @@ data/observed.json. Manual trigger; designed to run on your own machine or in
 GitHub Actions where the network is open.
 
 Primary source : football-data.org v4 (free API key; set FOOTBALL_DATA_TOKEN)
+xG source      : API-Football v3 (optional; free key at dashboard.api-football.com,
+                 set API_FOOTBALL_KEY) — fills xg_h/xg_a automatically
 Stats overlay  : optional JSON file with xG/shots per match (see --stats)
 Manual fallback: edit data/observed.json by hand — one object per match id.
 Supported per-match stat fields (all optional, any subset works):
@@ -29,6 +31,52 @@ DETAIL = "https://api.football-data.org/v4/matches/{}"
 
 # football-data.org statistics tömb -> observed.json mezők (corners-projekt mintájára)
 STAT_MAP = {"SHOTS": "shots", "SHOTS_ON_GOAL": "sot", "CORNER_KICKS": "corners"}
+
+AF_FIXTURES = "https://v3.football.api-sports.io/fixtures?league=1&season=2026&status=FT"
+AF_STATS = "https://v3.football.api-sports.io/fixtures/statistics?fixture={}"
+
+def _af_get(url, key):
+    req = urllib.request.Request(url, headers={"x-apisports-key": key})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+def fetch_xg_apifootball(matches, observed, key):
+    """Optional second pass: fill missing xg_h/xg_a from API-Football.
+    Fully fail-safe — any error skips quietly, nothing else is touched."""
+    try:
+        fixtures = _af_get(AF_FIXTURES, key).get("response", [])
+    except Exception as e:
+        print(f"! API-Football nem elérhető, xG kimaradt: {e}", file=sys.stderr)
+        return
+    filled = 0
+    for fx in fixtures:
+        try:
+            hn = fx["teams"]["home"]["name"]; an = fx["teams"]["away"]["name"]
+            ch, ca = NAME2CODE.get(hn), NAME2CODE.get(an)
+            if not ch or not ca:
+                continue
+            mid, home_is_h = match_id_for(matches, ch, ca, fx["fixture"]["date"][:10])
+            if mid is None or observed.get(str(mid), {}).get("xg_h") is not None:
+                continue
+            if str(mid) not in observed:
+                continue                      # eredmény még nincs meg -> majd legközelebb
+            stats = _af_get(AF_STATS.format(fx["fixture"]["id"]), key).get("response", [])
+            time.sleep(6.5)
+            xg = {}
+            for side in stats:
+                tname = side.get("team", {}).get("name")
+                for st in side.get("statistics", []):
+                    if st.get("type") == "expected_goals" and st.get("value") is not None:
+                        xg[NAME2CODE.get(tname)] = float(st["value"])
+            if ch in xg and ca in xg:
+                rec = {"xg_h": xg[ch], "xg_a": xg[ca]}
+                if home_is_h is False:
+                    rec = {"xg_h": xg[ca], "xg_a": xg[ch]}
+                observed[str(mid)] |= rec
+                filled += 1
+        except Exception as e:
+            print(f"  ! xG-feldolgozási hiba (átugorva): {e}", file=sys.stderr)
+    print(f"API-Football xG: {filled} meccs kiegészítve.")
 
 def fetch_match_stats(api_id, token, swap):
     """Per-match statistics from the match-detail endpoint. Returns {} on miss."""
@@ -101,7 +149,9 @@ def fetch_api(token):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stats", help="JSON overlay: {match_id: {xg_h, xg_a, ...}}")
+    ap.add_argument("--stats", default=os.path.join(ROOT, "data", "stats_overlay.json"),
+                    help="JSON overlay: {match_id: {xg_h, xg_a, ...}} — alapból a "
+                         "data/stats_overlay.json, hiányzó/üres fájl némán átugorva")
     ap.add_argument("--no-details", action="store_true",
                     help="csak végeredmények, meccs-statisztikák letöltése nélkül")
     ap.add_argument("--dry-run", action="store_true")
@@ -114,8 +164,14 @@ def main():
 
     token = os.environ.get("FOOTBALL_DATA_TOKEN")
     if token:
-        data = fetch_api(token)
+        try:
+            data = fetch_api(token)
+        except Exception as e:
+            print(f"! API-hiba, az eredmény-letöltés kimaradt ebből a futásból: {e}",
+                  file=sys.stderr)
+            data = {"matches": []}
         for fm in data.get("matches", []):
+          try:
             hn, an = fm["homeTeam"]["name"], fm["awayTeam"]["name"]
             ch, ca = NAME2CODE.get(hn), NAME2CODE.get(an)
             if not ch or not ca:
@@ -140,22 +196,41 @@ def main():
             if w in ("HOME_TEAM", "AWAY_TEAM") and gh == ga:   # decided in ET/pens
                 rec["winner_home"] = (w == "HOME_TEAM") == (home_is_h is not False)
             observed[str(mid)] = observed.get(str(mid), {}) | rec
+          except Exception as e:
+            print(f"  ! meccs-feldolgozási hiba (átugorva): {e}", file=sys.stderr)
     else:
         print("FOOTBALL_DATA_TOKEN nincs beállítva — API-lekérés kihagyva, "
               "csak a kézi/overlay adatok frissülnek.")
 
-    if args.stats:
-        with open(args.stats, encoding="utf-8") as f:
-            overlay = json.load(f)
-        for mid, st in overlay.items():
-            observed[str(mid)] = observed.get(str(mid), {}) | st
+    af_key = os.environ.get("API_FOOTBALL_KEY")
+    if af_key:
+        fetch_xg_apifootball(matches, observed, af_key)
+    else:
+        print("API_FOOTBALL_KEY nincs beállítva — automatikus xG kihagyva "
+              "(opcionális; ingyenes kulcs: dashboard.api-football.com).")
+
+    if args.stats and os.path.exists(args.stats):
+        try:
+            with open(args.stats, encoding="utf-8") as f:
+                overlay = json.load(f)
+            applied = 0
+            for mid, st in overlay.items():
+                if isinstance(st, dict):
+                    observed[str(mid)] = observed.get(str(mid), {}) | st
+                    applied += 1
+            if applied:
+                print(f"Overlay: {applied} meccs statisztikája beépítve.")
+        except Exception as e:
+            print(f"! Overlay-fájl hibás, kihagyva: {e}", file=sys.stderr)
 
     print(f"Eredmények: {before} -> {len(observed)}")
     if args.dry_run:
         print(json.dumps(observed, ensure_ascii=False, indent=1))
         return
-    with open(path, "w", encoding="utf-8") as f:
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(observed, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, path)        # atomi csere: félbeszakadt írás nem ront fájlt
     print("data/observed.json frissítve. Következő lépés: python update.py")
 
 if __name__ == "__main__":
