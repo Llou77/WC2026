@@ -1,19 +1,18 @@
-name: 1 - Adatok betoltese (kezi)
+name: 2 - Modell ujraszamolas + oldal (kezi)
 on: { workflow_dispatch: {} }
 permissions: { contents: write }
 jobs:
-  fetch:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - name: Eredmenyek letoltese (football-data.org)
-        env: { FOOTBALL_DATA_TOKEN: "${{ secrets.FOOTBALL_DATA_TOKEN }}" }
-        run: python scripts/fetch_data.py
+      - name: Inkrementalis ujraszamolas + render
+        run: python update.py
       - name: Commit
         run: |
           git config user.name "wc26-bot"; git config user.email "bot@users.noreply.github.com"
-          git add data/observed.json
-          git diff --cached --quiet || git commit -m "data: napi eredmenyek betoltese"
+          git add index.html data/predictions.json
+          git diff --cached --quiet || git commit -m "site: elorejelzesek frissitve"
           git push
