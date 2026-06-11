@@ -34,6 +34,64 @@ STAT_MAP = {"SHOTS": "shots", "SHOTS_ON_GOAL": "sot", "CORNER_KICKS": "corners"}
 
 AF_FIXTURES = "https://v3.football.api-sports.io/fixtures?league=1&season=2026&status=FT"
 AF_STATS = "https://v3.football.api-sports.io/fixtures/statistics?fixture={}"
+AF_PLAYERS = "https://v3.football.api-sports.io/fixtures/players?fixture={}"
+
+def fetch_players_apifootball(matches, observed, key):
+    """Optional: per-fixture player ratings -> data/player_form.json
+    (cumulative average rating per player; each team's current top performer).
+    Fail-safe; skips fixtures already harvested."""
+    path = os.path.join(ROOT, "data", "player_form.json")
+    raw_path = os.path.join(ROOT, "data", "player_ratings_raw.json")
+    try:
+        with open(raw_path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except OSError:
+        raw = {"fixtures_done": [], "players": {}}
+    try:
+        fixtures = _af_get(AF_FIXTURES, key).get("response", [])
+    except Exception as e:
+        print(f"! API-Football játékosadat nem elérhető: {e}", file=sys.stderr)
+        return
+    for fx in fixtures:
+        try:
+            fid = fx["fixture"]["id"]
+            if fid in raw["fixtures_done"]:
+                continue
+            hn = NAME2CODE.get(fx["teams"]["home"]["name"])
+            an = NAME2CODE.get(fx["teams"]["away"]["name"])
+            if not hn or not an:
+                continue
+            resp = _af_get(AF_PLAYERS.format(fid), key).get("response", [])
+            time.sleep(6.5)
+            for side in resp:
+                code = NAME2CODE.get(side.get("team", {}).get("name"))
+                if not code:
+                    continue
+                for pl in side.get("players", []):
+                    st = (pl.get("statistics") or [{}])[0].get("games", {})
+                    rating = st.get("rating")
+                    if rating is None:
+                        continue
+                    pid = f"{code}:{pl['player']['name']}"
+                    rec = raw["players"].setdefault(pid, {"sum": 0.0, "n": 0,
+                                                          "name": pl["player"]["name"],
+                                                          "team": code})
+                    rec["sum"] += float(rating); rec["n"] += 1
+            raw["fixtures_done"].append(fid)
+        except Exception as e:
+            print(f"  ! játékosadat-hiba (átugorva): {e}", file=sys.stderr)
+    best = {}
+    for rec in raw["players"].values():
+        avg = rec["sum"] / rec["n"]
+        cur = best.get(rec["team"])
+        if cur is None or avg > cur["rating"]:
+            best[rec["team"]] = {"name": rec["name"], "rating": round(avg, 2), "n": rec["n"]}
+    for p, data_ in ((raw_path, raw), (path, best)):
+        tmp = p + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data_, f, ensure_ascii=False, indent=1)
+        os.replace(tmp, p)
+    print(f"Játékos-értékelések: {len(best)} csapathoz van adat.")
 
 def _af_get(url, key):
     req = urllib.request.Request(url, headers={"x-apisports-key": key})
@@ -205,6 +263,7 @@ def main():
     af_key = os.environ.get("API_FOOTBALL_KEY")
     if af_key:
         fetch_xg_apifootball(matches, observed, af_key)
+        fetch_players_apifootball(matches, observed, af_key)
     else:
         print("API_FOOTBALL_KEY nincs beállítva — automatikus xG kihagyva "
               "(opcionális; ingyenes kulcs: dashboard.api-football.com).")
