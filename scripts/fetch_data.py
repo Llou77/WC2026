@@ -21,10 +21,37 @@ Usage:
     python scripts/fetch_data.py --stats data/stats_overlay.json
     python scripts/fetch_data.py --dry-run     # show what would change
 """
-import argparse, json, os, sys, urllib.request
+import argparse, json, os, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = "https://api.football-data.org/v4/competitions/WC/matches?status=FINISHED"
+DETAIL = "https://api.football-data.org/v4/matches/{}"
+
+# football-data.org statistics tömb -> observed.json mezők (corners-projekt mintájára)
+STAT_MAP = {"SHOTS": "shots", "SHOTS_ON_GOAL": "sot", "CORNER_KICKS": "corners"}
+
+def fetch_match_stats(api_id, token, swap):
+    """Per-match statistics from the match-detail endpoint. Returns {} on miss."""
+    try:
+        req = urllib.request.Request(DETAIL.format(api_id), headers={"X-Auth-Token": token})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            detail = json.load(r)
+    except Exception as e:
+        print(f"  ! statisztika nem elérhető (#{api_id}): {e}", file=sys.stderr)
+        return {}
+    out = {}
+    for st in (detail.get("statistics") or []):
+        key = STAT_MAP.get(st.get("type"))
+        h, a = st.get("home"), st.get("away")
+        if key and h is not None and a is not None:
+            if swap: h, a = a, h
+            out[f"{key}_h"], out[f"{key}_a"] = h, a
+        if st.get("type") == "RED_CARDS" and st.get("home") is not None:
+            rh, ra = st["home"], st["away"]
+            if swap: rh, ra = ra, rh
+            if rh: out["red_h"] = True
+            if ra: out["red_a"] = True
+    return out
 
 # football-data.org English names -> our team codes
 NAME2CODE = {
@@ -75,6 +102,8 @@ def fetch_api(token):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stats", help="JSON overlay: {match_id: {xg_h, xg_a, ...}}")
+    ap.add_argument("--no-details", action="store_true",
+                    help="csak végeredmények, meccs-statisztikák letöltése nélkül")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -101,6 +130,10 @@ def main():
             if home_is_h is False:           # API sides swapped vs our schedule
                 gh, ga = ga, gh
             rec = {"gh": gh, "ga": ga}
+            # meccs-statisztikák automatikus betöltése (csak ha még nincsenek meg)
+            if not args.no_details and "sot_h" not in observed.get(str(mid), {}):
+                rec |= fetch_match_stats(fm.get("id"), token, swap=(home_is_h is False))
+                time.sleep(6.5)      # free tier: 10 kérés/perc
             w = fm["score"].get("winner")
             if w in ("HOME_TEAM", "AWAY_TEAM") and gh == ga:   # decided in ET/pens
                 rec["winner_home"] = (w == "HOME_TEAM") == (home_is_h is not False)
