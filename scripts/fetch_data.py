@@ -134,6 +134,8 @@ def main():
             if not args.no_details and "sot_h" not in observed.get(str(mid), {}):
                 rec |= fetch_match_stats(fm.get("id"), token, swap=(home_is_h is False))
                 time.sleep(6.5)      # free tier: 10 kérés/perc
+            if fm["score"].get("duration") in ("EXTRA_TIME", "PENALTY_SHOOTOUT"):
+                rec["et"] = True       # 120 perc -> fáradtság-jel a pihenőszámításhoz
             w = fm["score"].get("winner")
             if w in ("HOME_TEAM", "AWAY_TEAM") and gh == ga:   # decided in ET/pens
                 rec["winner_home"] = (w == "HOME_TEAM") == (home_is_h is not False)
