@@ -20,7 +20,9 @@ ATTDEF_LR = 0.35           # learning rate for attack/defence multipliers
 ATTDEF_CLIP = (0.70, 1.40)
 DC_DRAW_BOOST = 1.15       # backtest-tuned draw inflation
 GD_SCALE = 160.0           # backtest-tuned Elo pts per goal of expected diff
-ET_SHRINK = 0.33           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
+ET_SHRINK = 0.33
+MATCHUP_COEF = 0.035       # lambda-szorzó / centírozott vonal-pontnyi aszimmetria
+MATCHUP_CAP = 0.10         # a párharc-réteg max. ±10%-ot mozgathat a gólvárakozáson           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
 MAX_GOALS = 8
 
 # shot-based pseudo-xG weights (literature averages: ~0.30 goal/shot on target,
@@ -107,7 +109,26 @@ def lambdas(team_h, team_a, venue_country, extra_h_bonus=0.0):
     total = TOTAL_GOALS_BASE + 0.45 * abs(gd)      # mismatches -> more goals
     lh = max(0.15, (total + gd) / 2.0) * team_h["att"] * team_a["deff"]
     la = max(0.15, (total - gd) / 2.0) * team_a["att"] * team_h["deff"]
+    lh *= _matchup_mult(team_h, team_a)
+    la *= _matchup_mult(team_a, team_h)
     return lh, la
+
+def _centered(team):
+    ln = team.get("lines")
+    if not ln:
+        return None
+    m = sum(ln) / 4.0
+    return [v - m for v in ln]      # [gk, def, mid, att] a csapat saját átlagához képest
+
+def _matchup_mult(att_team, def_team):
+    """Stylistic mismatch: attacker's centered ATT line vs defender's centered
+    DEF+GK lines. Overall strength is already priced by Elo — only the profile
+    asymmetry moves the goal expectation, capped at ±MATCHUP_CAP."""
+    a, d = _centered(att_team), _centered(def_team)
+    if a is None or d is None:
+        return 1.0
+    edge = a[3] - (d[1] + d[0]) / 2.0 + 0.3 * (a[2] - d[2])
+    return 1.0 + max(-MATCHUP_CAP, min(MATCHUP_CAP, MATCHUP_COEF * edge))
 
 def _pois(lmb, k):
     return math.exp(-lmb) * lmb ** k / math.factorial(k)

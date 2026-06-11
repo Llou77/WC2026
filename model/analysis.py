@@ -45,7 +45,40 @@ def _form_phrase(code, name, observed_for_team):
     return (f"{name} tornán mutatott mérlege: {w} győzelem, {d} döntetlen, "
             f"{l} vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.")
 
-def build(m, pred, th, ta, table_ctx, observed_form, projected=False):
+LINE_HU = ["kapusposzt", "védelem", "középpálya", "támadósor"]
+
+def _matchup_para(th, ta, channels, player_form):
+    parts = []
+    ch, ca = th.get("lines"), ta.get("lines")
+    if ch and ca:
+        c = lambda ln: [v - sum(ln) / 4.0 for v in ln]
+        h_c, a_c = c(ch), c(ca)
+        edges = [(h_c[3] - (a_c[1] + a_c[0]) / 2, f"{th['name']} támadósora a(z) {ta['name']}-védelem ellen"),
+                 (a_c[3] - (h_c[1] + h_c[0]) / 2, f"{ta['name']} támadósora a(z) {th['name']}-védelem ellen"),
+                 (h_c[2] - a_c[2], f"a középpálya-csata {th['name']} javára"),
+                 (a_c[2] - h_c[2], f"a középpálya-csata {ta['name']} javára")]
+        best = max(edges, key=lambda e: e[0])
+        if best[0] >= 1.0:
+            parts.append(f"A profil-összevetés legnagyobb aszimmetriája: {best[1]} "
+                         f"(+{best[0]:.1f} centírozott vonal-pont) — a modell ezt a "
+                         f"gólvárakozásban korlátozott mértékben árazza.")
+        else:
+            parts.append("A két csapat erősség-profilja kiegyenlített, kiugró "
+                         "vonal-aszimmetria nélkül.")
+    for t in (th, ta):
+        st = (channels or {}).get(t["code"])
+        if st and st["n"] >= 1:
+            parts.append(f"{t['name']} tornaátlaga: {st['sot_f']:.1f} kapura lövés és "
+                         f"{st['cor_f']:.1f} szöglet meccsenkként, miközben {st['sot_a']:.1f} "
+                         f"kapura lövést enged.")
+        pf = (player_form or {}).get(t["code"])
+        if pf:
+            parts.append(f"{t['name']} eddigi legjobbra értékelt játékosa a tornán: "
+                         f"{pf['name']} ({pf['rating']:.2f}).")
+    return " ".join(parts) if parts else None
+
+def build(m, pred, th, ta, table_ctx, observed_form, projected=False,
+          channels=None, player_form=None):
     k = m["id"]
     d = abs(th["elo"] - ta["elo"])
     fav = th if pred["p1"] >= pred["p2"] else ta
@@ -67,6 +100,9 @@ def build(m, pred, th, ta, table_ctx, observed_form, projected=False):
                          _form_phrase(ta["code"], ta["name"], observed_form)) if f]
     if forms:
         paras.append(" ".join(forms))
+    mp = _matchup_para(th, ta, channels, player_form)
+    if mp:
+        paras.append("Párharc-kép — " + mp)
     if table_ctx:
         paras.append(table_ctx)
 
