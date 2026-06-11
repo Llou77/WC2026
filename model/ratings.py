@@ -13,10 +13,12 @@ import math
 
 HOME_ELO_BONUS = 80        # host nation playing in its own country
 K_BASE = 50                # World Cup importance (eloratings.net convention)
-TOTAL_GOALS_BASE = 2.55    # tournament-average expected total goals
+TOTAL_GOALS_BASE = 2.80    # backtest-tuned (see backtest/REPORT.md)
 ATTDEF_LR = 0.35           # learning rate for attack/defence multipliers
 ATTDEF_CLIP = (0.70, 1.40)
-DC_DRAW_BOOST = 1.08       # Dixon-Coles-lite low-score draw inflation
+DC_DRAW_BOOST = 1.15       # backtest-tuned draw inflation
+GD_SCALE = 160.0           # backtest-tuned Elo pts per goal of expected diff
+ET_SHRINK = 0.33           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
 MAX_GOALS = 8
 
 def expectancy(elo_h, elo_a, home_bonus=0.0):
@@ -27,7 +29,7 @@ def lambdas(team_h, team_a, venue_country):
     bonus = HOME_ELO_BONUS if team_h["code"] == venue_country else 0.0
     bonus -= HOME_ELO_BONUS if team_a["code"] == venue_country else 0.0
     dr = (team_h["elo"] + bonus) - team_a["elo"]
-    gd = max(-2.5, min(2.5, dr / 120.0))          # expected goal difference
+    gd = max(-2.5, min(2.5, dr / GD_SCALE))        # expected goal difference
     total = TOTAL_GOALS_BASE + 0.45 * abs(gd)      # mismatches -> more goals
     lh = max(0.15, (total + gd) / 2.0) * team_h["att"] * team_a["deff"]
     la = max(0.15, (total - gd) / 2.0) * team_a["att"] * team_h["deff"]
@@ -60,7 +62,7 @@ def predict(team_h, team_a, venue_country, knockout=False):
         # if 90' ends level, extra time / penalties: split the draw mass by
         # Elo expectancy (pens slightly closer to 50-50)
         ev = expectancy(team_h["elo"], team_a["elo"])
-        et_share = 0.5 + (ev - 0.5) * 0.75
+        et_share = 0.5 + (ev - 0.5) * ET_SHRINK
         adv_h = pw + pd * et_share
         out["adv_h"] = round(adv_h, 4)
         out["adv_a"] = round(1 - adv_h, 4)
