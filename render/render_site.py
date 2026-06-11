@@ -148,11 +148,37 @@ def _standings_table(rows, teams):
             'szerepelnek (3·P(győzelem)+P(döntetlen)) — a tabella egyben projekció is. '
             'Zöld sáv: továbbjutó helyek; arany: 3. hely (a 8 legjobb harmadik jut tovább).</div>')
 
-def render(entries, tables, teams, generated_at, applied_count):
+def _mc_section(mc, teams, sims):
+    rows = sorted(mc.items(), key=lambda kv: (kv[1]["champion"], kv[1]["final"],
+                                              kv[1]["sf"]), reverse=True)
+    tr = ""
+    for code, p in rows:
+        bar = (f'<div style="background:#EDEBE4;height:10px;border-radius:3px;overflow:hidden">'
+               f'<div style="width:{max(0.6, p["champion"]*100):.1f}%;height:100%;'
+               f'background:linear-gradient(90deg,var(--red),var(--green),var(--blue))"></div></div>')
+        tr += (f'<tr><td>{html.escape(teams[code]["name"])}</td>'
+               f'<td>{p["group_win"]*100:.0f}%</td><td>{p["r32"]*100:.0f}%</td>'
+               f'<td>{p["r16"]*100:.0f}%</td><td>{p["qf"]*100:.0f}%</td>'
+               f'<td>{p["sf"]*100:.0f}%</td><td>{p["final"]*100:.0f}%</td>'
+               f'<td><b>{p["champion"]*100:.1f}%</b>{bar}</td></tr>')
+    return (f'<section class="sect" id="mc"><h2 class="gh disp">Esélyek'
+            f'<small>{sims:,} szimulált torna eredménye</small></h2>'
+            '<table class="st"><tr><th>Csapat</th><th>Csoport-1.</th><th>32 között</th>'
+            '<th>Nyolcaddöntő</th><th>Negyeddöntő</th><th>Elődöntő</th><th>Döntő</th>'
+            '<th>Világbajnok</th></tr>' + tr + '</table>'
+            '<div class="note">Monte Carlo-szimuláció: minden futás a teljes hátralévő '
+            'tornát lejátssza — a csoportmeccsek eredményét a meccsenkénti '
+            'valószínűség-eloszlásból sorsolja, a tabellákat és a harmadikok ágra '
+            'sorolását futásonként feloldja, kieséses döntetlennél a kalibrált '
+            'hosszabbítás/tizenegyes-modellt alkalmazza. A már lejátszott mérkőzések '
+            'eredménye rögzített. Részletek: MODEL.md.</div></section>')
+
+def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0):
     groups = "ABCDEFGHIJKL"
     nav = '<button class="on" onclick="tab(\'today\',this)">Aktuális</button>'
     nav += "".join(f'<button onclick="tab(\'g{g}\',this)">{g} csoport</button>' for g in groups)
     nav += '<button onclick="tab(\'ko\',this)">Kieséses szakasz</button>'
+    nav += '<button onclick="tab(\'mc\',this)">Esélyek</button>'
 
     by_group = {g: [] for g in groups}
     ko, upcoming = [], []
@@ -186,6 +212,8 @@ def render(entries, tables, teams, generated_at, applied_count):
               '495 kombinációjának közelítése (érvényes, de nem feltétlenül az általuk '
               'kiválasztott hozzárendelés) — a végleges párosítást a frissítés a valós '
               'eredmények alapján rögzíti.</div></section>')
+    if mc:
+        sects += _mc_section(mc, teams, sims)
 
     return f"""<!DOCTYPE html><html lang="hu"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
