@@ -101,8 +101,8 @@ várható összgólszám   total = 2.80 + 0.45 · |gd|
 λ_vendég = max(0.15, (total − gd) / 2) · att_vendég · def_hazai
 ```
 
-A 160-as skála és a 2.80-as gólalap **backtesten hangolt** érték (lásd 9. pont
-és backtest/REPORT.md); a `0.45·|gd|` tag azt a megfigyelést kódolja, hogy a
+A 160-as skála és a 2.80-as gólalap **backtesten hangolt** érték (lásd a 8. pont
+validációs blokkját és a backtest/REPORT.md-t); a `0.45·|gd|` tag azt a megfigyelést kódolja, hogy a
 nagy erőkülönbségű meccsek összgólszáma magasabb.
 
 ## 5. Eredmény-eloszlás: Poisson-rács Dixon–Coles-korrekcióval
@@ -157,12 +157,14 @@ P(továbbjutás_hazai) = P(győzelem 90 perc) + P(döntetlen) · ET-arány
 
 ## 7. Az elemzésszöveg felépítése
 
-Minden mérkőzéshez determinisztikusan generált, hat blokkból álló elemzés
+Minden mérkőzéshez determinisztikusan generált, hét blokkból álló elemzés
 készül: (1) erőviszony-értékelés az Elo-különbség sávja szerint,
-(2) játékkép mindkét oldalról, (3) meghatározó játékosok, (4) tornaforma a
-feldolgozott eredményekből, (5) csoporthelyzet / keretinformációk és
-aktualitások (`news` mező), (6) modellverdikt: 1X2 %, top-3 végeredmény és a
-számszerű indoklás. A sablonválasztás a mérkőzés-azonosítóhoz kötött, ezért a
+(2) játékkép mindkét oldalról, (3) meghatározó játékosok, (4) párharc-kép
+(vonal-aszimmetria, tornán mért csatorna-statisztikák, a torna legjobbra
+értékelt játékosai — lásd 9. pont), (5) tornaforma a feldolgozott
+eredményekből, (6) csoporthelyzet / keretinformációk és aktualitások
+(`news` mező), (7) modellverdikt: 1X2 %, top-3 végeredmény és a számszerű
+indoklás. A sablonválasztás a mérkőzés-azonosítóhoz kötött, ezért a
 kimenet reprodukálható, újrafuttatáskor nem változik.
 
 ## 8. Feltételezések és ismert korlátok

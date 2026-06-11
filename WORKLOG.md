@@ -11,6 +11,19 @@ Terv:
 - [x] 5. Kieséses ág automatikus feltöltése (valós / vetített)
 - [x] 6. Ellenőrzés (validáció, szimulált frissítés, HTML visszaolvasás)
 - [x] 7. README + zárás
+- [x] 8. Hangnem-professzionalizálás + MODEL.md módszertan-dokumentum
+- [x] 9. Backtest valós történelmi adaton (49 405 meccs; holdout Brier 0.6218) — paraméterek hangolva
+- [x] 10. Monte Carlo szimuláció (10k torna, ~3 s) + „Esélyek" fül
+- [x] 11. Adaptív K a becsült Elo-jú csapatokra (első 3 meccs: K=85)
+- [x] 12. Egymás elleni FIFA-tiebreaker (valós tabella + MC)
+- [x] 13. MC-integráció az oldalon: Tovább% oszlop + párosítás-valószínűség a KO-kártyákon
+- [x] 14. Meccsstatisztika-réteg: lövésalapú xG-proxy, piroslap-diszkont, bővített observed-séma
+- [x] 15. Corners/NFL-repók elemzése; áthozva: auto-statisztika fetch (corners), confidence-címkék (NFL), önellenőrzés (corners), pihenőnap-korrekció (NFL)
+- [x] 16. Meta-learner rekalibráció (softmax-blend, holdout Brier 0.6218 -> 0.5977) + ET-fáradtság a pihenőszámításban
+- [x] 17. Hibabiztosítás: API/overlay/rossz-adat védelem, atomi fájlírás, automatikus overlay a workflow-ban, concurrency-védelem, performance.json commitolása
+- [x] 18. Automatikus xG-forrás (API-Football, opcionális kulccsal, hibabiztos)
+- [x] 19. Párharc-réteg (centírozott vonal-mátrix ±10% sapkával), csatorna-profilok, játékos-értékelés betöltés + „Párharc-kép" elemzés-bekezdés
+- [x] 20. Teljes körű audit: kód zöld (10 fájl fordul, 3 E2E, 104 meccs konzisztens); README újraírva, MODEL.md hivatkozás+7-blokk javítva, REPORT.md blend-szakasszal bővítve
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.

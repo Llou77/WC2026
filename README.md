@@ -2,98 +2,107 @@
 
 Magyar nyelvű, statikus HTML fedőoldal a 2026-os világbajnokság mind a 104
 mérkőzésének előrejelzésével: 1X2-valószínűségek, a legvalószínűbb pontos
-végeredmény és részletes elemzés/indoklás minden meccshez. A modell naponta,
-kézi indításra, **inkrementálisan** frissül a lejátszott meccsek adataival —
-a teljes újraszámolás < 1 másodperc, refit nincs.
+végeredmény, Monte Carlo-tornaesélyek és részletes elemzés minden meccshez.
+A modell két kézi gombnyomásra (fetch → update) frissül; minden adatbetöltés,
+számítás és publikálás automatikus és hibabiztos. A teljes újraszámolás
+10 000 tornaszimulációval együtt ~3 másodperc.
 
-## Gyors indítás
+**Pontosság (független holdouton — VB 2022 + Eb/Copa 2024):** Brier 0.5977
+(uniform tipp: 0.6667). Részletek: [backtest/REPORT.md](backtest/REPORT.md).
 
-```bash
-python update.py          # előrejelzések + index.html újragenerálása
-open index.html           # (vagy GitHub Pages, lásd lent)
-```
+## Napi munkafolyamat (2 gombnyomás)
 
-## Napi frissítési workflow (két kézi lépés)
-
-**1. lépés — adatok betöltése** (`scripts/fetch_data.py`):
+GitHubon: **Actions → „1 - Adatok betoltese (kezi)"** → lefutás után
+**„2 - Modell ujraszamolas + oldal (kezi)"**. Lokálisan ugyanez:
 
 ```bash
-export FOOTBALL_DATA_TOKEN=...   # ingyenes kulcs: football-data.org
-python scripts/fetch_data.py
-# opcionális statisztika-overlay (xG, lövések) bármely forrásból:
-python scripts/fetch_data.py --stats data/stats_overlay.json
+python scripts/fetch_data.py   # eredmények + statisztikák + xG + játékosadatok
+python update.py               # újraszámolás + index.html (+ --sims=N opció)
 ```
 
-A letöltött végeredmények (és ha van, xG) a `data/observed.json`-ba kerülnek.
-Kézi szerkesztés is teljes értékű fallback — séma meccsazonosítónként:
+A workflow-k hibabiztosak: API-kimaradás, hibás adat vagy hiányzó fájl
+figyelmeztetést ad, de a futás zölden végigmegy a meglévő adatokkal.
+
+## Egyszeri beállítás
+
+1. **Secretek** (Settings → Secrets and variables → Actions):
+   - `FOOTBALL_DATA_TOKEN` — kötelező; ingyenes kulcs: football-data.org.
+     Eredmények + lövés/szöglet/piroslap statisztikák forrása.
+   - `API_FOOTBALL_KEY` — opcionális; ingyenes kulcs: dashboard.api-football.com.
+     Automatikus xG és játékos-értékelések forrása. Nélküle ezek a rétegek
+     némán kimaradnak, minden más változatlanul működik.
+2. **GitHub Pages**: Settings → Pages → Deploy from a branch → main / (root).
+
+## Mi mit csinál (adatfolyam)
+
+```
+fetch_data.py
+ ├─ football-data.org ─ végeredmények, ET/tizenegyes-továbbjutó
+ ├─ football-data.org match-detail ─ lövés, kapura lövés, szöglet, piros lap
+ ├─ API-Football ─ xG + játékosonkénti osztályzatok (opcionális kulccsal)
+ └─ data/stats_overlay.json ─ kézi felülíró réteg (pl. pontosított xG)
+        ↓  data/observed.json (+ player_form.json, player_ratings_raw.json)
+update.py
+ ├─ inkrementális Elo (adaptív K a becsült csapatoknál) + xG-kevert att/def
+ ├─ Poisson-rács + Dixon–Coles + meta-learner rekalibráció (data/blend.json)
+ ├─ párharc-réteg (data/lineups.json, centírozott, ±10% sapka)
+ ├─ tabellák (FIFA-tiebreakerekkel) + kieséses ág feloldása
+ ├─ 10 000 Monte Carlo-tornaszimuláció (Esélyek fül, Tovább%, párosítás-%)
+ ├─ önellenőrzés (data/performance.json + fejléc-sor)
+ └─ index.html újragenerálása
+```
+
+A teljes módszertan képletekkel, validációval és korlátokkal:
+**[MODEL.md](MODEL.md)**.
+
+## Kézi adatbevitel (opcionális rétegek)
+
+**Eredmény/statisztika kézzel** — `data/observed.json`, meccsazonosítónként
+(1–72 csoportkör, 73–104 kieséses, FIFA-számozás):
 
 ```json
-{ "1": {"gh": 2, "ga": 0, "xg_h": 1.9, "xg_a": 0.4} }
+"5": {"gh":2, "ga":1, "xg_h":1.8, "xg_a":0.9, "sot_h":7, "sot_a":3,
+      "shots_h":15, "shots_a":9, "red_a":true, "et":true, "winner_home":true}
 ```
 
-(A meccsazonosítók a `data/matches.json`-ban; 1–72 csoportkör, 73–104 kieséses
-szakasz a hivatalos FIFA-számozással. Kieséses meccsnél döntetlen
-végeredemény + hosszabbításos/tizenegyeses továbbjutó: `"winner_home": true/false`.)
+Minden mező opcionális a `gh`/`ga` páron kívül; `et` = 120 percig tartott
+(fáradtság-jel), `winner_home` = döntetlen utáni továbbjutó kieséses meccsen.
 
-**2. lépés — újraszámolás + render** (`update.py`):
+**xG-pontosítás** — `data/stats_overlay.json` ugyanezzel a sémával; a fetch
+minden futáskor automatikusan ráteríti az API-adatokra.
 
-```bash
-python update.py
-```
+**Hírek** — `data/teams.json` → `news` mező: az elemzésekbe kerül. Kemény
+hírhatás (kulcsjátékos kiesése) az `elo` kézi módosításával árazható.
 
-GitHubon ugyanez a két lépés a **Actions** fül alatt kézzel indítható
-(`workflow_dispatch`): *„1 - Adatok betoltese"* majd *„2 - Modell
-ujraszamolas + oldal"*. A `FOOTBALL_DATA_TOKEN`-t repo secretként kell
-felvenni. GitHub Pages-t a repo gyökerére irányítva az `index.html` azonnal
-publikus.
-
-## Hogyan számol a modell?
-
-Részletes módszertan: **[MODEL.md](MODEL.md)** — bemenetek, képletek, feltételezések, korlátok. Rövid összefoglaló:
-
-- **Erősség**: csapatonkénti Elo (kiindulás: eloratings.net, 2026-06-11),
-  meccsenkénti inkrementális frissítéssel (K=50, gólkülönbség-súlyozott),
-  plusz hazai bónusz a rendező országoknak saját helyszínen.
-- **Forma-finomhangolás**: támadó/védő szorzók, amelyek a tornán mutatott
-  teljesítményből tanulnak — ha van xG, a gólok és az xG 70/30 keveréke a
-  jel, így egy szerencsés 1-0 kevésbé torzít.
-- **Eredmény-eloszlás**: a várható gólszámokból Poisson-rács (Dixon–Coles
-  jellegű döntetlen-korrekcióval) → 1X2 % és a legvalószínűbb pontos eredmények.
-- **Kieséses szakasz**: a párosítások a valós tabellákból töltődnek fel; amíg
-  egy csoport nincs lezárva, *vetített* (várható pont alapú) résztvevők
-  szerepelnek, megjelölve. Döntetlen-tipp esetén a modell hosszabbítás +
-  tizenegyesek figyelembevételével **mindig kijelöl továbbjutó-esélyest**.
-- A harmadik helyezettek ágra sorolása a FIFA Annex C (495 kombináció)
-  érvényes közelítése; a valós sorsolási tábla ettől eltérhet, a tényleges
-  párosítást az eredmény-betöltés úgyis rögzíti.
+**Erősség-profilok** — `data/lineups.json`: csapatonként
+[kapus, védelem, középpálya, támadás] 1–10; becslések, szabadon átírhatók.
 
 ## Fájlszerkezet
 
 ```
-index.html              ← a generált fedőoldal (GitHub Pages-kész)
-update.py               ← 2. lépés: újraszámolás + render
-scripts/fetch_data.py   ← 1. lépés: eredmények betöltése
-scripts/seed_data.py    ← kiinduló adatok újragenerálása (csak ha elromlana)
-data/teams.json         ← 48 csapatprofil (Elo, játékosok, stílus, "news" mező)
-data/matches.json       ← 104 meccs menetrendje
-data/observed.json      ← lejátszott meccsek adatai (a fetch írja / kézzel is)
-data/predictions.json   ← gépi olvasásra szánt kimenet
-model/ , render/        ← modell és oldalgenerátor
-.github/workflows/      ← a két kézi indítású GitHub Action
+index.html                  ← a generált oldal (GitHub Pages-kész)
+update.py                   ← 2. lépés: újraszámolás + render
+scripts/fetch_data.py       ← 1. lépés: adatbetöltés (3 forrás + overlay)
+scripts/seed_data.py        ← kiinduló adatok újragenerálása (vész esetére;
+                              felülírja a teams/matches fájlokat!)
+data/teams.json             ← 48 csapatprofil (Elo, játékosok, news)
+data/lineups.json           ← pozicionális erősség-mátrix (szerkeszthető)
+data/matches.json           ← 104 meccs menetrendje
+data/observed.json          ← lejátszott meccsek adatai (generált + kézi)
+data/stats_overlay.json     ← kézi statisztika-felülírás
+data/blend.json             ← tanított 1X2-rekalibráció (ne töröld!)
+data/predictions.json       ← gépi kimenet (predikciók + Monte Carlo)
+data/performance.json       ← önellenőrzés (1X2-találat, Brier)
+data/player_form.json       ← csapatonkénti legjobb játékos (generált)
+model/ render/              ← modell és oldalgenerátor
+backtest/                   ← validáció + kalibráció (REPORT.md, újrafuttatható)
+.github/workflows/          ← a két kézi indítású Action
 ```
-
-**Napi hír beépítése:** a `data/teams.json` adott csapatának `news` mezőjébe
-írt szöveg (sérülés, eltiltás, öltözői hír) a következő `update.py` futáskor
-automatikusan bekerül az érintett meccsek elemzésébe. A keményebb hatást
-(pl. kulcsjátékos kiesése) az Elo kézi, kommentált módosításával lehet
-érvényesíteni.
 
 ## Korlátok — őszintén
 
-- A futball nagy szórású: a "legvalószínűbb pontos eredmény" tipikusan
-  8–13% valószínűségű. A modell kalibrált esélyeket ad, nem jóslatot.
-- A becsültként jelölt (`elo_estimated: true`) kiinduló Elo-értékek
-  konzervatív közelítések; az első 1–2 forduló után a frissítések gyorsan
-  korrigálják őket.
-- Nem hivatalos rajongói projekt, a FIFA-tól független; szerencsejáték-célú
-  felhasználásra nem alkalmas.
+A futball nagy szórású: a legvalószínűbb pontos eredmény tipikusan 8–13%
+valószínűségű; a modell kalibrált eloszlást ad, nem jóslatot. A párharc-réteg
+és a pihenő/fáradtság-korrekciók heurisztikák (backtesten nem validálhatók),
+hatásuk szándékosan sapkázott. Nem hivatalos rajongói projekt, a FIFA-tól
+független; szerencsejáték-célú felhasználásra nem alkalmas.
