@@ -49,9 +49,10 @@ def _k(team):
 def expectancy(elo_h, elo_a, home_bonus=0.0):
     return 1.0 / (1.0 + 10 ** (-((elo_h + home_bonus) - elo_a) / 400.0))
 
-def lambdas(team_h, team_a, venue_country):
+def lambdas(team_h, team_a, venue_country, extra_h_bonus=0.0):
     """Expected goals for both sides from Elo gap + att/def multipliers."""
-    bonus = HOME_ELO_BONUS if team_h["code"] == venue_country else 0.0
+    bonus = extra_h_bonus
+    bonus += HOME_ELO_BONUS if team_h["code"] == venue_country else 0.0
     bonus -= HOME_ELO_BONUS if team_a["code"] == venue_country else 0.0
     dr = (team_h["elo"] + bonus) - team_a["elo"]
     gd = max(-2.5, min(2.5, dr / GD_SCALE))        # expected goal difference
@@ -72,8 +73,12 @@ def score_grid(lh, la):
     s = sum(sum(r) for r in grid)
     return [[v / s for v in row] for row in grid]
 
-def predict(team_h, team_a, venue_country, knockout=False):
-    lh, la = lambdas(team_h, team_a, venue_country)
+REST_ELO_PER_DAY = 8       # knockout rest-day differential (capped; heuristic)
+REST_CAP = 24
+
+def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0):
+    extra = max(-REST_CAP, min(REST_CAP, REST_ELO_PER_DAY * rest_diff_days)) if knockout else 0.0
+    lh, la = lambdas(team_h, team_a, venue_country, extra)
     grid = score_grid(lh, la)
     pw = sum(grid[i][j] for i in range(MAX_GOALS+1) for j in range(MAX_GOALS+1) if i > j)
     pd = sum(grid[i][i] for i in range(MAX_GOALS+1))

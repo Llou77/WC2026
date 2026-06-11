@@ -4,6 +4,22 @@ Deterministic but varied: template choice is keyed to the match id, so the 72
 group analyses don't read identically, yet every regeneration is reproducible.
 """
 
+# --- Confidence (NFL projektből adaptálva: jel-erősség + adatminőség + minta) ---
+W_MARGIN, W_DATA, W_SAMPLE = 0.55, 0.30, 0.15
+CONF_LABELS = [(0.62, "MAGAS"), (0.45, "KÖZEPES"), (0.0, "ALACSONY")]
+
+def confidence(pred, th, ta):
+    ps = sorted((pred["p1"], pred["px"], pred["p2"]), reverse=True)
+    margin = min(1.0, (ps[0] - ps[1]) / 0.45)
+    data = 1.0
+    for t in (th, ta):
+        if t.get("elo_estimated") and t.get("played", 0) < 3:
+            data -= 0.35
+    sample = min(1.0, (th.get("played", 0) + ta.get("played", 0)) / 6.0)
+    score = W_MARGIN * margin + W_DATA * max(0.0, data) + W_SAMPLE * sample
+    label = next(l for thr, l in CONF_LABELS if score >= thr)
+    return round(score, 3), label
+
 STAGE_HU = {"group":"Csoportkör","r32":"Nyolcaddöntő-selejtező (32 között)",
             "r16":"Nyolcaddöntő","qf":"Negyeddöntő","sf":"Elődöntő",
             "third":"Bronzmérkőzés","final":"DÖNTŐ"}
