@@ -121,10 +121,12 @@ def _card(entry):
         h += _ribbon(p)
         h += (f'<div class="legend"><span>{html.escape(th)} győz</span>'
               f'<span>döntetlen</span><span>{html.escape(ta)} győz</span></div>')
+    conf = entry.get("conf_label")
+    conf_txt = f'<span>megbízhatóság: {conf.lower()}</span>' if conf else ""
     pair = entry.get("pair_share")
     pair_txt = (f'<span>a szimulációk {pair*100:.0f}%-ában ez a párosítás</span>'
                 if pair else "")
-    h += (f'<div class="meta">{tag}{pair_txt}<span>{STAGE_HU[m["stage"]]}'
+    h += (f'<div class="meta">{tag}{conf_txt}{pair_txt}<span>{STAGE_HU[m["stage"]]}'
           + (f' — {m["group"]} csoport' if m["group"] else "")
           + f'</span><span>{m["date"]} {m["time_et"]} ET'
           f' (Bp: {bdate} {btime})</span><span>{html.escape(m["venue"])}</span>'
@@ -178,7 +180,7 @@ def _mc_section(mc, teams, sims):
             'hosszabbítás/tizenegyes-modellt alkalmazza. A már lejátszott mérkőzések '
             'eredménye rögzített. Részletek: MODEL.md.</div></section>')
 
-def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0):
+def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0, perf=None):
     groups = "ABCDEFGHIJKL"
     nav = '<button class="on" onclick="tab(\'today\',this)">Aktuális</button>'
     nav += "".join(f'<button onclick="tab(\'g{g}\',this)">{g} csoport</button>' for g in groups)
@@ -220,6 +222,12 @@ def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0)
     if mc:
         sects += _mc_section(mc, teams, sims)
 
+    perf_line = ""
+    if perf and perf.get("evaluated"):
+        perf_line = (f' Modell-teljesítmény eddig: 1X2-találat {perf["hit_1x2"]}/'
+                     f'{perf["evaluated"]} ({perf["hit_1x2_rate"]*100:.0f}%), pontos eredmény '
+                     f'{perf["hit_exact"]}/{perf["evaluated"]}, Brier {perf["avg_brier"]:.3f} '
+                     f'(referencia: 0.667 = uniform).')
     return f"""<!DOCTYPE html><html lang="hu"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VB 2026 — ML előrejelző</title>
@@ -229,7 +237,7 @@ def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0)
 <h1 class="disp">VB 2026 előrejelző<span>Kanada · Mexikó · USA — 104 mérkőzés</span></h1>
 <p>Elo + Poisson alapú, naponta inkrementálisan frissülő modell. Minden meccshez:
 1X2-valószínűségek, a legvalószínűbb végeredmény és részletes magyar nyelvű indoklás.
-Utolsó frissítés: {generated_at} · feldolgozott eredmények: {applied_count} mérkőzés.</p></header>
+Utolsó frissítés: {generated_at} · feldolgozott eredmények: {applied_count} mérkőzés.{perf_line}</p></header>
 <nav>{nav}</nav><main>{sects}</main>
 <footer>Nem hivatalos, rajongói elemzőoldal — nem áll kapcsolatban a FIFA-val.
 A valószínűségek modellbecslések, nem garanciák; szerencsejátékhoz nem ajánlott
