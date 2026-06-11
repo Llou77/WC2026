@@ -121,7 +121,10 @@ def _card(entry):
         h += _ribbon(p)
         h += (f'<div class="legend"><span>{html.escape(th)} győz</span>'
               f'<span>döntetlen</span><span>{html.escape(ta)} győz</span></div>')
-    h += (f'<div class="meta">{tag}<span>{STAGE_HU[m["stage"]]}'
+    pair = entry.get("pair_share")
+    pair_txt = (f'<span>a szimulációk {pair*100:.0f}%-ában ez a párosítás</span>'
+                if pair else "")
+    h += (f'<div class="meta">{tag}{pair_txt}<span>{STAGE_HU[m["stage"]]}'
           + (f' — {m["group"]} csoport' if m["group"] else "")
           + f'</span><span>{m["date"]} {m["time_et"]} ET'
           f' (Bp: {bdate} {btime})</span><span>{html.escape(m["venue"])}</span>'
@@ -134,18 +137,20 @@ def _card(entry):
     h += f'<div class="body">{body}</div></div>'
     return h
 
-def _standings_table(rows, teams):
+def _standings_table(rows, teams, mc=None):
     tr = ""
     for r in rows:
         cls = "q" if r["rank"] <= 2 else ("t3" if r["rank"] == 3 else "")
+        adv = f'{mc[r["code"]]["r32"]*100:.0f}%' if mc else "–"
         tr += (f'<tr class="{cls}"><td>{r["rank"]}.</td>'
                f'<td>{html.escape(teams[r["code"]]["name"])}</td>'
                f'<td>{r["played"]}</td><td>{r["gf"]}</td><td>{r["ga"]}</td>'
-               f'<td>{r["gd"]}</td><td><b>{r["pts"]}</b></td></tr>')
+               f'<td>{r["gd"]}</td><td><b>{r["pts"]}</b></td><td>{adv}</td></tr>')
     return ('<table class="st"><tr><th>#</th><th>Csapat</th><th>LM</th><th>LG</th>'
-            '<th>KG</th><th>GK</th><th>Pont*</th></tr>' + tr + "</table>"
+            '<th>KG</th><th>GK</th><th>Pont*</th><th>Tovább%</th></tr>' + tr + "</table>"
             '<div class="note">* A még le nem játszott meccsek <i>várható</i> ponttal '
             'szerepelnek (3·P(győzelem)+P(döntetlen)) — a tabella egyben projekció is. '
+            'A Tovább% oszlop a Monte Carlo-szimulációból származó továbbjutási valószínűség. '
             'Zöld sáv: továbbjutó helyek; arany: 3. hely (a 8 legjobb harmadik jut tovább).</div>')
 
 def _mc_section(mc, teams, sims):
@@ -199,7 +204,7 @@ def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0)
     for g in groups:
         sects += (f'<section class="sect" id="g{g}"><h2 class="gh disp">{g} csoport'
                   f'<small>tabella + mind a 6 mérkőzés</small></h2>'
-                  + _standings_table(tables[g], teams)
+                  + _standings_table(tables[g], teams, mc)
                   + "".join(_card(e) for e in by_group[g]) + "</section>")
 
     stage_order = ["r32", "r16", "qf", "sf", "third", "final"]
