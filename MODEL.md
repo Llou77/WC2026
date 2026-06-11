@@ -189,7 +189,30 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
    mint utolsó előtti tiebreaker nincs implementálva, teljes holtversenynél
    determinisztikus (a Monte Carlóban sorsolásos) feloldás következik.
 
-## 9. Megbízhatósági címkék, pihenőnap-hatás, önellenőrzés
+## 9. Párharc-réteg és játékos-szintű adatok
+
+**Pozicionális erősség-mátrix** (`data/lineups.json`, szerkeszthető becslések):
+csapatonként [kapus, védelem, középpálya, támadósor] 1–10 skálán. A modell
+minden csapat vonalait a **saját átlagához centírozza**, így kizárólag a
+profil-aszimmetria számít — az össz-erőt az Elo árazza, a kettős számolás így
+kizárt. A gólvárakozás-korrekció: `1 + 0.035 · (támadósor′ − (védelem′+kapus′)/2
++ 0.3·középpálya-különbség′)`, **±10%-ra sapkázva**. Történelmi vonal-adat
+híján ez a réteg backtesten nem validálható; az együtthatók konzervatív
+heurisztikák, az effektus szándékosan korlátos.
+
+**Csatorna-profilok (automatikus):** a betöltött meccs-statisztikákból
+csapatonként tornaátlag képződik (kapura lövés és szöglet, mindkét irányban);
+ez az elemzések „Párharc-kép" bekezdését táplálja, a számokat közvetlenül nem
+mozgatja — 1–3 meccses mintán numerikus súlyt adni neki túlilleszkedés lenne.
+
+**Játékos-szintű értékelések (automatikus, opcionális):** API-Football-kulccsal
+a fetch meccsenkként letölti a játékos-osztályzatokat, halmozott átlagot vezet
+(`data/player_ratings_raw.json`), és csapatonként a torna legjobbra értékelt
+játékosát az elemzésbe emeli (`data/player_form.json`). Numerikus hatása nincs
+— a tornaminta ehhez túl kicsi —, a kvalitatív réteg viszont meccsre lebontva
+frissül.
+
+## 10. Megbízhatósági címkék, pihenőnap-hatás, önellenőrzés
 
 **Megbízhatóság (confidence):** minden előrejelzés címkét kap (MAGAS / KÖZEPES /
 ALACSONY) — az NFL-predikciós projektből adaptált pontszám alapján:
@@ -212,7 +235,7 @@ eredmény-találat, átlagos Brier (`data/performance.json` + a fejléc
 összefoglaló sora). Így a torna alatt folyamatosan látszik, hogyan teljesít a
 modell éles adaton — a corners-projekt eredmény-ellenőrző mintájára.
 
-## 10. Monte Carlo tornaszimuláció
+## 11. Monte Carlo tornaszimuláció
 
 Az „Esélyek" fül értékei 10 000 teljes torna-szimulációból származnak
 (`model/simulate.py`, `update.py --sims=N` paraméterrel állítható). Futásonként:

@@ -27,6 +27,17 @@ def main():
         if a_.startswith("--sims="):
             sims = int(a_.split("=")[1])
     teams = {t["code"]: copy.deepcopy(t) for t in load("teams.json")}
+    try:
+        lines = load("lineups.json").get("lines", {})
+        for c, ln in lines.items():
+            if c in teams and isinstance(ln, list) and len(ln) == 4:
+                teams[c]["lines"] = ln
+    except Exception as e:
+        print(f"! lineups.json nem tölthető (párharc-réteg kikapcsolva): {e}")
+    try:
+        player_form = load("player_form.json")
+    except Exception:
+        player_form = {}
     matches = load("matches.json")
     observed = load("observed.json")   # {"<match_id>": {gh, ga, xg_h?, xg_a?, winner_home?}}
     mby = {m["id"]: m for m in matches}
@@ -114,6 +125,30 @@ def main():
             return 0
         return rh - ra
 
+    # tornán gyűlő csatorna-profilok az elemzésekhez (lövés/szöglet oda-vissza)
+    channels = {}
+    for key2, r2 in observed.items():
+        m2 = mby[int(key2)]
+        if m2["stage"] == "group":
+            sides2 = ((m2["home"], "h", "a"), (m2["away"], "a", "h"))
+        else:
+            bs = bracket_seen.get(m2["id"])
+            if not bs:
+                continue
+            sides2 = ((bs[0], "h", "a"), (bs[1], "a", "h"))
+        for c2, me, opp in sides2:
+            st = channels.setdefault(c2, {"n": 0, "sot_f": 0.0, "sot_a": 0.0,
+                                          "cor_f": 0.0, "cor_a": 0.0})
+            if r2.get(f"sot_{me}") is None:
+                continue
+            st["n"] += 1
+            st["sot_f"] += r2[f"sot_{me}"]; st["sot_a"] += r2[f"sot_{opp}"]
+            st["cor_f"] += r2.get(f"corners_{me}", 0); st["cor_a"] += r2.get(f"corners_{opp}", 0)
+    for st in channels.values():
+        if st["n"]:
+            for k2 in ("sot_f", "sot_a", "cor_f", "cor_a"):
+                st[k2] = st[k2] / st["n"]
+
     perf = {"evaluated": 0, "hit_1x2": 0, "hit_exact": 0, "brier_sum": 0.0}
     entries = []
     for m in matches:
@@ -166,7 +201,8 @@ def main():
                 ctx = (f"Csoporthelyzet ({m['group']}): {th['name']} jelenleg/várhatóan "
                        f"{row_h['rank']}. ({row_h['pts']} pont), {ta['name']} "
                        f"{row_a['rank']}. ({row_a['pts']} pont).")
-            e["analysis"] = analysis.build(m, pred, th, ta, ctx, form, projected=proj)
+            e["analysis"] = analysis.build(m, pred, th, ta, ctx, form, projected=proj,
+                                           channels=channels, player_form=player_form)
         entries.append(e)
 
     if perf["evaluated"]:
