@@ -53,19 +53,20 @@ class Simulator:
                                   and m["group"] == g] for g in standings.GROUPS}
         self.ko = sorted((m for m in matches if m["stage"] not in ("group", "third")),
                          key=lambda m: m["id"])
+        self.md_map = standings.matchday_map(matches)
         self.third_slots = sorted((m["id"], set(m["away"].split(":")[1]))
                                   for m in matches
                                   if m["stage"] == "r32" and m["away"].startswith("T:"))
 
-    def _grid(self, h, a, vc):
-        key = (h, a, vc)
+    def _grid(self, h, a, vc, md=None):
+        key = (h, a, vc, md)
         if key not in self._grids:
-            grid, _, _ = ratings.calibrated_grid(self.teams[h], self.teams[a], vc)
+            grid, _, _ = ratings.calibrated_grid(self.teams[h], self.teams[a], vc, md=md)
             self._grids[key] = _cdf(grid)
         return self._grids[key]
 
-    def _sample(self, h, a, vc):
-        flat, cum = self._grid(h, a, vc)
+    def _sample(self, h, a, vc, md=None):
+        flat, cum = self._grid(h, a, vc, md)
         return flat[bisect.bisect(cum, self.rng.random() * cum[-1])]
 
     def run(self, n=10000):
@@ -88,7 +89,8 @@ class Simulator:
                     rows.setdefault(c, [0, 0, 0])      # pts, gf, ga
                 o = self.observed.get(str(m["id"]))
                 gh, ga = (o["gh"], o["ga"]) if o else \
-                    self._sample(m["home"], m["away"], m["venue_country"])
+                    self._sample(m["home"], m["away"], m["venue_country"],
+                                 self.md_map.get(m["id"]))
                 h2h[(m["home"], m["away"])] = (gh, ga)
                 rows[m["home"]][0] += 3 if gh > ga else (1 if gh == ga else 0)
                 rows[m["away"]][0] += 3 if ga > gh else (1 if gh == ga else 0)

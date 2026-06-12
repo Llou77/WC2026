@@ -113,17 +113,25 @@ def build(m, pred, th, ta, table_ctx, observed_form, projected=False,
         paras.append("Keretinformációk, aktualitások — " + " ".join(news))
 
     ts = pred["top_scores"]
+    tip = pred.get("tip", ts[0])
+    cls_p = max(pred["p1"], pred["px"], pred["p2"])
+    cls_txt = (f"{th['name']} győzelme" if cls_p == pred["p1"] else
+               ("döntetlen" if cls_p == pred["px"] else f"{ta['name']} győzelme"))
     verdict = (f"Modellverdikt: {th['name']} győzelmi valószínűsége {pred['p1']*100:.0f}%, "
                f"a döntetlené {pred['px']*100:.0f}%, {ta['name']} győzelméé {pred['p2']*100:.0f}%. "
-               f"A legvalószínűbb végeredmény {ts[0]['h']}–{ts[0]['a']} "
-               f"({ts[0]['p']*100:.1f}%); a következő legvalószínűbb kimenetelek "
-               f"{ts[1]['h']}–{ts[1]['a']} ({ts[1]['p']*100:.1f}%) és "
+               f"A legvalószínűbb kimenetel {cls_txt} ({cls_p*100:.0f}%), ezen belül a "
+               f"legvalószínűbb végeredmény {tip['h']}–{tip['a']} ({tip['p']*100:.1f}%). "
+               f"Az eloszlás egészének legsűrűbb pontjai: "
+               f"{ts[0]['h']}–{ts[0]['a']} ({ts[0]['p']*100:.1f}%), "
+               f"{ts[1]['h']}–{ts[1]['a']} ({ts[1]['p']*100:.1f}%), "
                f"{ts[2]['h']}–{ts[2]['a']} ({ts[2]['p']*100:.1f}%). "
                f"Indoklás: a becslés alapja a várható gólszám-pár ({pred['lh']:.2f}, "
                f"illetve {pred['la']:.2f}), amelyet az aktuális Elo-erőkülönbség, a tornán "
                f"mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen "
                f"határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként "
-               f"értelmezendő, nem determinisztikus előrejelzésként.")
+               f"értelmezendő, nem determinisztikus előrejelzésként. További eloszlási "
+               f"mutatók: mindkét csapat szerez gólt {pred.get('btts',0)*100:.0f}%, "
+               f"2,5 gól feletti összgólszám {pred.get('over25',0)*100:.0f}%.")
     if m["stage"] != "group" and "favorite" in pred:
         favt = th if pred["favorite"] == th["code"] else ta
         p = pred["adv_h"] if pred["favorite"] == th["code"] else pred["adv_a"]

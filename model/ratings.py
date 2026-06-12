@@ -27,6 +27,8 @@ GD_POW = 0.85              # sublinear gap->goal mapping (backtest-tuned v2)
 TOTAL_GD_COEF = 0.2        # backtest-tuned v2
 MOV_MODE = "elo"           # margin-of-victory weighting: elo | linear | sqrt
 ET_SHRINK = 0.33
+MD_TOTAL_OFFSET = {1: -0.35, 2: -0.05, 3: -0.25}  # group matchday goal-caution
+LOCKED_ELO_PENALTY = 25    # team whose group fate is already decided (MD3)
 MATCHUP_COEF = 0.035       # lambda-szorzó / centírozott vonal-pontnyi aszimmetria
 MATCHUP_CAP = 0.10         # a párharc-réteg max. ±10%-ot mozgathat a gólvárakozáson           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
 MAX_GOALS = 8
@@ -78,10 +80,10 @@ def _bonus(team_h, team_a, venue_country, extra=0.0):
     b -= HOME_ELO_BONUS if team_a["code"] == venue_country else 0.0
     return b
 
-def calibrated_grid(team_h, team_a, venue_country, extra_h_bonus=0.0):
+def calibrated_grid(team_h, team_a, venue_country, extra_h_bonus=0.0, md=None):
     """Poisson/DC grid, class-rescaled to the blended (softmax-mixed) 1X2.
     Used by predict() AND the Monte Carlo sampler, so the two stay consistent."""
-    lh, la = lambdas(team_h, team_a, venue_country, extra_h_bonus)
+    lh, la = lambdas(team_h, team_a, venue_country, extra_h_bonus, md)
     grid = score_grid(lh, la)
     b = _load_blend()
     if b:
@@ -105,7 +107,7 @@ def calibrated_grid(team_h, team_a, venue_country, extra_h_bonus=0.0):
 def expectancy(elo_h, elo_a, home_bonus=0.0):
     return 1.0 / (1.0 + 10 ** (-((elo_h + home_bonus) - elo_a) / 400.0))
 
-def lambdas(team_h, team_a, venue_country, extra_h_bonus=0.0):
+def lambdas(team_h, team_a, venue_country, extra_h_bonus=0.0, md=None):
     """Expected goals for both sides from Elo gap + att/def multipliers."""
     bonus = extra_h_bonus
     bonus += HOME_ELO_BONUS if team_h["code"] == venue_country else 0.0
@@ -115,6 +117,7 @@ def lambdas(team_h, team_a, venue_country, extra_h_bonus=0.0):
     mag = abs(raw) ** GD_POW
     gd = max(-2.5, min(2.5, mag if raw >= 0 else -mag))
     total = TOTAL_GOALS_BASE + TOTAL_GD_COEF * abs(gd)  # mismatches -> more goals
+    total += MD_TOTAL_OFFSET.get(md, 0.0)               # matchday caution profile
     lh = max(0.15, (total + gd) / 2.0) * team_h["att"] * team_a["deff"]
     la = max(0.15, (total - gd) / 2.0) * team_a["att"] * team_h["deff"]
     lh *= _matchup_mult(team_h, team_a)
@@ -160,9 +163,11 @@ def score_grid(lh, la):
 REST_ELO_PER_DAY = 8       # knockout rest-day differential (capped; heuristic)
 REST_CAP = 24
 
-def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0):
+def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0,
+            md=None, elo_adj_h=0.0, elo_adj_a=0.0):
     extra = max(-REST_CAP, min(REST_CAP, REST_ELO_PER_DAY * rest_diff_days)) if knockout else 0.0
-    grid, lh, la = calibrated_grid(team_h, team_a, venue_country, extra)
+    extra += elo_adj_h - elo_adj_a
+    grid, lh, la = calibrated_grid(team_h, team_a, venue_country, extra, md)
     pw = sum(grid[i][j] for i in range(MAX_GOALS+1) for j in range(MAX_GOALS+1) if i > j)
     pd = sum(grid[i][i] for i in range(MAX_GOALS+1))
     pl = 1.0 - pw - pd
@@ -176,7 +181,12 @@ def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0):
     tip_p, ti, tj = max((grid[i][j], i, j) for i in range(MAX_GOALS+1)
                         for j in range(MAX_GOALS+1)
                         if (i - j > 0) == (cls > 0) and (i == j) == (cls == 0))
+    n_ = MAX_GOALS + 1
+    p_h0 = sum(grid[0][j] for j in range(n_)); p_a0 = sum(grid[i][0] for i in range(n_))
+    btts = 1.0 - p_h0 - p_a0 + grid[0][0]
+    over25 = sum(grid[i][j] for i in range(n_) for j in range(n_) if i + j >= 3)
     out = dict(lh=round(lh,2), la=round(la,2),
+               btts=round(btts,4), over25=round(over25,4),
                p1=round(pw,4), px=round(pd,4), p2=round(pl,4), top_scores=top,
                tip=dict(h=ti, a=tj, p=round(tip_p,4)))
     if knockout:

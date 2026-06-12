@@ -2,7 +2,18 @@
 """Group standings (real + projected) and knockout-bracket resolution."""
 from . import ratings
 
-def group_standings(matches, observed, teams, group):
+def matchday_map(matches):
+    """{match_id: 1|2|3} for group matches, by per-team match order."""
+    cnt, out = {}, {}
+    for m in sorted((m for m in matches if m["stage"] == "group"),
+                    key=lambda x: (x["date"], x["time_et"])):
+        md = cnt.get(m["home"], 0) + 1
+        out[m["id"]] = md
+        cnt[m["home"]] = cnt.get(m["home"], 0) + 1
+        cnt[m["away"]] = cnt.get(m["away"], 0) + 1
+    return out
+
+def group_standings(matches, observed, teams, group, md_map=None):
     """Returns ranked list of dicts. Unplayed matches contribute *expected*
     points/goals so the table doubles as a projection."""
     rows = {t["code"]: dict(code=t["code"], pts=0.0, gf=0.0, ga=0.0,
@@ -24,7 +35,8 @@ def group_standings(matches, observed, teams, group):
             rows[m["away"]]["gf"] += ga; rows[m["away"]]["ga"] += gh
             rows[m["home"]]["played"] += 1; rows[m["away"]]["played"] += 1
         else:
-            p = ratings.predict(th, ta, m["venue_country"])
+            p = ratings.predict(th, ta, m["venue_country"],
+                                md=(md_map or {}).get(m["id"]))
             rows[m["home"]]["pts"] += 3 * p["p1"] + p["px"]
             rows[m["away"]]["pts"] += 3 * p["p2"] + p["px"]
             rows[m["home"]]["gf"] += p["lh"]; rows[m["home"]]["ga"] += p["la"]
