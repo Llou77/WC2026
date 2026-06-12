@@ -81,3 +81,22 @@ log-valószínűsége — a gólmodell célfüggvénye) és RPS. Futtatás:
 
 A v2 tehát mindkét szinten jobb és egyszerűbb: kevesebb mozgó alkatrész,
 nincs külön kalibráló réteg.
+
+## Döntetlen-korrekció formája és a tipp-szemantika (2026-06-12)
+
+Bejelentett jelenség: ~60–62%-os esélyeseknél is 1–1 a megjelenített tipp.
+
+**Mérés:** a flat 1.25-ös szorzó lecserélése szabályos Dixon–Coles-taura
+(ρ-rács −0.05…−0.21): train-Brier 0.5758 (ρ=−0.09) vs 0.5762 (flat); GoalNLL
+2.8023 vs 2.7996; holdout 0.5908/2.7735 vs 0.5894/2.7697 — **zajon belül
+azonos**, és a módusz-átváltási pont is alig mozdul (225 vs 250 Elo-rés).
+
+**Diagnózis:** nem a korrekció hibás — a rács nyers módusza természeténél
+fogva eshet a döntetlen-átlóra egyértelmű esélyes mellett is (a győzelem
+valószínűsége sok cella közt oszlik el). A hibás elem a *megjelenített
+összegző statisztika* volt.
+
+**Javítás:** a tipp a legvalószínűbb 1X2-kimenetelen **belüli** legvalószínűbb
+eredmény (osztály-konzisztens módusz); az önellenőrzés pontos-találat metrikája
+is erre mér. A flat korrekció maradt élesben (holdouton hajszállal jobb), a
+`DC_RHO` opció a kódban elérhető és dokumentáltan ekvivalens.
