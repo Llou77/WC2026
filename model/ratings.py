@@ -20,7 +20,8 @@ ATTDEF_LR = 0.25           # att/def learning — applied ONLY when an
                            # xG-like signal exists; goals-only adaptation
                            # measurably degraded accuracy (experiments E2)
 ATTDEF_CLIP = (0.70, 1.40)
-DC_DRAW_BOOST = 1.25       # backtest-tuned v2 draw inflation
+DC_DRAW_BOOST = 1.25       # flat draw inflation (legacy; 1.0 = off)
+DC_RHO = 0.0               # proper Dixon-Coles low-score dependence (negative)
 GD_SCALE = 200.0           # backtest-tuned v2
 GD_POW = 0.85              # sublinear gap->goal mapping (backtest-tuned v2)
 TOTAL_GD_COEF = 0.2        # backtest-tuned v2
@@ -143,9 +144,16 @@ def _pois(lmb, k):
 def score_grid(lh, la):
     grid = [[_pois(lh, i) * _pois(la, j) for j in range(MAX_GOALS + 1)]
             for i in range(MAX_GOALS + 1)]
-    # Dixon-Coles-lite correction on low scores
-    for (i, j, f) in [(0,0,DC_DRAW_BOOST),(1,1,DC_DRAW_BOOST),(1,0,0.97),(0,1,0.97)]:
-        grid[i][j] *= f
+    # low-score correction: proper Dixon-Coles tau when DC_RHO is set,
+    # otherwise the legacy flat boost
+    if DC_RHO:
+        grid[0][0] *= max(0.0, 1 - lh * la * DC_RHO)
+        grid[1][0] *= max(0.0, 1 + la * DC_RHO)
+        grid[0][1] *= max(0.0, 1 + lh * DC_RHO)
+        grid[1][1] *= max(0.0, 1 - DC_RHO)
+    else:
+        for (i, j, f) in [(0,0,DC_DRAW_BOOST),(1,1,DC_DRAW_BOOST),(1,0,0.97),(0,1,0.97)]:
+            grid[i][j] *= f
     s = sum(sum(r) for r in grid)
     return [[v / s for v in row] for row in grid]
 
@@ -161,8 +169,16 @@ def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0):
     scores = sorted(((grid[i][j], i, j) for i in range(MAX_GOALS+1)
                      for j in range(MAX_GOALS+1)), reverse=True)
     top = [dict(h=i, a=j, p=round(p, 4)) for p, i, j in scores[:3]]
+    # class-consistent tip: the most likely scoreline WITHIN the most likely
+    # 1X2 outcome (a 62% favourite must not be summarised with a 1-1 "tip",
+    # even when 1-1 is the single largest cell of the full grid)
+    cls = max(((pw, 1), (pd, 0), (pl, -1)))[1]
+    tip_p, ti, tj = max((grid[i][j], i, j) for i in range(MAX_GOALS+1)
+                        for j in range(MAX_GOALS+1)
+                        if (i - j > 0) == (cls > 0) and (i == j) == (cls == 0))
     out = dict(lh=round(lh,2), la=round(la,2),
-               p1=round(pw,4), px=round(pd,4), p2=round(pl,4), top_scores=top)
+               p1=round(pw,4), px=round(pd,4), p2=round(pl,4), top_scores=top,
+               tip=dict(h=ti, a=tj, p=round(tip_p,4)))
     if knockout:
         # if 90' ends level, extra time / penalties: split the draw mass by
         # Elo expectancy (pens slightly closer to 50-50)
