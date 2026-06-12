@@ -11,15 +11,20 @@ Design goals:
 """
 import json, math, os
 
-HOME_ELO_BONUS = 80        # host nation playing in its own country
+HOME_ELO_BONUS = 65        # host nation in own country (backtest-tuned)
 K_BASE = 50                # World Cup importance (eloratings.net convention)
 K_PROVISIONAL = 85         # faster learning while a seed Elo is only an estimate
 PROVISIONAL_GAMES = 3      # provisional K applies to the first N matches
-TOTAL_GOALS_BASE = 2.80    # backtest-tuned (see backtest/REPORT.md)
-ATTDEF_LR = 0.35           # learning rate for attack/defence multipliers
+TOTAL_GOALS_BASE = 2.5     # backtest-tuned v2 (see backtest/REPORT.md)
+ATTDEF_LR = 0.25           # att/def learning — applied ONLY when an
+                           # xG-like signal exists; goals-only adaptation
+                           # measurably degraded accuracy (experiments E2)
 ATTDEF_CLIP = (0.70, 1.40)
-DC_DRAW_BOOST = 1.15       # backtest-tuned draw inflation
-GD_SCALE = 160.0           # backtest-tuned Elo pts per goal of expected diff
+DC_DRAW_BOOST = 1.25       # backtest-tuned v2 draw inflation
+GD_SCALE = 200.0           # backtest-tuned v2
+GD_POW = 0.85              # sublinear gap->goal mapping (backtest-tuned v2)
+TOTAL_GD_COEF = 0.2        # backtest-tuned v2
+MOV_MODE = "elo"           # margin-of-victory weighting: elo | linear | sqrt
 ET_SHRINK = 0.33
 MATCHUP_COEF = 0.035       # lambda-szorzó / centírozott vonal-pontnyi aszimmetria
 MATCHUP_CAP = 0.10         # a párharc-réteg max. ±10%-ot mozgathat a gólvárakozáson           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
@@ -105,8 +110,10 @@ def lambdas(team_h, team_a, venue_country, extra_h_bonus=0.0):
     bonus += HOME_ELO_BONUS if team_h["code"] == venue_country else 0.0
     bonus -= HOME_ELO_BONUS if team_a["code"] == venue_country else 0.0
     dr = (team_h["elo"] + bonus) - team_a["elo"]
-    gd = max(-2.5, min(2.5, dr / GD_SCALE))        # expected goal difference
-    total = TOTAL_GOALS_BASE + 0.45 * abs(gd)      # mismatches -> more goals
+    raw = dr / GD_SCALE
+    mag = abs(raw) ** GD_POW
+    gd = max(-2.5, min(2.5, mag if raw >= 0 else -mag))
+    total = TOTAL_GOALS_BASE + TOTAL_GD_COEF * abs(gd)  # mismatches -> more goals
     lh = max(0.15, (total + gd) / 2.0) * team_h["att"] * team_a["deff"]
     la = max(0.15, (total - gd) / 2.0) * team_a["att"] * team_h["deff"]
     lh *= _matchup_mult(team_h, team_a)
@@ -180,7 +187,12 @@ def apply_result(team_h, team_a, res, venue_country):
     ev = expectancy(team_h["elo"], team_a["elo"], bonus)
     w = 1.0 if gh > ga else (0.5 if gh == ga else 0.0)
     d = abs(gh - ga)
-    g = 1.0 if d <= 1 else (1.5 if d == 2 else (11 + d) / 8.0)
+    if MOV_MODE == "linear":
+        g = 1.0 + 0.5 * max(0, d - 1)
+    elif MOV_MODE == "sqrt":
+        g = max(1, d) ** 0.5
+    else:
+        g = 1.0 if d <= 1 else (1.5 if d == 2 else (11 + d) / 8.0)
     if res.get("red_h") or res.get("red_a"):
         g *= RED_CARD_DISCOUNT
     team_h["elo"] = round(team_h["elo"] + _k(team_h) * g * (w - ev), 1)
@@ -192,7 +204,10 @@ def apply_result(team_h, team_a, res, venue_country):
     perf_h = 0.7 * gh + 0.3 * exg_h if exg_h is not None else float(gh)
     perf_a = 0.7 * ga + 0.3 * exg_a if exg_a is not None else float(ga)
     lo, hi = ATTDEF_CLIP
-    for team, perf, exp, opp in ((team_h, perf_h, lh, team_a), (team_a, perf_a, la, team_h)):
+    for team, perf, exp, opp, exg in ((team_h, perf_h, lh, team_a, exg_h),
+                                      (team_a, perf_a, la, team_h, exg_a)):
+        if exg is None:
+            continue   # measured (E2): goals-only att/def adaptation hurts accuracy
         ratio = (perf + 0.5) / (exp + 0.5)
         team["att"] = min(hi, max(lo, team["att"] * ratio ** ATTDEF_LR))
         opp["deff"] = min(hi, max(lo, opp["deff"] * ratio ** (ATTDEF_LR * 0.6)))
