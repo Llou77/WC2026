@@ -85,8 +85,71 @@ def main():
         applied += 1
 
     # 2) tables + bracket on the post-update ratings
-    tables = {g: standings.group_standings(matches, observed, teams, g)
+    md_map = standings.matchday_map(matches)
+    tables = {g: standings.group_standings(matches, observed, teams, g, md_map)
               for g in standings.GROUPS}
+
+    # locked group fate before MD3 (points-only enumeration of the two
+    # remaining fixtures; ties treated as not locked -> conservative)
+    locked = set()
+    for g in standings.GROUPS:
+        gms = [m for m in matches if m["stage"] == "group" and m["group"] == g]
+        md3 = [m for m in gms if md_map[m["id"]] == 3 and str(m["id"]) not in observed]
+        played = [m for m in gms if str(m["id"]) in observed]
+        if len(played) != 4 or len(md3) != 2:
+            continue
+        pts = {}
+        for m in played:
+            r = observed[str(m["id"])]
+            ph = 3 if r["gh"] > r["ga"] else (1 if r["gh"] == r["ga"] else 0)
+            pts[m["home"]] = pts.get(m["home"], 0) + ph
+            pts[m["away"]] = pts.get(m["away"], 0) + (3 - ph if r["gh"] != r["ga"] else 1)
+        (m1, m2) = md3
+        for t in (m1["home"], m1["away"], m2["home"], m2["away"]):
+            top = out = True
+            for r1 in ((3, 0), (1, 1), (0, 3)):
+                for r2 in ((3, 0), (1, 1), (0, 3)):
+                    f = dict(pts)
+                    f[m1["home"]] = f.get(m1["home"], 0) + r1[0]
+                    f[m1["away"]] = f.get(m1["away"], 0) + r1[1]
+                    f[m2["home"]] = f.get(m2["home"], 0) + r2[0]
+                    f[m2["away"]] = f.get(m2["away"], 0) + r2[1]
+                    if sum(1 for x in f if x != t and f[x] >= f[t]) > 1:
+                        top = False
+                    if sum(1 for x in f if x != t and f[x] > f[t]) < 2:
+                        out = False
+            if top or out:
+                locked.add(t)
+
+    # F1: automatic suspensions from per-player card events (data/cards.json)
+    try:
+        cards = load("cards.json")
+    except Exception:
+        cards = {}
+    suspended = {}      # team -> [player, ...] banned for their NEXT match
+    ycount = {}
+    order_pl = sorted((k for k in observed), key=lambda k: (mby[int(k)]["date"],
+                                                            mby[int(k)]["time_et"]))
+    last_played = {}
+    for k in order_pl:
+        for ev in cards.get(k, []):
+            t, pl, typ = ev.get("team"), ev.get("player"), ev.get("type")
+            if not t or not pl:
+                continue
+            key2 = (t, pl)
+            if typ == "yellow":
+                ycount[key2] = ycount.get(key2, 0) + 1
+            last_played.setdefault(t, k)
+            last_played[t] = k
+    for k in order_pl:
+        for ev in cards.get(k, []):
+            t, pl, typ = ev.get("team"), ev.get("player"), ev.get("type")
+            if not t or not pl or last_played.get(t) != k:
+                continue   # csak az utolsó lejátszott meccs lapjai tiltanak a következőre
+            if typ == "red" or (typ == "yellow" and ycount.get((t, pl), 0) >= 2):
+                suspended.setdefault(t, [])
+                if pl not in suspended[t]:
+                    suspended[t].append(pl)
     bracket = standings.resolve_bracket(matches, observed, teams)
 
     # 3) Monte Carlo tournament simulation (needed for pairing probabilities)
@@ -185,15 +248,36 @@ def main():
                              f"{observed[key]['ga']} {ta['name']}. Az eredmény beépült a "
                              f"modellbe (Elo- és támadó/védő-frissítés)."]
         else:
+            def susp_adj(team):
+                bans = suspended.get(team["code"], [])
+                key_bans = [p for p in bans if p in team.get("players", [])]
+                return -25.0 * min(2, len(key_bans)), bans
+            adj_h, bans_h = susp_adj(th)
+            adj_a, bans_a = susp_adj(ta)
+            if m["stage"] == "group" and md_map.get(m["id"]) == 3:
+                if h in locked: adj_h -= ratings.LOCKED_ELO_PENALTY
+                if a in locked: adj_a -= ratings.LOCKED_ELO_PENALTY
             pred = ratings.predict(th, ta, m["venue_country"],
                                    knockout=(m["stage"] != "group"),
                                    rest_diff_days=rest_diff(m["date"], h, a)
-                                   if m["stage"] != "group" else 0)
+                                   if m["stage"] != "group" else 0,
+                                   md=md_map.get(m["id"]),
+                                   elo_adj_h=adj_h, elo_adj_a=adj_a)
             e["pred"] = pred
             e["conf_score"], e["conf_label"] = analysis.confidence(pred, th, ta)
             e["status"] = "proj" if proj else "sched"
             if m["stage"] != "group":
                 e["pair_share"] = round(pair_share.get(m["id"], {}).get((h, a), 0.0), 4)
+            ctx_extra = []
+            for team, bans in ((th, bans_h), (ta, bans_a)):
+                if bans:
+                    ctx_extra.append(f"{team['name']} eltiltottjai erre a mérkőzésre: "
+                                     f"{', '.join(bans)}.")
+            for team in (th, ta):
+                if m["stage"] == "group" and md_map.get(m["id"]) == 3 \
+                        and team["code"] in locked:
+                    ctx_extra.append(f"{team['name']} csoportbeli sorsa már eldőlt — a "
+                                     f"modell rotációs/motivációs levonással számol.")
             ctx = None
             if m["stage"] == "group":
                 row_h = next(r for r in tables[m["group"]] if r["code"] == h)
@@ -201,6 +285,8 @@ def main():
                 ctx = (f"Csoporthelyzet ({m['group']}): {th['name']} jelenleg/várhatóan "
                        f"{row_h['rank']}. ({row_h['pts']} pont), {ta['name']} "
                        f"{row_a['rank']}. ({row_a['pts']} pont).")
+            if ctx_extra:
+                ctx = (ctx + " " if ctx else "") + " ".join(ctx_extra)
             e["analysis"] = analysis.build(m, pred, th, ta, ctx, form, projected=proj,
                                            channels=channels, player_form=player_form)
         entries.append(e)

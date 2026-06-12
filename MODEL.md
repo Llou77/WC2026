@@ -129,7 +129,8 @@ kísérletsorozat kimutatta, hogy az újrahangolt gólmodell mellett a keverék 
 semmit nem ad hozzá (a nyereség a gyengébb alapparaméterek kompenzációja volt),
 ezért a réteg ki lett vezetve — a kód (`calibrated_grid`) megtartja a
 fogadókészséget, ha a `data/blend.json` valaha visszakerülne. Részletek:
-backtest/REPORT.md. A rácsból származik minden kimeneti mutató:
+backtest/REPORT.md. A rácsból származik minden kimeneti mutató (kiegészítve a „mindkét csapat szerez gólt" és a 2,5 gól feletti
+összgólszám valószínűségével):
 
 - **1X2-valószínűségek**: a rács felső háromszöge / átlója / alsó háromszöge,
 - **tipp (várható végeredmény)**: a legvalószínűbb 1X2-kimenetel, és **azon
@@ -203,6 +204,24 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
    egymás elleni meccsein) a FIFA-szabálykönyv szerint; a fair play-rangsor
    mint utolsó előtti tiebreaker nincs implementálva, teljes holtversenynél
    determinisztikus (a Monte Carlóban sorsolásos) feloldás következik.
+
+## 8b. Fordulóprofil, „biztos sors", eltiltás-követés
+
+**Fordulóprofil:** a csoportmeccsek gólvárakozása fordulófüggő offszetet kap
+(1. forduló −0.35, 2. −0.05, 3. −0.25) — a nagytornák nyitófordulói mérten
+óvatosabbak (backtest/REPORT.md, E9). A kieséses meccsek offszet nélkül futnak.
+
+**„Biztos sors"-levonás:** a 3. forduló előtt pont-alapú kimerítéses
+vizsgálat dönti el, kinek biztos már a top-2 helye vagy a kiesése; az ilyen
+csapatok 25 Elo-pontos levonást kapnak az adott meccsre (mért rotációs/
+motivációs hatás, E8). Az elemzés jelzi, ha a levonás aktív.
+
+**Automatikus eltiltás-követés:** a kártya-események játékos-szinten
+töltődnek (API-Football, `data/cards.json`); piros lap, illetve két halmozott
+sárga a következő mérkőzésre eltiltást jelent (egyszerűsített FIFA-szabály; a
+sárgák negyeddöntő utáni törlése kézzel kezelendő). Az eltiltottak listája az
+elemzésbe kerül, és ha az érintett a csapat kulcsjátékosai között van, 25
+Elo-pont/fő (legfeljebb 50) levonás érvényesül — heurisztikus, sapkázott érték.
 
 ## 9. Párharc-réteg és játékos-szintű adatok
 

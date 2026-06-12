@@ -27,6 +27,8 @@ Terv:
 - [x] 21. Autonóm kísérletsorozat (E1-E7, 400+ konfiguráció): gól-alapú att/def kikapcsolva (mérten ártott), gólmodell v2 (szublineáris, gs=200), hazai bónusz 65, blend kivezetve
 - [x] 22. v2 élesítve — holdout Brier 0.5977 -> 0.5894, GoalNLL 2.89 -> 2.77; nem mérhető elemek (torna-K, MOV, xG-út, párharc-réteg) dokumentáltan változatlanok
 - [x] 23. Tipp-szemantika javítva (osztály-konzisztens módusz; DC-tau mérten ekvivalens, flat maradt); 2026.06.11-i eredmények beírva (MEX 2-0 RSA, KOR 2-1 CZE) + eltiltás-hírek; kulcs nélküli GitHub CSV-tartalékforrás + hangos workflow-jelzések
+- [x] 24. Kalibrációs audit a torzítás-bejelentésre: döntetlen modell 26,4% vs tény 27,9% (holdout), várt gól 2,73 vs tény ~2,45 — torzítás nem igazolódott; az érzet forrása a régi deployolt build + alacsony módusz-eredmények; várható-gólszám kijelzés hozzáadva
+- [x] 25. E8-E9 mérve és élesítve: fordulóprofil-offszetek (MD1 -0.35) + locked-levonás (25 Elo); F1 automatikus eltiltás-követés (kártya-események, sárga-halmozódás); F2 BTTS/over2.5 a verdiktben
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.
