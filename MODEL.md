@@ -168,9 +168,12 @@ P(továbbjutás_hazai) = P(győzelem 90 perc) + P(döntetlen) · ET-arány
 
 ## 7. Az elemzésszöveg felépítése
 
-Minden mérkőzéshez determinisztikusan generált, hét blokkból álló elemzés
+Minden mérkőzéshez determinisztikusan generált, nyolc blokkból álló elemzés
 készül: (1) erőviszony-értékelés az Elo-különbség sávja szerint,
-(2) játékkép mindkét oldalról, (3) meghatározó játékosok, (4) párharc-kép
+(2) játékkép mindkét oldalról, (3) meghatározó játékosok, (3b) előzmények és
+felkészülés — a teljes történelmi adattárból (backtest/results.csv)
+automatikusan számolt egymás elleni mérleg (utolsó találkozóval) és a torna
+előtti 8 mérkőzés formája —, (4) párharc-kép
 (vonal-aszimmetria, tornán mért csatorna-statisztikák, a torna legjobbra
 értékelt játékosai — lásd 9. pont), (5) tornaforma a feldolgozott
 eredményekből, (6) csoporthelyzet / keretinformációk és aktualitások

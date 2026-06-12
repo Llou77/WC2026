@@ -29,6 +29,7 @@ Terv:
 - [x] 23. Tipp-szemantika javítva (osztály-konzisztens módusz; DC-tau mérten ekvivalens, flat maradt); 2026.06.11-i eredmények beírva (MEX 2-0 RSA, KOR 2-1 CZE) + eltiltás-hírek; kulcs nélküli GitHub CSV-tartalékforrás + hangos workflow-jelzések
 - [x] 24. Kalibrációs audit a torzítás-bejelentésre: döntetlen modell 26,4% vs tény 27,9% (holdout), várt gól 2,73 vs tény ~2,45 — torzítás nem igazolódott; az érzet forrása a régi deployolt build + alacsony módusz-eredmények; várható-gólszám kijelzés hozzáadva
 - [x] 25. E8-E9 mérve és élesítve: fordulóprofil-offszetek (MD1 -0.35) + locked-levonás (25 Elo); F1 automatikus eltiltás-követés (kártya-események, sárga-halmozódás); F2 BTTS/over2.5 a verdiktben
+- [x] 26. WhoScored-elemzés; átemelve: egymás elleni mérleg + torna előtti forma (automatikus, a saját történelmi adattárból; WhoScored-számokkal keresztvalidálva); elvetve: várható kezdők (nincs megbízható ingyenes forrás napokkal előre), klub-statisztika-összevetés (válogatottakra üres náluk is), odds-megjelenítés (tudatos no-market irányelv)
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.

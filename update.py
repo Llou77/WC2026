@@ -13,6 +13,40 @@ import copy, json, os, sys, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from model import ratings, standings, analysis, simulate
+import csv as _csv
+
+def load_history(code_of):
+    """H2H + pre-tournament form from the historical dataset shipped in
+    backtest/. Returns (h2h, preform); both empty on any failure (fail-safe)."""
+    path = os.path.join(ROOT, "backtest", "results.csv")
+    h2h, recent = {}, {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            for r in _csv.DictReader(f):
+                if r["home_score"] in ("", "NA") or r["date"] >= "2026-06-11":
+                    continue
+                ch, ca = code_of.get(r["home_team"]), code_of.get(r["away_team"])
+                if ch:
+                    recent.setdefault(ch, []).append(
+                        (r["date"], int(r["home_score"]), int(r["away_score"]), r["tournament"]))
+                if ca:
+                    recent.setdefault(ca, []).append(
+                        (r["date"], int(r["away_score"]), int(r["home_score"]), r["tournament"]))
+                if ch and ca:
+                    h2h.setdefault(frozenset((ch, ca)), []).append(
+                        (r["date"], ch, int(r["home_score"]), int(r["away_score"]),
+                         r["tournament"]))
+    except Exception as e:
+        print(f"! történelmi adattár nem olvasható (H2H/forma kihagyva): {e}")
+        return {}, {}
+    preform = {}
+    for c, ms in recent.items():
+        last8 = sorted(ms)[-8:]
+        w = sum(1 for _, gf, ga, _ in last8 if gf > ga)
+        d = sum(1 for _, gf, ga, _ in last8 if gf == ga)
+        preform[c] = dict(n=len(last8), w=w, d=d, l=len(last8) - w - d,
+                          gf=sum(m[1] for m in last8), ga=sum(m[2] for m in last8))
+    return h2h, preform
 from render.render_site import render
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -38,6 +72,12 @@ def main():
         player_form = load("player_form.json")
     except Exception:
         player_form = {}
+    try:
+        from scripts.fetch_data import NAME2CODE
+        h2h_db, preform = load_history(NAME2CODE)
+    except Exception as e:
+        print(f"! H2H/forma réteg kihagyva: {e}")
+        h2h_db, preform = {}, {}
     matches = load("matches.json")
     observed = load("observed.json")   # {"<match_id>": {gh, ga, xg_h?, xg_a?, winner_home?}}
     mby = {m["id"]: m for m in matches}
@@ -288,7 +328,9 @@ def main():
             if ctx_extra:
                 ctx = (ctx + " " if ctx else "") + " ".join(ctx_extra)
             e["analysis"] = analysis.build(m, pred, th, ta, ctx, form, projected=proj,
-                                           channels=channels, player_form=player_form)
+                                           channels=channels, player_form=player_form,
+                                           h2h=h2h_db.get(frozenset((h, a))),
+                                           preform=preform)
         entries.append(e)
 
     if perf["evaluated"]:
