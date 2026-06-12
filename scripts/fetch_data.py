@@ -68,6 +68,51 @@ def fetch_results_github(matches, observed):
 AF_FIXTURES = "https://v3.football.api-sports.io/fixtures?league=1&season=2026&status=FT"
 AF_STATS = "https://v3.football.api-sports.io/fixtures/statistics?fixture={}"
 AF_PLAYERS = "https://v3.football.api-sports.io/fixtures/players?fixture={}"
+AF_EVENTS = "https://v3.football.api-sports.io/fixtures/events?fixture={}"
+
+def fetch_cards_apifootball(matches, observed, key):
+    """Per-player card events -> data/cards.json {mid: [{team,player,type}]}.
+    Drives automatic suspension tracking in update.py. Fail-safe."""
+    path = os.path.join(ROOT, "data", "cards.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            cards = json.load(f)
+    except OSError:
+        cards = {}
+    try:
+        fixtures = _af_get(AF_FIXTURES, key).get("response", [])
+    except Exception as e:
+        print(f"! API-Football kártyaadat nem elérhető: {e}", file=sys.stderr)
+        return
+    for fx in fixtures:
+        try:
+            ch = NAME2CODE.get(fx["teams"]["home"]["name"])
+            ca = NAME2CODE.get(fx["teams"]["away"]["name"])
+            if not ch or not ca:
+                continue
+            mid, _ = match_id_for(matches, ch, ca, fx["fixture"]["date"][:10])
+            if mid is None or str(mid) in cards or str(mid) not in observed:
+                continue
+            resp = _af_get(AF_EVENTS.format(fx["fixture"]["id"]), key).get("response", [])
+            time.sleep(6.5)
+            evs = []
+            for ev in resp:
+                if ev.get("type") != "Card":
+                    continue
+                t = NAME2CODE.get(ev.get("team", {}).get("name"))
+                pl = (ev.get("player") or {}).get("name")
+                det = (ev.get("detail") or "").lower()
+                typ = "red" if "red" in det else ("yellow" if "yellow" in det else None)
+                if t and pl and typ:
+                    evs.append({"team": t, "player": pl, "type": typ})
+            cards[str(mid)] = evs
+        except Exception as e:
+            print(f"  ! kártyaadat-hiba (átugorva): {e}", file=sys.stderr)
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(cards, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, path)
+    print(f"Kártya-események: {len(cards)} meccshez van adat.")
 
 def fetch_players_apifootball(matches, observed, key):
     """Optional: per-fixture player ratings -> data/player_form.json
@@ -300,6 +345,7 @@ def main():
     if af_key:
         fetch_xg_apifootball(matches, observed, af_key)
         fetch_players_apifootball(matches, observed, af_key)
+        fetch_cards_apifootball(matches, observed, af_key)
     else:
         print("API_FOOTBALL_KEY nincs beállítva — automatikus xG kihagyva "
               "(opcionális; ingyenes kulcs: dashboard.api-football.com).")
