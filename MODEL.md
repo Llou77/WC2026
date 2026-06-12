@@ -34,7 +34,7 @@ Győzelmi várakozás a meccs előtt:
 E = 1 / (1 + 10^(−(Elo_hazai + B − Elo_vendég) / 400))
 ```
 
-ahol `B = 80` pályaelőny-bónusz, kizárólag akkor, ha a rendező ország
+ahol `B = 65` pályaelőny-bónusz (backtesten hangolt), kizárólag akkor, ha a rendező ország
 (Mexikó / USA / Kanada) a saját országában lévő stadionban játszik.
 
 Frissítés:
@@ -79,29 +79,32 @@ informatív a valós erőviszonyokról. A labdabirtoklást tudatosan **nem**
 használja a modell: a lövésadatok mellett a birtoklás prediktív többletértéke
 a kutatások szerint elhanyagolható, esetenként félrevezető.
 
-Frissítés a meccs előtti várakozáshoz képest:
+Frissítés a meccs előtti várakozáshoz képest — **kizárólag akkor, ha van
+xG-szerű jel** (valódi xG vagy lövés-proxy):
 
 ```
 ratio  = (perf + 0.5) / (λ_várt + 0.5)         (+0.5: kis minták simítása)
-att    ← clip( att · ratio^0.35 , 0.70 , 1.40 )
-def_ellenfél ← clip( def · ratio^0.21 , 0.70 , 1.40 )
+att    ← clip( att · ratio^0.25 , 0.70 , 1.40 )
+def_ellenfél ← clip( def · ratio^0.15 , 0.70 , 1.40 )
 ```
 
-A kitevők (tanulási ráták) szándékosan óvatosak: 1–3 meccsnyi minta áll
-rendelkezésre csapatonként, a túltanulás nagyobb kockázat, mint az alultanulás.
+A csak-gól-alapú adaptáció a v2 kísérletsorozatban (backtest/REPORT.md, E2)
+mérhetően rontotta a pontosságot, ezért ki van kapcsolva: statisztika nélkül a
+meccs hatása kizárólag az Elo-frissítésen át érvényesül. Az xG-úton a réteg
+konzervatív rátával él tovább (történelmi xG híján ez az ág nem mérhető).
 
 ## 4. Várható gólszámok
 
 A meccs előtti Elo-különbségből (`dr`, pályaelőnnyel együtt):
 
 ```
-várható gólkülönbség  gd    = clip(dr / 160, −2.5, +2.5)
-várható összgólszám   total = 2.80 + 0.45 · |gd|
+várható gólkülönbség  gd    = clip( sign(dr) · |dr/200|^0.85 , −2.5, +2.5 )
+várható összgólszám   total = 2.5 + 0.2 · |gd|
 λ_hazai  = max(0.15, (total + gd) / 2) · att_hazai  · def_vendég
 λ_vendég = max(0.15, (total − gd) / 2) · att_vendég · def_hazai
 ```
 
-A 160-as skála és a 2.80-as gólalap **backtesten hangolt** érték (lásd a 8. pont
+A szublineáris (0.85 kitevős) leképezés és minden együttható **backtesten hangolt v2** érték (lásd a 8. pont
 validációs blokkját és a backtest/REPORT.md-t); a `0.45·|gd|` tag azt a megfigyelést kódolja, hogy a
 nagy erőkülönbségű meccsek összgólszáma magasabb.
 
@@ -112,20 +115,18 @@ A két λ-ból független Poisson-feltevéssel 9×9-es pontszám-rács készül
 korreláció miatt korrekció:
 
 ```
-P(0–0), P(1–1)  × 1.15        P(1–0), P(0–1)  × 0.97
+P(0–0), P(1–1)  × 1.25        P(1–0), P(0–1)  × 0.97
 ```
 
 ezután a rács újranormálódik.
 
-**Meta-learner rekalibráció (az NFL-projekt 3. rétegének adaptációja):** a
-Poisson-rácsból származó 1X2-t egy 19 552 tétmeccsen (1995–) tanított softmax-
-osztályozó kimenetével keverjük (`data/blend.json`; tanítás:
-`backtest/train_blend.py`). A keverési súly (w=0.8) a train-tornákon lett
-kiválasztva; az érintetlen holdouton a keverék Brier-score-ja 0.6218-ról
-**0.5977-re** javult. A rács osztályonként (győzelem/döntetlen/vereség)
-átskálázódik a kevert valószínűségekre, így a pontos eredmények és a Monte
-Carlo-mintavétel konzisztens marad az 1X2-vel. Ebből származik minden kimeneti
-mutató:
+**Megjegyzés a kivezetett meta-learnerről:** a v1 modell egy softmax-blend
+rekalibráló réteget használt (0.6218→0.5977 holdout-javulással). A v2
+kísérletsorozat kimutatta, hogy az újrahangolt gólmodell mellett a keverék már
+semmit nem ad hozzá (a nyereség a gyengébb alapparaméterek kompenzációja volt),
+ezért a réteg ki lett vezetve — a kód (`calibrated_grid`) megtartja a
+fogadókészséget, ha a `data/blend.json` valaha visszakerülne. Részletek:
+backtest/REPORT.md. A rácsból származik minden kimeneti mutató:
 
 - **1X2-valószínűségek**: a rács felső háromszöge / átlója / alsó háromszöge,
 - **legvalószínűbb pontos végeredmény**: a rács módusza (top-3 megjelenítve),
@@ -169,9 +170,12 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
 
 ## 8. Feltételezések és ismert korlátok
 
-0. **Validáció**: a modell valós történelmi adaton visszamérve és hangolva —
-   a 2022-es VB + 2024-es Eb/Copa független holdoutján a teljes (rekalibrált)
-   modell Brier-score-ja **0.5977** (Poisson-alap: 0.6218, uniform: 0.6667). Protokoll és részletek:
+0. **Validáció**: a modell valós történelmi adaton visszamérve és kétkörösen
+   hangolva — a 2022-es VB + 2024-es Eb/Copa holdoutján a v2 modell
+   Brier-score-ja **0.5894** (v1: 0.5977, uniform: 0.6667), a pontos
+   eredmények GoalNLL-je **2.77** (v1 gólmodell: ~2.89). A torna-K és a
+   gólkülönbség-súlyozás formája a harness szerkezete miatt nem validálható —
+   ezek konvenció szerinti értéken állnak. Protokoll és részletek:
    `backtest/REPORT.md`, újrafuttatás: `python backtest/backtest.py`.
 1. **Nagy szórás**: a futballmeccs alacsony gólszámú, nagy zajú folyamat; a
    legvalószínűbb pontos eredmény tipikus valószínűsége 8–13%. A modell

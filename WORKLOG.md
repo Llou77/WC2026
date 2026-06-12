@@ -24,6 +24,8 @@ Terv:
 - [x] 18. Automatikus xG-forrás (API-Football, opcionális kulccsal, hibabiztos)
 - [x] 19. Párharc-réteg (centírozott vonal-mátrix ±10% sapkával), csatorna-profilok, játékos-értékelés betöltés + „Párharc-kép" elemzés-bekezdés
 - [x] 20. Teljes körű audit: kód zöld (10 fájl fordul, 3 E2E, 104 meccs konzisztens); README újraírva, MODEL.md hivatkozás+7-blokk javítva, REPORT.md blend-szakasszal bővítve
+- [x] 21. Autonóm kísérletsorozat (E1-E7, 400+ konfiguráció): gól-alapú att/def kikapcsolva (mérten ártott), gólmodell v2 (szublineáris, gs=200), hazai bónusz 65, blend kivezetve
+- [x] 22. v2 élesítve — holdout Brier 0.5977 -> 0.5894, GoalNLL 2.89 -> 2.77; nem mérhető elemek (torna-K, MOV, xG-út, párharc-réteg) dokumentáltan változatlanok
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.

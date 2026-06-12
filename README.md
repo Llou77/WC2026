@@ -7,7 +7,7 @@ A modell két kézi gombnyomásra (fetch → update) frissül; minden adatbetöl
 számítás és publikálás automatikus és hibabiztos. A teljes újraszámolás
 10 000 tornaszimulációval együtt ~3 másodperc.
 
-**Pontosság (független holdouton — VB 2022 + Eb/Copa 2024):** Brier 0.5977
+**Pontosság (független holdouton — VB 2022 + Eb/Copa 2024):** Brier 0.5894
 (uniform tipp: 0.6667). Részletek: [backtest/REPORT.md](backtest/REPORT.md).
 
 ## Napi munkafolyamat (2 gombnyomás)
@@ -44,7 +44,7 @@ fetch_data.py
         ↓  data/observed.json (+ player_form.json, player_ratings_raw.json)
 update.py
  ├─ inkrementális Elo (adaptív K a becsült csapatoknál) + xG-kevert att/def
- ├─ Poisson-rács + Dixon–Coles + meta-learner rekalibráció (data/blend.json)
+ ├─ Poisson-rács + Dixon–Coles (v2, backtesten hangolt alak)
  ├─ párharc-réteg (data/lineups.json, centírozott, ±10% sapka)
  ├─ tabellák (FIFA-tiebreakerekkel) + kieséses ág feloldása
  ├─ 10 000 Monte Carlo-tornaszimuláció (Esélyek fül, Tovább%, párosítás-%)
@@ -90,7 +90,6 @@ data/lineups.json           ← pozicionális erősség-mátrix (szerkeszthető)
 data/matches.json           ← 104 meccs menetrendje
 data/observed.json          ← lejátszott meccsek adatai (generált + kézi)
 data/stats_overlay.json     ← kézi statisztika-felülírás
-data/blend.json             ← tanított 1X2-rekalibráció (ne töröld!)
 data/predictions.json       ← gépi kimenet (predikciók + Monte Carlo)
 data/performance.json       ← önellenőrzés (1X2-találat, Brier)
 data/player_form.json       ← csapatonkénti legjobb játékos (generált)
