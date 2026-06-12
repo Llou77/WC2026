@@ -123,10 +123,14 @@ def _card(entry):
               f'<span>döntetlen</span><span>{html.escape(ta)} győz</span></div>')
     conf = entry.get("conf_label")
     conf_txt = f'<span>megbízhatóság: {conf.lower()}</span>' if conf else ""
+    pred_ = entry.get("pred")
+    xg_txt = (f'<span>várható gólszám: {pred_["lh"]+pred_["la"]:.1f} '
+              f'({pred_["lh"]:.1f}–{pred_["la"]:.1f})</span>'
+              if pred_ and entry.get("status") != "done" else "")
     pair = entry.get("pair_share")
     pair_txt = (f'<span>a szimulációk {pair*100:.0f}%-ában ez a párosítás</span>'
                 if pair else "")
-    h += (f'<div class="meta">{tag}{conf_txt}{pair_txt}<span>{STAGE_HU[m["stage"]]}'
+    h += (f'<div class="meta">{tag}{conf_txt}{xg_txt}{pair_txt}<span>{STAGE_HU[m["stage"]]}'
           + (f' — {m["group"]} csoport' if m["group"] else "")
           + f'</span><span>{m["date"]} {m["time_et"]} ET'
           f' (Bp: {bdate} {btime})</span><span>{html.escape(m["venue"])}</span>'
