@@ -26,6 +26,7 @@ Terv:
 - [x] 20. Teljes körű audit: kód zöld (10 fájl fordul, 3 E2E, 104 meccs konzisztens); README újraírva, MODEL.md hivatkozás+7-blokk javítva, REPORT.md blend-szakasszal bővítve
 - [x] 21. Autonóm kísérletsorozat (E1-E7, 400+ konfiguráció): gól-alapú att/def kikapcsolva (mérten ártott), gólmodell v2 (szublineáris, gs=200), hazai bónusz 65, blend kivezetve
 - [x] 22. v2 élesítve — holdout Brier 0.5977 -> 0.5894, GoalNLL 2.89 -> 2.77; nem mérhető elemek (torna-K, MOV, xG-út, párharc-réteg) dokumentáltan változatlanok
+- [x] 23. Tipp-szemantika javítva (osztály-konzisztens módusz; DC-tau mérten ekvivalens, flat maradt); 2026.06.11-i eredmények beírva (MEX 2-0 RSA, KOR 2-1 CZE) + eltiltás-hírek; kulcs nélküli GitHub CSV-tartalékforrás + hangos workflow-jelzések
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.

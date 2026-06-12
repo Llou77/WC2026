@@ -118,7 +118,10 @@ korreláció miatt korrekció:
 P(0–0), P(1–1)  × 1.25        P(1–0), P(0–1)  × 0.97
 ```
 
-ezután a rács újranormálódik.
+ezután a rács újranormálódik. (A szabályos, ρ-paraméteres Dixon–Coles-tau
+formát is megmértük: a train/holdout metrikákon zajon belül azonos a flat
+korrekcióval — backtest/REPORT.md —, ezért az egyszerűbb, holdouton hajszállal
+jobb flat változat maradt élesben; a `DC_RHO` paraméter a kódban elérhető.)
 
 **Megjegyzés a kivezetett meta-learnerről:** a v1 modell egy softmax-blend
 rekalibráló réteget használt (0.6218→0.5977 holdout-javulással). A v2
@@ -129,7 +132,13 @@ fogadókészséget, ha a `data/blend.json` valaha visszakerülne. Részletek:
 backtest/REPORT.md. A rácsból származik minden kimeneti mutató:
 
 - **1X2-valószínűségek**: a rács felső háromszöge / átlója / alsó háromszöge,
-- **legvalószínűbb pontos végeredmény**: a rács módusza (top-3 megjelenítve),
+- **tipp (várható végeredmény)**: a legvalószínűbb 1X2-kimenetel, és **azon
+  belül** a legvalószínűbb pontos eredmény. Ez tudatos szemantikai döntés: a
+  rács nyers módusza egy ~60%-os esélyesnél is gyakran 1–1, mert a
+  győzelem-tömeg sok eredmény közt oszlik szét, a döntetlené kevés közt — a
+  kimenetel-osztállyal konzisztens tipp ezt a félrevezető összegzést szünteti
+  meg. Az eloszlás top-3 cellája (a nyers módusszal) az elemzésben továbbra is
+  szerepel,
 - a várható gólszám-pár az elemzés indoklásában.
 
 ## 6. Kieséses szakasz
