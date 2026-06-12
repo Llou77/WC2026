@@ -23,7 +23,7 @@ Usage:
     python scripts/fetch_data.py --stats data/stats_overlay.json
     python scripts/fetch_data.py --dry-run     # show what would change
 """
-import argparse, json, os, sys, time, urllib.request
+import argparse, csv, io, json, os, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = "https://api.football-data.org/v4/competitions/WC/matches?status=FINISHED"
@@ -31,6 +31,39 @@ DETAIL = "https://api.football-data.org/v4/matches/{}"
 
 # football-data.org statistics tömb -> observed.json mezők (corners-projekt mintájára)
 STAT_MAP = {"SHOTS": "shots", "SHOTS_ON_GOAL": "sot", "CORNER_KICKS": "corners"}
+
+GITHUB_CSV = ("https://raw.githubusercontent.com/martj42/"
+              "international_results/master/results.csv")
+
+def fetch_results_github(matches, observed):
+    """Keyless fallback: daily-updated community results CSV. Fills only
+    matches that are still missing; never overrides API data."""
+    try:
+        with urllib.request.urlopen(GITHUB_CSV, timeout=60) as r:
+            text = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        print(f"::warning::GitHub CSV-tartalék nem elérhető: {e}", file=sys.stderr)
+        return 0
+    added = 0
+    for row in csv.DictReader(io.StringIO(text)):
+        if row.get("tournament") != "FIFA World Cup" or row["date"] < "2026-06-11":
+            continue
+        if row["home_score"] in ("", "NA"):
+            continue
+        ch, ca = NAME2CODE.get(row["home_team"]), NAME2CODE.get(row["away_team"])
+        if not ch or not ca:
+            continue
+        mid, home_is_h = match_id_for(matches, ch, ca, row["date"])
+        if mid is None or str(mid) in observed:
+            continue
+        gh, ga = int(row["home_score"]), int(row["away_score"])
+        if home_is_h is False:
+            gh, ga = ga, gh
+        observed[str(mid)] = {"gh": gh, "ga": ga}
+        added += 1
+    if added:
+        print(f"GitHub CSV-tartalék: {added} hiányzó eredmény pótolva.")
+    return added
 
 AF_FIXTURES = "https://v3.football.api-sports.io/fixtures?league=1&season=2026&status=FT"
 AF_STATS = "https://v3.football.api-sports.io/fixtures/statistics?fixture={}"
@@ -257,8 +290,11 @@ def main():
           except Exception as e:
             print(f"  ! meccs-feldolgozási hiba (átugorva): {e}", file=sys.stderr)
     else:
-        print("FOOTBALL_DATA_TOKEN nincs beállítva — API-lekérés kihagyva, "
-              "csak a kézi/overlay adatok frissülnek.")
+        print("::warning::FOOTBALL_DATA_TOKEN nincs beállítva — az elsődleges "
+              "eredményforrás kimaradt! (Settings -> Secrets -> Actions)")
+
+    # kulcs nélküli tartalék-forrás minden futáskor
+    fetch_results_github(matches, observed)
 
     af_key = os.environ.get("API_FOOTBALL_KEY")
     if af_key:
@@ -283,6 +319,9 @@ def main():
             print(f"! Overlay-fájl hibás, kihagyva: {e}", file=sys.stderr)
 
     print(f"Eredmények: {before} -> {len(observed)}")
+    if len(observed) == before and not token:
+        print("::warning::Ebben a futásban nem érkezett új eredmény, és nincs "
+              "API-token — ellenőrizd a secreteket.")
     if args.dry_run:
         print(json.dumps(observed, ensure_ascii=False, indent=1))
         return
