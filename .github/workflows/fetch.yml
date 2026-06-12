@@ -17,7 +17,7 @@ jobs:
       - name: Commit
         run: |
           git config user.name "wc26-bot"; git config user.email "bot@users.noreply.github.com"
-          git add data/observed.json data/player_form.json data/player_ratings_raw.json 2>/dev/null || git add data/observed.json
+          git add data/observed.json data/player_form.json data/player_ratings_raw.json data/cards.json 2>/dev/null || git add data/observed.json
           git diff --cached --quiet || git commit -m "data: napi eredmenyek + statisztikak"
           git pull --rebase origin main || true
           git push
