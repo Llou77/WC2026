@@ -17,7 +17,7 @@ from train_blend import softmax, train_softmax
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULTS = dict(GD_SCALE=160.0, DC_DRAW_BOOST=1.15, TOTAL_GOALS_BASE=2.80,
-                GD_POW=1.0, TOTAL_GD_COEF=0.45, MOV_MODE="elo",
+                GD_POW=1.0, TOTAL_GD_COEF=0.45, MOV_MODE="elo", DC_RHO=0.0,
                 ATTDEF_LR=0.35, K_BASE=50, HOME_ELO_BONUS=80.0)
 
 def full_pass(rows, params, want_features=False):

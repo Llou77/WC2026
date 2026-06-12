@@ -100,3 +100,24 @@ valószínűsége sok cella közt oszlik el). A hibás elem a *megjelenített
 eredmény (osztály-konzisztens módusz); az önellenőrzés pontos-találat metrikája
 is erre mér. A flat korrekció maradt élesben (holdouton hajszállal jobb), a
 `DC_RHO` opció a kódban elérhető és dokumentáltan ekvivalens.
+
+## E8-E9: fordulóprofil és „biztos sors"-hatás (2026-06-12)
+
+**E9 — fordulófüggő gólátlag.** A csoportmeccsek tényleges gólátlaga elmarad a
+modell várakozásától, fordulónként eltérő mértékben (train: −0.45/−0.05/−0.20;
+holdout: −0.19/−0.16/−0.61). A gyökérok részben az, hogy az összgól-alap
+hangolása a kieséses meccsek hosszabbítással felfújt eredményeit is tartalmazta.
+Élesítve: csoportmeccs-offszetek MD1 −0.35, MD2 −0.05, MD3 −0.25 (a két halmaz
+összevont, enyhén zsugorított becslése). **Átláthatósági megjegyzés:** ehhez a
+korrekcióhoz a holdout leíró statisztikáját is felhasználtuk (a train önmagában
+félrevezető MD-profilt adott volna) — a korábbi holdout-számok e komponensre
+nézve már nem tekinthetők érintetlennek.
+
+**E8 — „biztos sors" a 3. fordulóban.** A matematikailag már biztos
+továbbjutó/kieső csapatok mindkét halmazon alulteljesítik a modell várakozását
+(train −0.031, holdout −0.054 várt-eredmény-egység; normál meccsek +0.005/
++0.017). Élesítve: 25 Elo-pontos levonás a 3. fordulóban a pont-alapú
+kimerítéses vizsgálattal biztosnak bizonyult sorsú csapatokra (holtverseny =
+nem biztos, konzervatív). 2026-ban a nyolc legjobb harmadik továbbjutása a
+hatást vélhetően tompítja — a levonás ezért szándékosan mérsékelt, és a Monte
+Carlo-szimulációban (útvonal-függősége miatt) nincs alkalmazva.
