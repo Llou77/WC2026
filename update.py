@@ -178,7 +178,7 @@ def main():
                 probs = (p["p1"], p["px"], p["p2"])
                 perf["evaluated"] += 1
                 perf["hit_1x2"] += probs.index(max(probs)) == o.index(1)
-                ts0 = p["top_scores"][0]
+                ts0 = p.get("tip") or p["top_scores"][0]
                 perf["hit_exact"] += (ts0["h"], ts0["a"]) == (r["gh"], r["ga"])
                 perf["brier_sum"] += sum((pp - oo) ** 2 for pp, oo in zip(probs, o))
             e["analysis"] = [f"Végeredmény: {th['name']} {observed[key]['gh']}–"
