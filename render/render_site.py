@@ -135,7 +135,7 @@ def _card(entry):
     if status == "done" and p:
         body = (f'<p><span class="tag">Modell a meccs előtt</span> 1: {p["p1"]*100:.0f}% · '
                 f'X: {p["px"]*100:.0f}% · 2: {p["p2"]*100:.0f}% — tipp: '
-                f'{p["top_scores"][0]["h"]}–{p["top_scores"][0]["a"]}</p>') + body
+                f'{(p.get("tip") or p["top_scores"][0])["h"]}–{(p.get("tip") or p["top_scores"][0])["a"]}</p>') + body
     h += f'<div class="body">{body}</div></div>'
     return h
 
