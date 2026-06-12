@@ -77,8 +77,37 @@ def _matchup_para(th, ta, channels, player_form):
                          f"{pf['name']} ({pf['rating']:.2f}).")
     return " ".join(parts) if parts else None
 
+STAGE_SHORT = {"FIFA World Cup": "VB", "FIFA World Cup qualification": "VB-selejtező",
+               "Friendly": "felkészülési"}
+
+def _history_para(th, ta, h2h, preform):
+    parts = []
+    if h2h:
+        n = len(h2h)
+        w_h = sum(1 for _, hc, gh, ga, _ in h2h
+                  if (gh > ga and hc == th["code"]) or (ga > gh and hc != th["code"]))
+        d = sum(1 for _, _, gh, ga, _ in h2h if gh == ga)
+        last = sorted(h2h)[-1]
+        ld, lhc, lgh, lga, lt = last
+        if lhc != th["code"]:
+            lgh, lga = lga, lgh
+        parts.append(f"Egymás elleni mérleg: {n} találkozó — {th['name']} {w_h} "
+                     f"győzelem, {d} döntetlen, {n - w_h - d} vereség; legutóbb "
+                     f"{ld[:4]}-ben ({STAGE_SHORT.get(lt, lt)}): "
+                     f"{th['name']} {lgh}–{lga} {ta['name']}.")
+    else:
+        parts.append("A két válogatott tétmérkőzésen még nem találkozott a "
+                     "nyilvántartott történelemben.")
+    for t in (th, ta):
+        pf = (preform or {}).get(t["code"])
+        if pf and pf["n"]:
+            parts.append(f"{t['name']} formája a torna előtti {pf['n']} mérkőzésen: "
+                         f"{pf['w']} győzelem, {pf['d']} döntetlen, {pf['l']} vereség, "
+                         f"{pf['gf']}–{pf['ga']} gólkülönbség.")
+    return " ".join(parts)
+
 def build(m, pred, th, ta, table_ctx, observed_form, projected=False,
-          channels=None, player_form=None):
+          channels=None, player_form=None, h2h=None, preform=None):
     k = m["id"]
     d = abs(th["elo"] - ta["elo"])
     fav = th if pred["p1"] >= pred["p2"] else ta
@@ -100,6 +129,8 @@ def build(m, pred, th, ta, table_ctx, observed_form, projected=False,
                          _form_phrase(ta["code"], ta["name"], observed_form)) if f]
     if forms:
         paras.append(" ".join(forms))
+    paras.append("Előzmények és felkészülés — " + _history_para(th, ta, h2h, preform))
+
     mp = _matchup_para(th, ta, channels, player_form)
     if mp:
         paras.append("Párharc-kép — " + mp)
