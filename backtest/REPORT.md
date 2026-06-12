@@ -53,3 +53,31 @@ tanítás reprodukálható: `python backtest/train_blend.py`.
 Az élesített súlyok: `data/blend.json` — a predict() és a Monte Carlo közös,
 rács-szinten rekalibrált útvonalon használja, így az 1X2, a pontos eredmények
 és a szimuláció konzisztensek.
+
+## Autonóm kísérletsorozat — v2 kalibráció (2026-06-11, harmadik kör)
+
+Protokoll: minden szelekció a TRAIN-tornákon; a holdout összesen kétszer lett
+megérintve (egy közbülső és egy végső mérés), a szelekciót egyik sem
+befolyásolta. Új metrikák: GoalNLL (a tényleges pontos eredmény negatív
+log-valószínűsége — a gólmodell célfüggvénye) és RPS. Futtatás:
+`python backtest/experiments.py` (+ finomító rács), nyers eredmények:
+`experiments_result.json`.
+
+| Kísérlet | Eredmény | Döntés |
+|---|---|---|
+| E2: att/def tanulási ráta | lr=0 a legjobb; a gól-alapú adaptáció monoton ront (lr 0.35: +0.020 Brier) | gól-alapú att/def **kikapcsolva**; xG-jel esetén lr=0.25 marad (xG-út történelmileg nem mérhető, konzervatívan megtartva) |
+| E2b: torna-K | a harnessben nem mérhető (a tornán belüli Elo-t a globális idősor adja) | K=50 változatlan, jelölve: nem validált |
+| E3: hazai bónusz | 65 ≳ 80 (0.5794 vs 0.5796) | HOME_ELO_BONUS=65 |
+| E4+E4b: gólmodell-alak (351 kombináció, GoalNLL célon) | gs=200, pow=0.85 (szublineáris), total=2.5, DC=1.25, tc=0.2 → GoalNLL 2.89→2.80 (train) | élesítve |
+| E5: MOV-forma | a harnessben nem mérhető | "elo" változatlan, jelölve |
+| E6: blend-változatok (3f / +forma / +idősúly) | w=0 mindenhol: az újrahangolt alapmodell mellett a softmax-keverék már nem ad hozzá | **blend kivezetve** (data/blend.json törölve; a korábbi nyereség a gyengébb alapparaméterek kompenzációja volt) |
+
+### Végső mérés (holdout: VB2022 + Eb/Copa 2024)
+
+| Modell | Brier (1X2) | GoalNLL (pontos eredmény) | RPS |
+|---|---|---|---|
+| Korábbi éles (Poisson+blend) | 0.5977 | ~2.89 | – |
+| **v2 (élesítve)** | **0.5894** | **2.7697** | 0.1968 |
+
+A v2 tehát mindkét szinten jobb és egyszerűbb: kevesebb mozgó alkatrész,
+nincs külön kalibráló réteg.
