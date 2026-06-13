@@ -1,1 +1,19 @@
-{"1": [{"team": "MEX", "player": "César Montes", "type": "red"}, {"team": "RSA", "player": "Sphephelo Sithole", "type": "red"}, {"team": "RSA", "player": "Themba Zwane", "type": "red"}]}
+{
+ "1": [
+  {
+   "team": "MEX",
+   "player": "César Montes",
+   "type": "red"
+  },
+  {
+   "team": "RSA",
+   "player": "Sphephelo Sithole",
+   "type": "red"
+  },
+  {
+   "team": "RSA",
+   "player": "Themba Zwane",
+   "type": "red"
+  }
+ ]
+}
