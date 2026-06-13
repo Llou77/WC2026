@@ -302,7 +302,8 @@ def main():
                                    rest_diff_days=rest_diff(m["date"], h, a)
                                    if m["stage"] != "group" else 0,
                                    md=md_map.get(m["id"]),
-                                   elo_adj_h=adj_h, elo_adj_a=adj_a)
+                                   elo_adj_h=adj_h, elo_adj_a=adj_a,
+                                   venue_city=m.get("venue"))
             e["pred"] = pred
             e["conf_score"], e["conf_label"] = analysis.confidence(pred, th, ta)
             e["status"] = "proj" if proj else "sched"

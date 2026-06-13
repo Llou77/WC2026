@@ -30,6 +30,8 @@ Terv:
 - [x] 24. Kalibrációs audit a torzítás-bejelentésre: döntetlen modell 26,4% vs tény 27,9% (holdout), várt gól 2,73 vs tény ~2,45 — torzítás nem igazolódott; az érzet forrása a régi deployolt build + alacsony módusz-eredmények; várható-gólszám kijelzés hozzáadva
 - [x] 25. E8-E9 mérve és élesítve: fordulóprofil-offszetek (MD1 -0.35) + locked-levonás (25 Elo); F1 automatikus eltiltás-követés (kártya-események, sárga-halmozódás); F2 BTTS/over2.5 a verdiktben
 - [x] 26. WhoScored-elemzés; átemelve: egymás elleni mérleg + torna előtti forma (automatikus, a saját történelmi adattárból; WhoScored-számokkal keresztvalidálva); elvetve: várható kezdők (nincs megbízható ingyenes forrás napokkal előre), klub-statisztika-összevetés (válogatottakra üres náluk is), odds-megjelenítés (tudatos no-market irányelv)
+- [x] 27. Meglepetés-anatómia (354 VB-meccs 1990 óta): a gyenge formájú esélyes a fő bravúr-változó (23,5% vs 12,1%); jelzésként beépítve az elemzésekbe; Ecuador-Németország kérdés tisztázva (Elo: 1933 vs 1910, nem meglepetés-tipp)
+- [x] 28. Szakirodalom-kutatás (Groll/Ley random forest, Zeileis hibrid, McSharry magaslat-tanulmány); magaslati előny saját adaton irány-validálva (+0.104 vs -0.193) és beépítve konzervatív 0.07 gól/1000 m meredekséggel a mexikói pályákon; piaci érték/GDP változók elvetve (Elo-redundáns + kézi adatigény)
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.

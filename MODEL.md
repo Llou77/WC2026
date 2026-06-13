@@ -219,6 +219,14 @@ vizsgálat dönti el, kinek biztos már a top-2 helye vagy a kiesése; az ilyen
 csapatok 25 Elo-pontos levonást kapnak az adott meccsre (mért rotációs/
 motivációs hatás, E8). Az elemzés jelzi, ha a levonás aktív.
 
+**Magaslati előny:** a Mexikóvárosban (2240 m) és Guadalajarában (1566 m)
+játszott meccseken a magaslathoz szokott válogatottak (Mexikó, Ecuador,
+Kolumbia, Bolívia, Peru) akklimatizációs előnyt kapnak tengerszinti
+ellenfelükkel szemben (McSharry, BMJ 2007). A mérték a saját adatunkon mért
+konzervatív +0.07 gól/1000 m (a backtest/REPORT.md részletezi, miért nem az
+irodalmi +0.5-öt használjuk); az előny a gólvárakozásban jelenik meg, és csak
+akkor aktív, ha a két csapat magaslati adaptáltsága eltér.
+
 **Automatikus eltiltás-követés:** a kártya-események játékos-szinten
 töltődnek (API-Football, `data/cards.json`); piros lap, illetve két halmozott
 sárga a következő mérkőzésre eltiltást jelent (egyszerűsített FIFA-szabály; a
