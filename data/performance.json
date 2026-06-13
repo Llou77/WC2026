@@ -1,9 +1,9 @@
 {
- "evaluated": 2,
- "hit_1x2": 2,
+ "evaluated": 4,
+ "hit_1x2": 3,
  "hit_exact": 0,
- "brier_sum": 0.78759991,
- "hit_1x2_rate": 1.0,
+ "brier_sum": 2.1755020199999997,
+ "hit_1x2_rate": 0.75,
  "hit_exact_rate": 0.0,
- "avg_brier": 0.3938
+ "avg_brier": 0.5439
 }
