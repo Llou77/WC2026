@@ -32,6 +32,7 @@ Terv:
 - [x] 26. WhoScored-elemzés; átemelve: egymás elleni mérleg + torna előtti forma (automatikus, a saját történelmi adattárból; WhoScored-számokkal keresztvalidálva); elvetve: várható kezdők (nincs megbízható ingyenes forrás napokkal előre), klub-statisztika-összevetés (válogatottakra üres náluk is), odds-megjelenítés (tudatos no-market irányelv)
 - [x] 27. Meglepetés-anatómia (354 VB-meccs 1990 óta): a gyenge formájú esélyes a fő bravúr-változó (23,5% vs 12,1%); jelzésként beépítve az elemzésekbe; Ecuador-Németország kérdés tisztázva (Elo: 1933 vs 1910, nem meglepetés-tipp)
 - [x] 28. Szakirodalom-kutatás (Groll/Ley random forest, Zeileis hibrid, McSharry magaslat-tanulmány); magaslati előny saját adaton irány-validálva (+0.104 vs -0.193) és beépítve konzervatív 0.07 gól/1000 m meredekséggel a mexikói pályákon; piaci érték/GDP változók elvetve (Elo-redundáns + kézi adatigény)
+- [x] 29. BTTS/Over2.5 kalibráció ellenőrizve (holdouton kalibrált, nincs korrekció); outsider-forma teszt: a jó formájú outsider nem teljesít felül (-0.125 vs -0.153), nincs forma-bónusz — az Elo helyesen árazza
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.
