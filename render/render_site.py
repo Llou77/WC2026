@@ -110,7 +110,7 @@ def _card(entry):
         r = entry["result"]
         mid = f'<div class="score">{r["gh"]}–{r["ga"]}<b>végeredmény</b></div>'
     elif p:
-        ts = p["top_scores"][0]
+        ts = p.get("tip") or p["top_scores"][0]
         mid = f'<div class="score">{ts["h"]}–{ts["a"]}<b>várható ({ts["p"]*100:.0f}%)</b></div>'
     else:
         mid = '<div class="score">–<b>n/a</b></div>'
