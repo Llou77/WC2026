@@ -145,3 +145,25 @@ csak akkor, ha a két csapat magaslati-adaptáltsága eltér. 2026-ban 9 meccs
 nem mozdítja érdemben (a holdout-tornák egyike sem magaslaton zajlott), ezért
 ez tudottan torna-specifikus, irodalmi alapú, saját adaton irány-validált
 kiegészítés, nem holdout-on optimalizált paraméter.
+
+## BTTS/Over kalibráció + outsider-forma teszt (2026-06-13)
+
+**BTTS és Over2.5 kalibráció** (holdout): BTTS modell 48.8% vs tény 49.0%
+(−0.2%, gyakorlatilag tökéletes); Over2.5 modell 47.9% vs tény 44.9% (+3.0%,
+de a train +2.2% / holdout +3.0% ingadozás zajon belüli). **Döntés:** nincs
+korrekció — a kiírt mutatók kalibráltak, a beavatkozás rontana.
+
+**Felülteljesít-e a jó formájú outsider?** (a meglepetés-anatómia szimmetrikus
+párja). Mérés 1990 óta, az outsider torna előtti formája szerint:
+
+| Outsider formája | n | tényl. − várt eredmény |
+|---|---|---|
+| jó (2.0+ p/m) | 73 | −0.125 |
+| közepes (1.3–2.0) | 135 | −0.132 |
+| gyenge (<1.3) | 150 | −0.153 |
+
+A jó formájú outsider lényegében ugyanúgy alulteljesít, mint a gyenge — a forma
+**nem ad az Elo-n felüli jelet** az outsider oldalán. **Döntés:** nincs
+forma-bónusz; Törökország/Németország magas formáját az Elo már megfelelően
+kezeli. (A meglepetés-radar jelzése továbbra is csak az *esélyes* gyenge
+formájára szól, ahol a hatás igazolt és aszimmetrikus.)
