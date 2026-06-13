@@ -33,6 +33,7 @@ Terv:
 - [x] 27. Meglepetés-anatómia (354 VB-meccs 1990 óta): a gyenge formájú esélyes a fő bravúr-változó (23,5% vs 12,1%); jelzésként beépítve az elemzésekbe; Ecuador-Németország kérdés tisztázva (Elo: 1933 vs 1910, nem meglepetés-tipp)
 - [x] 28. Szakirodalom-kutatás (Groll/Ley random forest, Zeileis hibrid, McSharry magaslat-tanulmány); magaslati előny saját adaton irány-validálva (+0.104 vs -0.193) és beépítve konzervatív 0.07 gól/1000 m meredekséggel a mexikói pályákon; piaci érték/GDP változók elvetve (Elo-redundáns + kézi adatigény)
 - [x] 29. BTTS/Over2.5 kalibráció ellenőrizve (holdouton kalibrált, nincs korrekció); outsider-forma teszt: a jó formájú outsider nem teljesít felül (-0.125 vs -0.153), nincs forma-bónusz — az Elo helyesen árazza
+- [x] 30. Kiírt-módusz hiba javítva: a kártyatető „várható" kijelzése is az osztály-konzisztens tip mezőt használja (104 meccsből a kiírt döntetlen 18+ -> 1); döntetlen-kalibráció ellenőrizve: modell-átlag 25,7% = tényleges ~27%, nincs torzítás
 
 Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), majd `python update.py`.
