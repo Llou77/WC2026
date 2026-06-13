@@ -121,3 +121,27 @@ kimerítéses vizsgálattal biztosnak bizonyult sorsú csapatokra (holtverseny =
 nem biztos, konzervatív). 2026-ban a nyolc legjobb harmadik továbbjutása a
 hatást vélhetően tompítja — a levonás ezért szándékosan mérsékelt, és a Monte
 Carlo-szimulációban (útvonal-függősége miatt) nincs alkalmazva.
+
+## Magaslati előny — szakirodalom + saját validáció (2026-06-12)
+
+Forrás: McSharry, *Effect of altitude on physiological performance*, BMJ 2007
+(335:1278) — a magaslathoz szokott csapatok magaslaton több gólt szereznek és
+kevesebbet kapnak; állítása szerint kb. +0.5 gól / 1000 m magasságkülönbség.
+
+**Saját validáció** (49k meccses adattár, helyszín ≥1500 m):
+
+| Csoport | n | tényleges − Elo-várt eredmény |
+|---|---|---|
+| magaslathoz szokott csapat magaslaton, tengerszinti ellen | 1159 | **+0.104** |
+| tengerszinti csapat magaslaton | 1849 | **−0.193** |
+
+A gólkülönbség-meredekség a mi globális mintánkon **+0.07 gól / 1000 m** — jóval
+enyhébb a McSharry-féle dél-amerikai-only +0.5-nél (az ő mintája La Paz-szintű
+szélsőségekre szűkült). **Döntés:** az irány megerősítve, beépítve a saját,
+konzervatív meredekséggel (`ALT_GOALS_PER_KM=0.07`), kizárólag a ténylegesen
+magaslati 2026-os helyszíneken (Mexikóváros 2.24 km, Guadalajara 1.566 km), és
+csak akkor, ha a két csapat magaslati-adaptáltsága eltér. 2026-ban 9 meccs
+érintett; adaptáltnak a MEX/ECU/COL (+BOL/PER) számít. A holdout-metrikákat ez
+nem mozdítja érdemben (a holdout-tornák egyike sem magaslaton zajlott), ezért
+ez tudottan torna-specifikus, irodalmi alapú, saját adaton irány-validált
+kiegészítés, nem holdout-on optimalizált paraméter.
