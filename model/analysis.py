@@ -117,6 +117,7 @@ def _history_para(th, ta, h2h, preform):
                          f"24%-án kikaptak és további 24%-án döntetleneztek.")
     return " ".join(parts)
 
+from model import ratings
 def build(m, pred, th, ta, table_ctx, observed_form, projected=False,
           channels=None, player_form=None, h2h=None, preform=None):
     k = m["id"]
@@ -141,6 +142,15 @@ def build(m, pred, th, ta, table_ctx, observed_form, projected=False,
     if forms:
         paras.append(" ".join(forms))
     paras.append("Előzmények és felkészülés — " + _history_para(th, ta, h2h, preform))
+
+    alt = ratings.altitude_edge(th, ta, m.get("venue"))
+    if alt:
+        who = th["name"] if alt > 0 else ta["name"]
+        paras.append(f"Magaslati tényező — a mérkőzés {m.get('venue','').split(',')[-1].strip()} "
+                     f"tengerszint feletti pályáján zajlik; {who} a magaslathoz szokott "
+                     f"válogatott, ami a McSharry (BMJ, 2007) által leírt akklimatizációs "
+                     f"előnyt adja. A modell ezt a saját adatán mért, konzervatív "
+                     f"mértékkel ({abs(alt):.2f} gól) árazza be.")
 
     mp = _matchup_para(th, ta, channels, player_form)
     if mp:

@@ -29,6 +29,13 @@ MOV_MODE = "elo"           # margin-of-victory weighting: elo | linear | sqrt
 ET_SHRINK = 0.33
 MD_TOTAL_OFFSET = {1: -0.35, 2: -0.05, 3: -0.25}  # group matchday goal-caution
 LOCKED_ELO_PENALTY = 25    # team whose group fate is already decided (MD3)
+# Altitude advantage (McSharry, BMJ 2007). Direction confirmed on our own
+# historical data, but our global-sample slope (+0.07 goals/1000 m) is far
+# milder than McSharry's South-America-only +0.5, so we use the conservative
+# own-data value. Applied only at genuinely high-altitude 2026 venues.
+ALT_GOALS_PER_KM = 0.07
+ALT_ADAPTED = {"MEX", "ECU", "COL", "BOL", "PER"}  # home grounds >= ~1500 m
+VENUE_ALT_KM = {"Mexikóváros": 2.24, "Guadalajara": 1.566}
 MATCHUP_COEF = 0.035       # lambda-szorzó / centírozott vonal-pontnyi aszimmetria
 MATCHUP_CAP = 0.10         # a párharc-réteg max. ±10%-ot mozgathat a gólvárakozáson           # ET+pens edge shrink; pens alone ~0.19 (541 shootouts)
 MAX_GOALS = 8
@@ -163,11 +170,35 @@ def score_grid(lh, la):
 REST_ELO_PER_DAY = 8       # knockout rest-day differential (capped; heuristic)
 REST_CAP = 24
 
+def altitude_edge(team_h, team_a, venue_city):
+    """Goal-difference shift (home minus away) from altitude acclimatisation.
+    Positive favours the home side. Zero at sea-level venues."""
+    km = 0.0
+    for name, v in VENUE_ALT_KM.items():
+        if venue_city and name in venue_city:
+            km = v
+            break
+    if km < 1.5:
+        return 0.0
+    adapt_h = team_h["code"] in ALT_ADAPTED
+    adapt_a = team_a["code"] in ALT_ADAPTED
+    if adapt_h == adapt_a:
+        return 0.0                     # both or neither adapted -> no edge
+    edge = ALT_GOALS_PER_KM * km
+    return edge if adapt_h else -edge
+
 def predict(team_h, team_a, venue_country, knockout=False, rest_diff_days=0,
-            md=None, elo_adj_h=0.0, elo_adj_a=0.0):
+            md=None, elo_adj_h=0.0, elo_adj_a=0.0, venue_city=None):
     extra = max(-REST_CAP, min(REST_CAP, REST_ELO_PER_DAY * rest_diff_days)) if knockout else 0.0
     extra += elo_adj_h - elo_adj_a
     grid, lh, la = calibrated_grid(team_h, team_a, venue_country, extra, md)
+    alt = altitude_edge(team_h, team_a, venue_city)
+    if alt:
+        # nudge the scoreline grid by shifting expected goals, then rebuild
+        lh2 = max(0.15, lh + alt / 2.0); la2 = max(0.15, la - alt / 2.0)
+        grid = score_grid(lh2, la2)
+        b = _load_blend()  # keep calibration path consistent
+        lh, la = lh2, la2
     pw = sum(grid[i][j] for i in range(MAX_GOALS+1) for j in range(MAX_GOALS+1) if i > j)
     pd = sum(grid[i][i] for i in range(MAX_GOALS+1))
     pl = 1.0 - pw - pd

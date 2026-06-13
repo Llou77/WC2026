@@ -58,15 +58,17 @@ class Simulator:
                                   for m in matches
                                   if m["stage"] == "r32" and m["away"].startswith("T:"))
 
-    def _grid(self, h, a, vc, md=None):
-        key = (h, a, vc, md)
+    def _grid(self, h, a, vc, md=None, city=None):
+        key = (h, a, vc, md, city)
         if key not in self._grids:
-            grid, _, _ = ratings.calibrated_grid(self.teams[h], self.teams[a], vc, md=md)
+            p = ratings.predict(self.teams[h], self.teams[a], vc, md=md, venue_city=city)
+            # rebuild a sampling grid from the (altitude-adjusted) lambdas
+            grid = ratings.score_grid(p["lh"], p["la"])
             self._grids[key] = _cdf(grid)
         return self._grids[key]
 
-    def _sample(self, h, a, vc, md=None):
-        flat, cum = self._grid(h, a, vc, md)
+    def _sample(self, h, a, vc, md=None, city=None):
+        flat, cum = self._grid(h, a, vc, md, city)
         return flat[bisect.bisect(cum, self.rng.random() * cum[-1])]
 
     def run(self, n=10000):
@@ -90,7 +92,7 @@ class Simulator:
                 o = self.observed.get(str(m["id"]))
                 gh, ga = (o["gh"], o["ga"]) if o else \
                     self._sample(m["home"], m["away"], m["venue_country"],
-                                 self.md_map.get(m["id"]))
+                                 self.md_map.get(m["id"]), m.get("venue"))
                 h2h[(m["home"], m["away"])] = (gh, ga)
                 rows[m["home"]][0] += 3 if gh > ga else (1 if gh == ga else 0)
                 rows[m["away"]][0] += 3 if ga > gh else (1 if gh == ga else 0)
