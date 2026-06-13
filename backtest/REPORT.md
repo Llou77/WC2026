@@ -167,3 +167,20 @@ A jó formájú outsider lényegében ugyanúgy alulteljesít, mint a gyenge —
 forma-bónusz; Törökország/Németország magas formáját az Elo már megfelelően
 kezeli. (A meglepetés-radar jelzése továbbra is csak az *esélyes* gyenge
 formájára szól, ahol a hatás igazolt és aszimmetrikus.)
+
+## Kiírt módusz javítása + döntetlen-kalibráció ellenőrzése (2026-06-13)
+
+**Hiba a megjelenítésben.** A kártya tetején lévő „várható" eredmény-kijelzés
+a render két kiírási pontja közül az egyiken még a nyers rács-móduszt
+(`top_scores[0]`) használta az osztály-konzisztens `tip` helyett — emiatt sok
+meccsen 1–1 jelent meg akkor is, amikor a győzelem volt a legvalószínűbb
+kimenetel. Javítva: mindkét kiírási pont a `tip` mezőt használja. Eredmény:
+104 meccsből a kiírt döntetlen 1-re csökkent (az az egy, ahol a döntetlen
+ténylegesen a legvalószínűbb kimenetel).
+
+**Döntetlen-kalibráció ellenőrzése.** A bejelentett „alulbecsüli a döntetlent"
+észrevétel mérve: a 2026-os meccsek átlagos modell-döntetlenvalószínűsége
+25.7%, medián 27%, maximum 34% — ez egybeesik a nagytornák tényleges ~26–28%-os
+döntetlen-arányával. A döntetlen tehát valószínűségben helyesen árazott; a
+korábbi érzet kizárólag a kiírt módusz műterméke volt. Külön döntetlen-emelés
+rontaná a kalibrációt, ezért nincs ilyen.
