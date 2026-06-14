@@ -29,6 +29,15 @@ MOV_MODE = "elo"           # margin-of-victory weighting: elo | linear | sqrt
 ET_SHRINK = 0.33
 MD_TOTAL_OFFSET = {1: -0.35, 2: -0.05, 3: -0.25}  # group matchday goal-caution
 LOCKED_ELO_PENALTY = 25    # team whose group fate is already decided (MD3)
+# Absence handling (suspensions from cards + manual injuries/withdrawals).
+# NOTE: these magnitudes are NOT backtestable in this harness (no historical
+# per-player availability data), so they are deliberately conservative and
+# tunable in one place. They improve coverage/consistency (text<->numbers),
+# not validated calibration.
+KEY_ABSENCE_ELO = 25.0     # a *listed* key player (teams.json "players") is out
+SUSP_OTHER_ELO = 12.0      # card-suspended player NOT on the key-player list
+OUT_DEFAULT_ELO = 25.0     # manual "out" entry without an explicit weight
+MAX_ABSENCE_ELO = 60.0     # combined per-team cap, so a decimated squad stays sane
 # Altitude advantage (McSharry, BMJ 2007). Direction confirmed on our own
 # historical data, but our global-sample slope (+0.07 goals/1000 m) is far
 # milder than McSharry's South-America-only +0.5, so we use the conservative
