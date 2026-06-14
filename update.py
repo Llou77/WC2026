@@ -288,12 +288,32 @@ def main():
                              f"{observed[key]['ga']} {ta['name']}. Az eredmény beépült a "
                              f"modellbe (Elo- és támadó/védő-frissítés)."]
         else:
-            def susp_adj(team):
-                bans = suspended.get(team["code"], [])
-                key_bans = [p for p in bans if p in team.get("players", [])]
-                return -25.0 * min(2, len(key_bans)), bans
-            adj_h, bans_h = susp_adj(th)
-            adj_a, bans_a = susp_adj(ta)
+            def absence_adj(team):
+                # Combine auto suspensions (cards.json) with manual injuries /
+                # withdrawals (teams.json "out"). Penalty is per *player* (max
+                # over reasons, never double-counted), summed across players,
+                # then capped. All magnitudes live in ratings.py.
+                code = team["code"]
+                keylist = team.get("players", [])
+                susp_set = set(suspended.get(code, []))
+                pen = {}
+                for p in susp_set:                       # 1) card suspensions
+                    w = ratings.KEY_ABSENCE_ELO if p in keylist else ratings.SUSP_OTHER_ELO
+                    pen[p] = max(pen.get(p, 0.0), w)
+                for o in team.get("out", []):            # 2) manual injuries/withdrawals
+                    if isinstance(o, dict):
+                        name = o.get("name") or o.get("player")
+                        w = float(o.get("elo", ratings.OUT_DEFAULT_ELO))
+                    else:
+                        name, w = o, ratings.OUT_DEFAULT_ELO
+                    if not name:
+                        continue
+                    pen[name] = max(pen.get(name, 0.0), float(w))
+                total = min(ratings.MAX_ABSENCE_ELO, sum(pen.values()))
+                items = [(p, "eltiltva" if p in susp_set else "hiányzik") for p in pen]
+                return -total, items
+            adj_h, abs_h = absence_adj(th)
+            adj_a, abs_a = absence_adj(ta)
             if m["stage"] == "group" and md_map.get(m["id"]) == 3:
                 if h in locked: adj_h -= ratings.LOCKED_ELO_PENALTY
                 if a in locked: adj_a -= ratings.LOCKED_ELO_PENALTY
@@ -310,10 +330,17 @@ def main():
             if m["stage"] != "group":
                 e["pair_share"] = round(pair_share.get(m["id"], {}).get((h, a), 0.0), 4)
             ctx_extra = []
-            for team, bans in ((th, bans_h), (ta, bans_a)):
-                if bans:
-                    ctx_extra.append(f"{team['name']} eltiltottjai erre a mérkőzésre: "
-                                     f"{', '.join(bans)}.")
+            for team, items in ((th, abs_h), (ta, abs_a)):
+                if items:
+                    susp = [n for n, r in items if r == "eltiltva"]
+                    inj = [n for n, r in items if r == "hiányzik"]
+                    parts = []
+                    if susp:
+                        parts.append("eltiltva: " + ", ".join(susp))
+                    if inj:
+                        parts.append("hiányzik: " + ", ".join(inj))
+                    ctx_extra.append(f"{team['name']} kerethiánya erre a mérkőzésre — "
+                                     + "; ".join(parts) + ".")
             for team in (th, ta):
                 if m["stage"] == "group" and md_map.get(m["id"]) == 3 \
                         and team["code"] in locked:
