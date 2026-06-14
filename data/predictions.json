@@ -94,37 +94,37 @@
    "home_name": "Csehország",
    "away_name": "Dél-Afrika",
    "pred": {
-    "lh": 1.42,
-    "la": 1.06,
-    "btts": 0.5034,
-    "over25": 0.4306,
-    "p1": 0.4289,
-    "px": 0.3045,
-    "p2": 0.2665,
+    "lh": 1.49,
+    "la": 1.01,
+    "btts": 0.5014,
+    "over25": 0.437,
+    "p1": 0.4577,
+    "px": 0.2985,
+    "p2": 0.2438,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1507
+      "p": 0.1478
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1104
+      "p": 0.1132
      },
      {
       "h": 0,
       "a": 0,
-      "p": 0.1003
+      "p": 0.098
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1104
+     "p": 0.1132
     }
    },
-   "conf_score": 0.292,
+   "conf_score": 0.335,
    "conf_label": "ALACSONY",
    "status": "sched",
    "analysis": [
@@ -134,9 +134,9 @@
     "Csehország tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Dél-Afrika tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 1 találkozó — Csehország 0 győzelem, 1 döntetlen, 0 vereség; legutóbb 1997-ben (Confederations Cup): Csehország 2–2 Dél-Afrika. Csehország formája a torna előtti 8 mérkőzésen: 4 győzelem, 3 döntetlen, 1 vereség, 19–8 gólkülönbség. Dél-Afrika formája a torna előtti 8 mérkőzésen: 3 győzelem, 2 döntetlen, 3 vereség, 9–9 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (A): Csehország jelenleg/várhatóan 3. (2.3 pont), Dél-Afrika 4. (1.9 pont). Dél-Afrika eltiltottjai erre a mérkőzésre: Sphephelo Sithole, Themba Zwane.",
+    "Csoporthelyzet (A): Csehország jelenleg/várhatóan 3. (2.3 pont), Dél-Afrika 4. (1.9 pont). Dél-Afrika kerethiánya erre a mérkőzésre — eltiltva: Sphephelo Sithole, Themba Zwane.",
     "Keretinformációk, aktualitások — Dél-Afrika: Sithole és Zwane eltiltva a Csehország elleni mérkőzésre a nyitányon kapott piros lapok miatt.",
-    "Modellverdikt: Csehország győzelmi valószínűsége 43%, a döntetlené 30%, Dél-Afrika győzelméé 27%. A legvalószínűbb kimenetel Csehország győzelme (43%), ezen belül a legvalószínűbb végeredmény 1–0 (11.0%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.1%), 1–0 (11.0%), 0–0 (10.0%). Indoklás: a becslés alapja a várható gólszám-pár (1.42, illetve 1.06), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 43%."
+    "Modellverdikt: Csehország győzelmi valószínűsége 46%, a döntetlené 30%, Dél-Afrika győzelméé 24%. A legvalószínűbb kimenetel Csehország győzelme (46%), ezen belül a legvalószínűbb végeredmény 1–0 (11.3%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.8%), 1–0 (11.3%), 0–0 (9.8%). Indoklás: a becslés alapja a várható gólszám-pár (1.49, illetve 1.01), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 44%."
    ],
    "id": 3
   },
@@ -144,37 +144,37 @@
    "home_name": "Mexikó",
    "away_name": "Dél-Korea",
    "pred": {
-    "lh": 1.61,
-    "la": 0.95,
-    "btts": 0.4986,
-    "over25": 0.4521,
-    "p1": 0.5036,
-    "px": 0.2856,
-    "p2": 0.2107,
+    "lh": 1.58,
+    "la": 0.97,
+    "btts": 0.5013,
+    "over25": 0.4492,
+    "p1": 0.4898,
+    "px": 0.2893,
+    "p2": 0.2209,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1416
+      "p": 0.1435
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1159
+      "p": 0.1146
      },
      {
-      "h": 2,
+      "h": 0,
       "a": 0,
-      "p": 0.0963
+      "p": 0.0936
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1159
+     "p": 0.1146
     }
    },
-   "conf_score": 0.406,
+   "conf_score": 0.385,
    "conf_label": "ALACSONY",
    "status": "sched",
    "analysis": [
@@ -185,9 +185,9 @@
     "Előzmények és felkészülés — Egymás elleni mérleg: 14 találkozó — Mexikó 8 győzelem, 3 döntetlen, 3 vereség; legutóbb 2025-ben (felkészülési): Mexikó 2–2 Dél-Korea. Mexikó formája a torna előtti 8 mérkőzésen: 6 győzelem, 2 döntetlen, 0 vereség, 15–2 gólkülönbség. Dél-Korea formája a torna előtti 8 mérkőzésen: 5 győzelem, 0 döntetlen, 3 vereség, 11–10 gólkülönbség.",
     "Magaslati tényező — a mérkőzés Guadalajara tengerszint feletti pályáján zajlik; Mexikó a magaslathoz szokott válogatott, ami a McSharry (BMJ, 2007) által leírt akklimatizációs előnyt adja. A modell ezt a saját adatán mért, konzervatív mértékkel (0.11 gól) árazza be.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (A): Mexikó jelenleg/várhatóan 1. (6.8 pont), Dél-Korea 2. (5.9 pont). Mexikó eltiltottjai erre a mérkőzésre: César Montes.",
+    "Csoporthelyzet (A): Mexikó jelenleg/várhatóan 1. (6.8 pont), Dél-Korea 2. (5.9 pont). Mexikó kerethiánya erre a mérkőzésre — eltiltva: César Montes.",
     "Keretinformációk, aktualitások — Mexikó: César Montes eltiltás miatt kihagyja a Dél-Korea elleni meccset (piros lap a nyitányon).",
-    "Modellverdikt: Mexikó győzelmi valószínűsége 50%, a döntetlené 29%, Dél-Korea győzelméé 21%. A legvalószínűbb kimenetel Mexikó győzelme (50%), ezen belül a legvalószínűbb végeredmény 1–0 (11.6%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.2%), 1–0 (11.6%), 2–0 (9.6%). Indoklás: a becslés alapja a várható gólszám-pár (1.61, illetve 0.95), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 45%."
+    "Modellverdikt: Mexikó győzelmi valószínűsége 49%, a döntetlené 29%, Dél-Korea győzelméé 22%. A legvalószínűbb kimenetel Mexikó győzelme (49%), ezen belül a legvalószínűbb végeredmény 1–0 (11.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.3%), 1–0 (11.5%), 0–0 (9.4%). Indoklás: a becslés alapja a várható gólszám-pár (1.58, illetve 0.97), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 45%."
    ],
    "id": 4
   },
@@ -195,37 +195,37 @@
    "home_name": "Csehország",
    "away_name": "Mexikó",
    "pred": {
-    "lh": 0.62,
-    "la": 1.81,
-    "btts": 0.3971,
-    "over25": 0.4223,
-    "p1": 0.1156,
-    "px": 0.2548,
-    "p2": 0.6296,
+    "lh": 0.64,
+    "la": 1.78,
+    "btts": 0.4037,
+    "over25": 0.4195,
+    "p1": 0.1225,
+    "px": 0.26,
+    "p2": 0.6175,
     "top_scores": [
      {
       "h": 0,
       "a": 1,
-      "p": 0.1479
+      "p": 0.1468
      },
      {
       "h": 0,
       "a": 2,
-      "p": 0.1381
+      "p": 0.1347
      },
      {
       "h": 1,
       "a": 1,
-      "p": 0.119
+      "p": 0.1219
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.1479
+     "p": 0.1468
     }
    },
-   "conf_score": 0.598,
+   "conf_score": 0.577,
    "conf_label": "KÖZEPES",
    "status": "sched",
    "analysis": [
@@ -236,9 +236,9 @@
     "Előzmények és felkészülés — Egymás elleni mérleg: 1 találkozó — Csehország 1 győzelem, 0 döntetlen, 0 vereség; legutóbb 2000-ben (Lunar New Year Cup): Csehország 2–1 Mexikó. Csehország formája a torna előtti 8 mérkőzésen: 4 győzelem, 3 döntetlen, 1 vereség, 19–8 gólkülönbség. Mexikó formája a torna előtti 8 mérkőzésen: 6 győzelem, 2 döntetlen, 0 vereség, 15–2 gólkülönbség.",
     "Magaslati tényező — a mérkőzés Mexikóváros tengerszint feletti pályáján zajlik; Mexikó a magaslathoz szokott válogatott, ami a McSharry (BMJ, 2007) által leírt akklimatizációs előnyt adja. A modell ezt a saját adatán mért, konzervatív mértékkel (0.16 gól) árazza be.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (A): Csehország jelenleg/várhatóan 3. (2.3 pont), Mexikó 1. (6.8 pont). Mexikó eltiltottjai erre a mérkőzésre: César Montes.",
+    "Csoporthelyzet (A): Csehország jelenleg/várhatóan 3. (2.3 pont), Mexikó 1. (6.8 pont). Mexikó kerethiánya erre a mérkőzésre — eltiltva: César Montes.",
     "Keretinformációk, aktualitások — Mexikó: César Montes eltiltás miatt kihagyja a Dél-Korea elleni meccset (piros lap a nyitányon).",
-    "Modellverdikt: Csehország győzelmi valószínűsége 12%, a döntetlené 25%, Mexikó győzelméé 63%. A legvalószínűbb kimenetel Mexikó győzelme (63%), ezen belül a legvalószínűbb végeredmény 0–1 (14.8%). Az eloszlás egészének legsűrűbb pontjai: 0–1 (14.8%), 0–2 (13.8%), 1–1 (11.9%). Indoklás: a becslés alapja a várható gólszám-pár (0.62, illetve 1.81), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 40%, 2,5 gól feletti összgólszám 42%."
+    "Modellverdikt: Csehország győzelmi valószínűsége 12%, a döntetlené 26%, Mexikó győzelméé 62%. A legvalószínűbb kimenetel Mexikó győzelme (62%), ezen belül a legvalószínűbb végeredmény 0–1 (14.7%). Az eloszlás egészének legsűrűbb pontjai: 0–1 (14.7%), 0–2 (13.5%), 1–1 (12.2%). Indoklás: a becslés alapja a várható gólszám-pár (0.64, illetve 1.78), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 40%, 2,5 gól feletti összgólszám 42%."
    ],
    "id": 5
   },
@@ -246,37 +246,37 @@
    "home_name": "Dél-Afrika",
    "away_name": "Dél-Korea",
    "pred": {
-    "lh": 0.77,
-    "la": 1.64,
-    "btts": 0.4413,
-    "over25": 0.4138,
-    "p1": 0.1649,
-    "px": 0.2831,
-    "p2": 0.552,
+    "lh": 0.73,
+    "la": 1.7,
+    "btts": 0.4318,
+    "over25": 0.4198,
+    "p1": 0.1488,
+    "px": 0.2738,
+    "p2": 0.5774,
     "top_scores": [
      {
       "h": 0,
       "a": 1,
-      "p": 0.137
+      "p": 0.1394
      },
      {
       "h": 1,
       "a": 1,
-      "p": 0.1359
+      "p": 0.1309
      },
      {
       "h": 0,
       "a": 2,
-      "p": 0.1156
+      "p": 0.1221
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.137
+     "p": 0.1394
     }
    },
-   "conf_score": 0.469,
+   "conf_score": 0.511,
    "conf_label": "KÖZEPES",
    "status": "sched",
    "analysis": [
@@ -286,9 +286,9 @@
     "Dél-Afrika tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Dél-Korea tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — A két válogatott tétmérkőzésen még nem találkozott a nyilvántartott történelemben. Dél-Afrika formája a torna előtti 8 mérkőzésen: 3 győzelem, 2 döntetlen, 3 vereség, 9–9 gólkülönbség. Dél-Korea formája a torna előtti 8 mérkőzésen: 5 győzelem, 0 döntetlen, 3 vereség, 11–10 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (A): Dél-Afrika jelenleg/várhatóan 4. (1.9 pont), Dél-Korea 2. (5.9 pont). Dél-Afrika eltiltottjai erre a mérkőzésre: Sphephelo Sithole, Themba Zwane.",
+    "Csoporthelyzet (A): Dél-Afrika jelenleg/várhatóan 4. (1.9 pont), Dél-Korea 2. (5.9 pont). Dél-Afrika kerethiánya erre a mérkőzésre — eltiltva: Sphephelo Sithole, Themba Zwane.",
     "Keretinformációk, aktualitások — Dél-Afrika: Sithole és Zwane eltiltva a Csehország elleni mérkőzésre a nyitányon kapott piros lapok miatt.",
-    "Modellverdikt: Dél-Afrika győzelmi valószínűsége 16%, a döntetlené 28%, Dél-Korea győzelméé 55%. A legvalószínűbb kimenetel Dél-Korea győzelme (55%), ezen belül a legvalószínűbb végeredmény 0–1 (13.7%). Az eloszlás egészének legsűrűbb pontjai: 0–1 (13.7%), 1–1 (13.6%), 0–2 (11.6%). Indoklás: a becslés alapja a várható gólszám-pár (0.77, illetve 1.64), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 44%, 2,5 gól feletti összgólszám 41%."
+    "Modellverdikt: Dél-Afrika győzelmi valószínűsége 15%, a döntetlené 27%, Dél-Korea győzelméé 58%. A legvalószínűbb kimenetel Dél-Korea győzelme (58%), ezen belül a legvalószínűbb végeredmény 0–1 (13.9%). Az eloszlás egészének legsűrűbb pontjai: 0–1 (13.9%), 1–1 (13.1%), 0–2 (12.2%). Indoklás: a becslés alapja a várható gólszám-pár (0.73, illetve 1.70), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 43%, 2,5 gól feletti összgólszám 42%."
    ],
    "id": 6
   },
@@ -3772,40 +3772,40 @@
    "home_name": "Mexikó",
    "away_name": "Szenegál",
    "pred": {
-    "lh": 1.45,
-    "la": 1.08,
-    "btts": 0.5118,
-    "over25": 0.4417,
-    "p1": 0.4325,
-    "px": 0.3009,
-    "p2": 0.2666,
+    "lh": 1.4,
+    "la": 1.1,
+    "btts": 0.5123,
+    "over25": 0.4382,
+    "p1": 0.416,
+    "px": 0.3038,
+    "p2": 0.2801,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1494
+      "p": 0.1509
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1078
+      "p": 0.1061
      },
      {
       "h": 0,
       "a": 0,
-      "p": 0.0961
+      "p": 0.0973
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1078
+     "p": 0.1061
     },
-    "adv_h": 0.5763,
-    "adv_a": 0.4237,
+    "adv_h": 0.5612,
+    "adv_a": 0.4388,
     "favorite": "MEX"
    },
-   "conf_score": 0.381,
+   "conf_score": 0.357,
    "conf_label": "ALACSONY",
    "status": "proj",
    "pair_share": 0.063,
@@ -3817,9 +3817,9 @@
     "Előzmények és felkészülés — Egymás elleni mérleg: 1 találkozó — Mexikó 1 győzelem, 0 döntetlen, 0 vereség; legutóbb 2010-ben (felkészülési): Mexikó 1–0 Szenegál. Mexikó formája a torna előtti 8 mérkőzésen: 6 győzelem, 2 döntetlen, 0 vereség, 15–2 gólkülönbség. Szenegál formája a torna előtti 8 mérkőzésen: 5 győzelem, 1 döntetlen, 2 vereség, 12–8 gólkülönbség.",
     "Magaslati tényező — a mérkőzés Mexikóváros tengerszint feletti pályáján zajlik; Mexikó a magaslathoz szokott válogatott, ami a McSharry (BMJ, 2007) által leírt akklimatizációs előnyt adja. A modell ezt a saját adatán mért, konzervatív mértékkel (0.16 gól) árazza be.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Mexikó eltiltottjai erre a mérkőzésre: César Montes.",
+    "Mexikó kerethiánya erre a mérkőzésre — eltiltva: César Montes.",
     "Keretinformációk, aktualitások — Mexikó: César Montes eltiltás miatt kihagyja a Dél-Korea elleni meccset (piros lap a nyitányon).",
-    "Modellverdikt: Mexikó győzelmi valószínűsége 43%, a döntetlené 30%, Szenegál győzelméé 27%. A legvalószínűbb kimenetel Mexikó győzelme (43%), ezen belül a legvalószínűbb végeredmény 1–0 (10.8%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.9%), 1–0 (10.8%), 0–0 (9.6%). Indoklás: a becslés alapja a várható gólszám-pár (1.45, illetve 1.08), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 51%, 2,5 gól feletti összgólszám 44%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Mexikó (58%)."
+    "Modellverdikt: Mexikó győzelmi valószínűsége 42%, a döntetlené 30%, Szenegál győzelméé 28%. A legvalószínűbb kimenetel Mexikó győzelme (42%), ezen belül a legvalószínűbb végeredmény 1–0 (10.6%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.1%), 1–0 (10.6%), 0–0 (9.7%). Indoklás: a becslés alapja a várható gólszám-pár (1.40, illetve 1.10), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 51%, 2,5 gól feletti összgólszám 44%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Mexikó (56%)."
    ],
    "id": 79
   },
@@ -4446,40 +4446,40 @@
    "home_name": "Mexikó",
    "away_name": "Anglia",
    "pred": {
-    "lh": 1.05,
-    "la": 1.61,
-    "btts": 0.5291,
-    "over25": 0.4783,
-    "p1": 0.236,
-    "px": 0.2835,
-    "p2": 0.4805,
+    "lh": 1.03,
+    "la": 1.65,
+    "btts": 0.5272,
+    "over25": 0.4812,
+    "p1": 0.2262,
+    "px": 0.2803,
+    "p2": 0.4935,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1418
+      "p": 0.1402
      },
      {
       "h": 0,
       "a": 1,
-      "p": 0.1044
+      "p": 0.1054
      },
      {
       "h": 1,
       "a": 2,
-      "p": 0.0915
+      "p": 0.0923
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.1044
+     "p": 0.1054
     },
-    "adv_h": 0.3532,
-    "adv_a": 0.6468,
+    "adv_h": 0.3421,
+    "adv_a": 0.6579,
     "favorite": "ENG"
    },
-   "conf_score": 0.461,
+   "conf_score": 0.481,
    "conf_label": "KÖZEPES",
    "status": "proj",
    "pair_share": 0.1965,
@@ -4491,9 +4491,9 @@
     "Előzmények és felkészülés — Egymás elleni mérleg: 10 találkozó — Mexikó 2 győzelem, 1 döntetlen, 7 vereség; legutóbb 2010-ben (felkészülési): Mexikó 1–3 Anglia. Mexikó formája a torna előtti 8 mérkőzésen: 6 győzelem, 2 döntetlen, 0 vereség, 15–2 gólkülönbség. Anglia formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 17–2 gólkülönbség.",
     "Magaslati tényező — a mérkőzés Mexikóváros tengerszint feletti pályáján zajlik; Mexikó a magaslathoz szokott válogatott, ami a McSharry (BMJ, 2007) által leírt akklimatizációs előnyt adja. A modell ezt a saját adatán mért, konzervatív mértékkel (0.16 gól) árazza be.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Mexikó eltiltottjai erre a mérkőzésre: César Montes.",
+    "Mexikó kerethiánya erre a mérkőzésre — eltiltva: César Montes.",
     "Keretinformációk, aktualitások — Mexikó: César Montes eltiltás miatt kihagyja a Dél-Korea elleni meccset (piros lap a nyitányon).",
-    "Modellverdikt: Mexikó győzelmi valószínűsége 24%, a döntetlené 28%, Anglia győzelméé 48%. A legvalószínűbb kimenetel Anglia győzelme (48%), ezen belül a legvalószínűbb végeredmény 0–1 (10.4%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.2%), 0–1 (10.4%), 1–2 (9.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.05, illetve 1.61), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Anglia (65%)."
+    "Modellverdikt: Mexikó győzelmi valószínűsége 23%, a döntetlené 28%, Anglia győzelméé 49%. A legvalószínűbb kimenetel Anglia győzelme (49%), ezen belül a legvalószínűbb végeredmény 0–1 (10.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.0%), 0–1 (10.5%), 1–2 (9.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.03, illetve 1.65), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Anglia (66%)."
    ],
    "id": 92
   },
