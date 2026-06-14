@@ -34,9 +34,11 @@ Terv:
 - [x] 28. Szakirodalom-kutatás (Groll/Ley random forest, Zeileis hibrid, McSharry magaslat-tanulmány); magaslati előny saját adaton irány-validálva (+0.104 vs -0.193) és beépítve konzervatív 0.07 gól/1000 m meredekséggel a mexikói pályákon; piaci érték/GDP változók elvetve (Elo-redundáns + kézi adatigény)
 - [x] 29. BTTS/Over2.5 kalibráció ellenőrizve (holdouton kalibrált, nincs korrekció); outsider-forma teszt: a jó formájú outsider nem teljesít felül (-0.125 vs -0.153), nincs forma-bónusz — az Elo helyesen árazza
 - [x] 30. Kiírt-módusz hiba javítva: a kártyatető „várható" kijelzése is az osztály-konzisztens tip mezőt használja (104 meccsből a kiírt döntetlen 18+ -> 1); döntetlen-kalibráció ellenőrizve: modell-átlag 25,7% = tényleges ~27%, nincs torzítás
+- [x] 31. Hiányzás-csatorna kiszélesítve (demonstrált hiba: a 3 valós eltiltás — Montes/Sithole/Zwane — eddig −0 Elo volt, mert nem voltak a 3 nevű kulcslistán). Most: nem-listás eltiltás −12, listás kulcsjátékos −25, kézi `out` (sérülés) csatorna a teams.json-ban (string vagy {name,elo}), játékosonkénti dedup, csapatonként −60 plafon; szöveg↔szám egyezik. Élesben tesztelve (Montes 4. meccs −1,3 pp MEX-győzelem; ESP out string+súly OK). Magnitúdók a ratings.py-ban hangolhatók, nem backtestelhetők.
 
-Aktuális állapot: KÉSZ. Folytatáshoz: eredmények a data/observed.json-ba
-(fetch_data.py vagy kézzel), majd `python update.py`.
+Aktuális állapot: KÉSZ (31). Folytatáshoz: eredmények a data/observed.json-ba
+(fetch_data.py vagy kézzel), kézi hiányzók a teams.json `out` mezőjébe, majd
+`python update.py`.
 
 Döntések:
 [DÖNTÉS] ML-megközelítés | Inkrementális Elo+Poisson, nem batch-refit | A napi

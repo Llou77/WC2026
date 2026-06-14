@@ -198,8 +198,9 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
 3. **Függetlenségi feltevés**: a Poisson-rács a két csapat gólszámát a
    DC-korrekción túl függetlennek tekinti; taktikai forgatókönyveket
    (eredménytartás, emberhátrány) nem modellez.
-4. **Hírek hatása**: a `news` mező csak az elemzésszövegben jelenik meg;
-   számszerű hatás kézi Elo-korrekcióval vihető be.
+4. **Hírek hatása**: a `news` mező szabad szövege csak az elemzésben jelenik
+   meg. Strukturált, számszerű hiányzás-hatás a `teams.json` `out` mezőjén át
+   vihető be (lásd 8b — eltiltás/hiányzás-csatorna).
 5. **Annex C-közelítés**: a harmadikok ágra sorolása érvényes, de nem
    garantáltan a FIFA által választott hozzárendelés (lásd 6. pont).
 6. **Csoportrangsor**: a sorrend pont → gólkülönbség → lőtt gól → **egymás
@@ -227,12 +228,26 @@ konzervatív +0.07 gól/1000 m (a backtest/REPORT.md részletezi, miért nem az
 irodalmi +0.5-öt használjuk); az előny a gólvárakozásban jelenik meg, és csak
 akkor aktív, ha a két csapat magaslati adaptáltsága eltér.
 
-**Automatikus eltiltás-követés:** a kártya-események játékos-szinten
-töltődnek (API-Football, `data/cards.json`); piros lap, illetve két halmozott
-sárga a következő mérkőzésre eltiltást jelent (egyszerűsített FIFA-szabály; a
-sárgák negyeddöntő utáni törlése kézzel kezelendő). Az eltiltottak listája az
-elemzésbe kerül, és ha az érintett a csapat kulcsjátékosai között van, 25
-Elo-pont/fő (legfeljebb 50) levonás érvényesül — heurisztikus, sapkázott érték.
+**Automatikus eltiltás-követés + kézi hiányzás-csatorna:** a kártya-események
+játékos-szinten töltődnek (API-Football, `data/cards.json`); piros lap, illetve
+két halmozott sárga a következő mérkőzésre eltiltást jelent (egyszerűsített
+FIFA-szabály; a sárgák negyeddöntő utáni törlése kézzel kezelendő). Az
+eltiltottak/hiányzók listája az elemzésbe kerül, **és a valószínűségeket is
+mozgatja** Elo-levonáson keresztül:
+
+- eltiltott **kulcsjátékos** (a `players` listában): −25 Elo;
+- eltiltott, de **nem listás** játékos: −12 Elo (korábban 0 volt — egy
+  eltiltott kezdő sem „ingyenes");
+- **kézi hiányzás** a `teams.json` `out` mezőjéből (sérülés, késői kiesés):
+  `"out": ["Név"]` → default −25 Elo, vagy `{"name":"Név","elo":30}` explicit
+  súllyal; ez nem függ a kulcsjátékos-listától.
+
+A levonások játékosonként összegződnek (egy játékos több ok esetén sem
+duplázódik — a legnagyobb súly számít), csapatonként legfeljebb −60 Elo-ig.
+Mindezek heurisztikus, egy helyen (`ratings.py`) hangolható értékek: a torna
+előtti adatban nincs per-játékos hiányzás-címke, így a harness-ben **nem
+backtestelhetők** — a lefedettséget és a szöveg↔szám konzisztenciát javítják,
+nem a hitelesített kalibrációt.
 
 ## 9. Párharc-réteg és játékos-szintű adatok
 

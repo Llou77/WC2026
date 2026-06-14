@@ -71,8 +71,14 @@ Minden mező opcionális a `gh`/`ga` páron kívül; `et` = 120 percig tartott
 **xG-pontosítás** — `data/stats_overlay.json` ugyanezzel a sémával; a fetch
 minden futáskor automatikusan ráteríti az API-adatokra.
 
-**Hírek** — `data/teams.json` → `news` mező: az elemzésekbe kerül. Kemény
-hírhatás (kulcsjátékos kiesése) az `elo` kézi módosításával árazható.
+**Hírek + hiányzók** — `data/teams.json`:
+- `news` (szabad szöveg): az elemzésekbe kerül, számot nem mozdít.
+- `out` (strukturált hiányzás — sérülés, késői kiesés): **a valószínűségeket
+  is mozgatja**. Formátum: `"out": ["Pedri"]` (default −25 Elo) vagy súllyal
+  `"out": [{"name":"Pedri","elo":40}]`. Az eltiltások a `cards.json`-ból
+  automatikusan jönnek; az `out` a kártyával nem detektálható hiányzásokra van.
+  Csapatonkénti plafon −60 Elo; a magnitúdók a `model/ratings.py` tetején
+  hangolhatók (nem backtestelt heurisztika).
 
 **Erősség-profilok** — `data/lineups.json`: csapatonként
 [kapus, védelem, középpálya, támadás] 1–10; becslések, szabadon átírhatók.
