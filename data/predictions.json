@@ -134,7 +134,7 @@
     "Csehország tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Dél-Afrika tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 1 találkozó — Csehország 0 győzelem, 1 döntetlen, 0 vereség; legutóbb 1997-ben (Confederations Cup): Csehország 2–2 Dél-Afrika. Csehország formája a torna előtti 8 mérkőzésen: 4 győzelem, 3 döntetlen, 1 vereség, 19–8 gólkülönbség. Dél-Afrika formája a torna előtti 8 mérkőzésen: 3 győzelem, 2 döntetlen, 3 vereség, 9–9 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (A): Csehország jelenleg/várhatóan 3. (2.3 pont), Dél-Afrika 4. (1.9 pont). Dél-Afrika kerethiánya erre a mérkőzésre — eltiltva: Themba Zwane, Sphephelo Sithole.",
+    "Csoporthelyzet (A): Csehország jelenleg/várhatóan 3. (2.3 pont), Dél-Afrika 4. (1.9 pont). Dél-Afrika kerethiánya erre a mérkőzésre — eltiltva: Sphephelo Sithole, Themba Zwane.",
     "Keretinformációk, aktualitások — Dél-Afrika: Sithole és Zwane eltiltva a Csehország elleni mérkőzésre a nyitányon kapott piros lapok miatt.",
     "Modellverdikt: Csehország győzelmi valószínűsége 46%, a döntetlené 30%, Dél-Afrika győzelméé 24%. A legvalószínűbb kimenetel Csehország győzelme (46%), ezen belül a legvalószínűbb végeredmény 1–0 (11.3%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.8%), 1–0 (11.3%), 0–0 (9.8%). Indoklás: a becslés alapja a várható gólszám-pár (1.49, illetve 1.01), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 44%."
    ],
@@ -286,7 +286,7 @@
     "Dél-Afrika tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Dél-Korea tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — A két válogatott tétmérkőzésen még nem találkozott a nyilvántartott történelemben. Dél-Afrika formája a torna előtti 8 mérkőzésen: 3 győzelem, 2 döntetlen, 3 vereség, 9–9 gólkülönbség. Dél-Korea formája a torna előtti 8 mérkőzésen: 5 győzelem, 0 döntetlen, 3 vereség, 11–10 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (A): Dél-Afrika jelenleg/várhatóan 4. (1.9 pont), Dél-Korea 2. (5.9 pont). Dél-Afrika kerethiánya erre a mérkőzésre — eltiltva: Themba Zwane, Sphephelo Sithole.",
+    "Csoporthelyzet (A): Dél-Afrika jelenleg/várhatóan 4. (1.9 pont), Dél-Korea 2. (5.9 pont). Dél-Afrika kerethiánya erre a mérkőzésre — eltiltva: Sphephelo Sithole, Themba Zwane.",
     "Keretinformációk, aktualitások — Dél-Afrika: Sithole és Zwane eltiltva a Csehország elleni mérkőzésre a nyitányon kapott piros lapok miatt.",
     "Modellverdikt: Dél-Afrika győzelmi valószínűsége 15%, a döntetlené 27%, Dél-Korea győzelméé 58%. A legvalószínűbb kimenetel Dél-Korea győzelme (58%), ezen belül a legvalószínűbb végeredmény 0–1 (13.9%). Az eloszlás egészének legsűrűbb pontjai: 0–1 (13.9%), 1–1 (13.1%), 0–2 (12.2%). Indoklás: a becslés alapja a várható gólszám-pár (0.73, illetve 1.70), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 43%, 2,5 gól feletti összgólszám 42%."
    ],
@@ -3480,7 +3480,7 @@
    "conf_score": 0.262,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.1674,
+   "pair_share": 0.1691,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Dél-Korea: Technikás középpálya, veszélyes kontrák; a védelem Kim Min-jaéra épül. Kanada: Atletikus, intenzív letámadás; hazai közönség előtt extra lendület.",
@@ -3532,7 +3532,7 @@
    "conf_score": 0.546,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1078,
+   "pair_share": 0.1052,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Németország mérhető, de nem behozhatatlan előnnyel rendelkezik; Svédország szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Németország: Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel. Svédország: Pótselejtezőn keresztül kvalifikált; a Gyökeres–Isak támadópáros a mezőny egyik legmagasabb egyéni minőségét képviseli.",
@@ -3584,7 +3584,7 @@
    "conf_score": 0.415,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.1598,
+   "pair_share": 0.1557,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem. Marokkó: A 2022-es elődöntős váz együtt maradt: betonvédelem, halálos kontrák.",
@@ -3636,7 +3636,7 @@
    "conf_score": 0.603,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1932,
+   "pair_share": 0.1875,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Brazília: Egyéni minőségben kiemelkedő szélső játék, Ancelotti alatt pragmatikusabb szerkezet. Japán: Magas intenzitás, gyors szélső rotációk; nagy csapatok ellen is bizonyított.",
@@ -3688,7 +3688,7 @@
    "conf_score": 0.77,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.0457,
+   "pair_share": 0.0468,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Franciaország kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Skócia eredményes szereplése jelentős meglepetést jelentene.",
     "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Skócia: Középpályán letámadó, pontrúgás-erős brit stílus; 1998 óta első VB-jén.",
@@ -3740,7 +3740,7 @@
    "conf_score": 0.515,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.2021,
+   "pair_share": 0.2042,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Norvégia mérhető, de nem behozhatatlan előnnyel rendelkezik; Elefántcsontpart szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Elefántcsontpart: Afrikai bajnoki rutin (2024), fizikális középpálya, gyors szélsők. Norvégia: Haaland 16 gólt lőtt a selejtezőben; direkt, gólerős gépezet, 1998 óta első VB.",
@@ -3792,7 +3792,7 @@
    "conf_score": 0.357,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.0435,
+   "pair_share": 0.0441,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Mexikó: Hazai pályán nyomást gyakorló, labdabirtoklásra törekvő csapat; az Azteca-faktor mérhető előny. Szenegál: Atletikus, átmenetekben elsöprő; Afrika legstabilabb válogatottja.",
@@ -3847,7 +3847,7 @@
    "conf_score": 0.591,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0499,
+   "pair_share": 0.0529,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Anglia mérhető, de nem behozhatatlan előnnyel rendelkezik; Ecuador szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység. Ecuador: A selejtezők egyik legjobb védelme; Caicedo köré épülő, érett csapat.",
@@ -3899,7 +3899,7 @@
    "conf_score": 0.586,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1019,
+   "pair_share": 0.0987,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Egyesült Államok felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball. Bosznia-Hercegovina: Rutinos mag, beadásokra és Džeko fejjátékára építő támadójáték.",
@@ -3951,7 +3951,7 @@
    "conf_score": 0.646,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.0253,
+   "pair_share": 0.0267,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Belgium mérhető, de nem behozhatatlan előnnyel rendelkezik; Szaúd-Arábia szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Belgium: Generációváltás Garcia alatt: Doku-féle robbanékonyság, De Bruyne rutinja. Szaúd-Arábia: Technikás, labdabirtoklásra törekvő; nagy skalpra is képes (Argentína 2022).",
@@ -4003,7 +4003,7 @@
    "conf_score": 0.446,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.1994,
+   "pair_share": 0.1999,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Kolumbia: Elo-alapon top-7 erő: hosszú veretlenségi sorozat, Díaz csúcsformában. Horvátország: Az örök tornacsapat: Modrić utolsó VB-je, kontrollált középpálya.",
@@ -4054,7 +4054,7 @@
    "conf_score": 0.77,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.332,
+   "pair_share": 0.3255,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Spanyolország javára; Ausztria pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
     "Játékkép — Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció. Ausztria: Rangnick-pressing: a mezőny egyik legintenzívebb letámadása.",
@@ -4106,7 +4106,7 @@
    "conf_score": 0.562,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.051,
+   "pair_share": 0.0507,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Svájc felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Svájc: Kiegyensúlyozott, taktikailag fegyelmezett; tornákon rendre felülteljesít. Irán: Rutinos, kontrákra építő csapat — de a felkészülése súlyosan sérült.",
@@ -4159,7 +4159,7 @@
    "conf_score": 0.789,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.328,
+   "pair_share": 0.333,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Argentína mérhető, de nem behozhatatlan előnnyel rendelkezik; Uruguay szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment. Uruguay: Bielsa-féle intenzív letámadás, kiváló egyéni minőség minden csapatrészben.",
@@ -4211,7 +4211,7 @@
    "conf_score": 0.674,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.0216,
+   "pair_share": 0.0188,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Portugália felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Portugália: Nemzetek Ligája-győztes mag; széles, kiegyensúlyozott keret, jelentős tornarutin. Algéria: Technikás, kreatív támadósor; tornaformája hullámzó.",
@@ -4262,7 +4262,7 @@
    "conf_score": 0.39,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.1664,
+   "pair_share": 0.1682,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Ausztrália mérhető, de nem behozhatatlan előnnyel rendelkezik; Egyiptom szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Ausztrália: Szervezett mélyvédekezés, pontrúgások és bedobás-variációk. Egyiptom: Salah–Marmoush támadósor, mögötte konzervatív, mélyen védekező blokk.",
@@ -4314,7 +4314,7 @@
    "conf_score": 0.655,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.1991,
+   "pair_share": 0.2014,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Franciaország felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Németország: Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel. Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n.",
@@ -4366,7 +4366,7 @@
    "conf_score": 0.576,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0692,
+   "pair_share": 0.0724,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Hollandia mérhető, de nem behozhatatlan előnnyel rendelkezik; Dél-Korea szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Dél-Korea: Technikás középpálya, veszélyes kontrák; a védelem Kim Min-jaéra épül. Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem.",
@@ -4470,7 +4470,7 @@
    "conf_score": 0.481,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1858,
+   "pair_share": 0.1947,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Anglia mérhető, de nem behozhatatlan előnnyel rendelkezik; Mexikó szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Mexikó: Hazai pályán nyomást gyakorló, labdabirtoklásra törekvő csapat; az Azteca-faktor mérhető előny. Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység.",
@@ -4525,7 +4525,7 @@
    "conf_score": 0.652,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.1431,
+   "pair_share": 0.1456,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Spanyolország felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Kolumbia: Elo-alapon top-7 erő: hosszú veretlenségi sorozat, Díaz csúcsformában. Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció.",
@@ -4577,7 +4577,7 @@
    "conf_score": 0.425,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.1205,
+   "pair_share": 0.1172,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball. Belgium: Generációváltás Garcia alatt: Doku-féle robbanékonyság, De Bruyne rutinja.",
@@ -4629,7 +4629,7 @@
    "conf_score": 0.77,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.199,
+   "pair_share": 0.1961,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Argentína kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Ausztrália eredményes szereplése jelentős meglepetést jelentene.",
     "Játékkép — Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment. Ausztrália: Szervezett mélyvédekezés, pontrúgások és bedobás-variációk.",
@@ -4681,7 +4681,7 @@
    "conf_score": 0.574,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0929,
+   "pair_share": 0.0967,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Portugália mérhető, de nem behozhatatlan előnnyel rendelkezik; Svájc szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Svájc: Kiegyensúlyozott, taktikailag fegyelmezett; tornákon rendre felülteljesít. Portugália: Nemzetek Ligája-győztes mag; széles, kiegyensúlyozott keret, jelentős tornarutin.",
@@ -4733,7 +4733,7 @@
    "conf_score": 0.602,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0614,
+   "pair_share": 0.0629,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Franciaország felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem.",
@@ -4785,7 +4785,7 @@
    "conf_score": 0.69,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.1104,
+   "pair_share": 0.1083,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Spanyolország javára; Egyesült Államok pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
     "Játékkép — Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció. Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball.",
@@ -4837,7 +4837,7 @@
    "conf_score": 0.469,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0655,
+   "pair_share": 0.0613,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Brazília: Egyéni minőségben kiemelkedő szélső játék, Ancelotti alatt pragmatikusabb szerkezet. Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység.",
@@ -4889,7 +4889,7 @@
    "conf_score": 0.588,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1307,
+   "pair_share": 0.127,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Argentína mérhető, de nem behozhatatlan előnnyel rendelkezik; Portugália szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment. Portugália: Nemzetek Ligája-győztes mag; széles, kiegyensúlyozott keret, jelentős tornarutin.",
@@ -4940,7 +4940,7 @@
    "conf_score": 0.502,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0891,
+   "pair_share": 0.0947,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció.",
@@ -4992,7 +4992,7 @@
    "conf_score": 0.527,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.0743,
+   "pair_share": 0.0777,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység. Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment.",
@@ -5094,7 +5094,7 @@
    "conf_score": 0.423,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.0753,
+   "pair_share": 0.0737,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció. Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment.",
@@ -5111,436 +5111,436 @@
   "runs": 10000,
   "probabilities": {
    "MEX": {
-    "r32": 0.9929,
-    "r16": 0.5633,
-    "qf": 0.2341,
-    "sf": 0.084,
-    "final": 0.0271,
-    "champion": 0.0079,
-    "group_win": 0.684
+    "r32": 0.9941,
+    "r16": 0.5934,
+    "qf": 0.2515,
+    "sf": 0.0896,
+    "final": 0.0268,
+    "champion": 0.0072,
+    "group_win": 0.679
    },
    "RSA": {
-    "r32": 0.2542,
-    "r16": 0.0783,
-    "qf": 0.0167,
-    "sf": 0.0028,
-    "final": 0.0001,
-    "champion": 0.0001,
-    "group_win": 0.0061
+    "r32": 0.2644,
+    "r16": 0.0867,
+    "qf": 0.02,
+    "sf": 0.0031,
+    "final": 0.0007,
+    "champion": 0.0,
+    "group_win": 0.0087
    },
    "KOR": {
-    "r32": 0.9571,
-    "r16": 0.4973,
-    "qf": 0.1767,
-    "sf": 0.0535,
-    "final": 0.0147,
-    "champion": 0.004,
-    "group_win": 0.2923
+    "r32": 0.96,
+    "r16": 0.5013,
+    "qf": 0.174,
+    "sf": 0.0514,
+    "final": 0.0145,
+    "champion": 0.0039,
+    "group_win": 0.296
    },
    "CZE": {
-    "r32": 0.4109,
-    "r16": 0.1515,
-    "qf": 0.0434,
-    "sf": 0.0094,
-    "final": 0.0022,
-    "champion": 0.0005,
-    "group_win": 0.0176
+    "r32": 0.4026,
+    "r16": 0.1482,
+    "qf": 0.0449,
+    "sf": 0.0064,
+    "final": 0.0015,
+    "champion": 0.0004,
+    "group_win": 0.0163
    },
    "CAN": {
-    "r32": 0.7934,
-    "r16": 0.3763,
-    "qf": 0.13,
-    "sf": 0.0343,
-    "final": 0.0075,
-    "champion": 0.0014,
-    "group_win": 0.3285
+    "r32": 0.7796,
+    "r16": 0.3656,
+    "qf": 0.1227,
+    "sf": 0.0302,
+    "final": 0.0084,
+    "champion": 0.0017,
+    "group_win": 0.3153
    },
    "BIH": {
-    "r32": 0.6105,
-    "r16": 0.2043,
-    "qf": 0.0537,
-    "sf": 0.01,
-    "final": 0.0022,
-    "champion": 0.0005,
-    "group_win": 0.1552
+    "r32": 0.6084,
+    "r16": 0.1976,
+    "qf": 0.0503,
+    "sf": 0.0093,
+    "final": 0.0023,
+    "champion": 0.0003,
+    "group_win": 0.1539
    },
    "QAT": {
-    "r32": 0.4231,
+    "r32": 0.4324,
     "r16": 0.114,
-    "qf": 0.0223,
-    "sf": 0.0031,
-    "final": 0.0005,
+    "qf": 0.0257,
+    "sf": 0.0044,
+    "final": 0.0004,
     "champion": 0.0,
-    "group_win": 0.0831
+    "group_win": 0.0846
    },
    "SUI": {
-    "r32": 0.8358,
-    "r16": 0.4977,
-    "qf": 0.2224,
-    "sf": 0.0882,
-    "final": 0.0345,
-    "champion": 0.0124,
-    "group_win": 0.4332
+    "r32": 0.8394,
+    "r16": 0.5013,
+    "qf": 0.2279,
+    "sf": 0.0846,
+    "final": 0.032,
+    "champion": 0.0115,
+    "group_win": 0.4462
    },
    "BRA": {
-    "r32": 0.9642,
-    "r16": 0.6029,
-    "qf": 0.3862,
-    "sf": 0.22,
-    "final": 0.106,
-    "champion": 0.0505,
-    "group_win": 0.5101
+    "r32": 0.9669,
+    "r16": 0.6038,
+    "qf": 0.3912,
+    "sf": 0.2208,
+    "final": 0.1035,
+    "champion": 0.0509,
+    "group_win": 0.5123
    },
    "MAR": {
-    "r32": 0.9234,
-    "r16": 0.4452,
-    "qf": 0.2317,
-    "sf": 0.1014,
-    "final": 0.0357,
-    "champion": 0.0126,
-    "group_win": 0.3125
+    "r32": 0.9278,
+    "r16": 0.4564,
+    "qf": 0.2336,
+    "sf": 0.0962,
+    "final": 0.0355,
+    "champion": 0.0128,
+    "group_win": 0.3195
    },
    "HAI": {
-    "r32": 0.0444,
-    "r16": 0.0062,
-    "qf": 0.0007,
-    "sf": 0.0,
-    "final": 0.0,
+    "r32": 0.0429,
+    "r16": 0.0063,
+    "qf": 0.0006,
+    "sf": 0.0001,
+    "final": 0.0001,
     "champion": 0.0,
     "group_win": 0.0014
    },
    "SCO": {
-    "r32": 0.8541,
-    "r16": 0.294,
-    "qf": 0.1034,
-    "sf": 0.0304,
-    "final": 0.0088,
-    "champion": 0.0017,
-    "group_win": 0.176
+    "r32": 0.8491,
+    "r16": 0.2845,
+    "qf": 0.102,
+    "sf": 0.0297,
+    "final": 0.0072,
+    "champion": 0.0013,
+    "group_win": 0.1668
    },
    "USA": {
-    "r32": 0.9924,
-    "r16": 0.6382,
-    "qf": 0.3491,
-    "sf": 0.1288,
-    "final": 0.0569,
-    "champion": 0.0201,
-    "group_win": 0.6397
+    "r32": 0.9913,
+    "r16": 0.6288,
+    "qf": 0.3441,
+    "sf": 0.127,
+    "final": 0.057,
+    "champion": 0.0219,
+    "group_win": 0.6411
    },
    "PAR": {
-    "r32": 0.2332,
-    "r16": 0.0743,
+    "r32": 0.2248,
+    "r16": 0.0739,
     "qf": 0.0196,
-    "sf": 0.0061,
-    "final": 0.0017,
+    "sf": 0.0063,
+    "final": 0.0023,
     "champion": 0.0003,
-    "group_win": 0.0088
+    "group_win": 0.0085
    },
    "AUS": {
-    "r32": 0.9673,
-    "r16": 0.5302,
-    "qf": 0.1917,
-    "sf": 0.0614,
-    "final": 0.0225,
-    "champion": 0.0069,
-    "group_win": 0.3226
+    "r32": 0.9682,
+    "r16": 0.5264,
+    "qf": 0.1925,
+    "sf": 0.0577,
+    "final": 0.0194,
+    "champion": 0.0061,
+    "group_win": 0.3241
    },
    "TUR": {
-    "r32": 0.4787,
-    "r16": 0.2019,
-    "qf": 0.0787,
-    "sf": 0.03,
-    "final": 0.0097,
-    "champion": 0.0029,
-    "group_win": 0.0289
+    "r32": 0.4951,
+    "r16": 0.2109,
+    "qf": 0.084,
+    "sf": 0.0325,
+    "final": 0.0101,
+    "champion": 0.0031,
+    "group_win": 0.0263
    },
    "GER": {
-    "r32": 0.9981,
-    "r16": 0.5824,
-    "qf": 0.2752,
-    "sf": 0.1505,
-    "final": 0.0579,
-    "champion": 0.0228,
-    "group_win": 0.6442
+    "r32": 0.9976,
+    "r16": 0.5875,
+    "qf": 0.2703,
+    "sf": 0.147,
+    "final": 0.0584,
+    "champion": 0.0222,
+    "group_win": 0.6477
    },
    "CUW": {
-    "r32": 0.0303,
-    "r16": 0.0037,
-    "qf": 0.0003,
+    "r32": 0.0305,
+    "r16": 0.0041,
+    "qf": 0.0005,
     "sf": 0.0,
     "final": 0.0,
     "champion": 0.0,
-    "group_win": 0.0007
+    "group_win": 0.0004
    },
    "CIV": {
-    "r32": 0.9877,
-    "r16": 0.3867,
-    "qf": 0.1273,
-    "sf": 0.0485,
-    "final": 0.0151,
-    "champion": 0.0045,
-    "group_win": 0.3264
+    "r32": 0.9859,
+    "r16": 0.3919,
+    "qf": 0.131,
+    "sf": 0.0478,
+    "final": 0.0126,
+    "champion": 0.0039,
+    "group_win": 0.3245
    },
    "ECU": {
-    "r32": 0.7944,
-    "r16": 0.4006,
-    "qf": 0.2019,
-    "sf": 0.0807,
-    "final": 0.0314,
-    "champion": 0.0123,
-    "group_win": 0.0287
+    "r32": 0.7945,
+    "r16": 0.4151,
+    "qf": 0.212,
+    "sf": 0.0924,
+    "final": 0.0376,
+    "champion": 0.0136,
+    "group_win": 0.0274
    },
    "NED": {
-    "r32": 0.9239,
-    "r16": 0.5367,
-    "qf": 0.3354,
-    "sf": 0.1745,
-    "final": 0.0767,
-    "champion": 0.0333,
-    "group_win": 0.398
+    "r32": 0.9266,
+    "r16": 0.5294,
+    "qf": 0.3243,
+    "sf": 0.1668,
+    "final": 0.0769,
+    "champion": 0.0315,
+    "group_win": 0.3845
    },
    "JPN": {
-    "r32": 0.8938,
-    "r16": 0.4413,
-    "qf": 0.2292,
-    "sf": 0.1015,
-    "final": 0.036,
-    "champion": 0.0128,
-    "group_win": 0.2981
+    "r32": 0.8939,
+    "r16": 0.443,
+    "qf": 0.2328,
+    "sf": 0.1066,
+    "final": 0.0404,
+    "champion": 0.0139,
+    "group_win": 0.3042
    },
    "SWE": {
-    "r32": 0.966,
-    "r16": 0.3787,
-    "qf": 0.1531,
-    "sf": 0.0477,
-    "final": 0.0145,
+    "r32": 0.9672,
+    "r16": 0.3684,
+    "qf": 0.1534,
+    "sf": 0.0501,
+    "final": 0.014,
     "champion": 0.0034,
-    "group_win": 0.2986
+    "group_win": 0.3058
    },
    "TUN": {
-    "r32": 0.0714,
-    "r16": 0.0157,
-    "qf": 0.0027,
-    "sf": 0.0002,
-    "final": 0.0,
-    "champion": 0.0,
-    "group_win": 0.0053
-   },
-   "BEL": {
-    "r32": 0.8729,
-    "r16": 0.4921,
-    "qf": 0.2015,
-    "sf": 0.0643,
-    "final": 0.0223,
-    "champion": 0.0072,
-    "group_win": 0.4658
-   },
-   "EGY": {
-    "r32": 0.7218,
-    "r16": 0.2788,
-    "qf": 0.0744,
-    "sf": 0.0157,
-    "final": 0.0038,
-    "champion": 0.0008,
-    "group_win": 0.2335
-   },
-   "IRN": {
-    "r32": 0.6166,
-    "r16": 0.2542,
-    "qf": 0.0765,
-    "sf": 0.0195,
-    "final": 0.0052,
-    "champion": 0.0014,
-    "group_win": 0.2083
-   },
-   "NZL": {
-    "r32": 0.4034,
-    "r16": 0.105,
-    "qf": 0.0192,
-    "sf": 0.0033,
-    "final": 0.0005,
-    "champion": 0.0,
-    "group_win": 0.0924
-   },
-   "ESP": {
-    "r32": 0.9666,
-    "r16": 0.7286,
-    "qf": 0.5355,
-    "sf": 0.4198,
-    "final": 0.3052,
-    "champion": 0.2046,
-    "group_win": 0.7239
-   },
-   "CPV": {
-    "r32": 0.4146,
-    "r16": 0.0677,
-    "qf": 0.0142,
-    "sf": 0.0023,
-    "final": 0.0001,
-    "champion": 0.0001,
-    "group_win": 0.0358
-   },
-   "KSA": {
-    "r32": 0.4868,
-    "r16": 0.1028,
-    "qf": 0.0266,
-    "sf": 0.0052,
-    "final": 0.0013,
-    "champion": 0.0002,
-    "group_win": 0.0566
-   },
-   "URU": {
-    "r32": 0.7606,
-    "r16": 0.3102,
-    "qf": 0.1559,
-    "sf": 0.0707,
-    "final": 0.0272,
-    "champion": 0.0081,
-    "group_win": 0.1837
-   },
-   "FRA": {
-    "r32": 0.9674,
-    "r16": 0.7553,
-    "qf": 0.5401,
-    "sf": 0.3815,
-    "final": 0.2185,
-    "champion": 0.1276,
-    "group_win": 0.6228
-   },
-   "SEN": {
-    "r32": 0.733,
-    "r16": 0.3962,
-    "qf": 0.1904,
-    "sf": 0.0792,
-    "final": 0.0314,
-    "champion": 0.0103,
-    "group_win": 0.1333
-   },
-   "IRQ": {
-    "r32": 0.1368,
-    "r16": 0.033,
-    "qf": 0.0068,
-    "sf": 0.0009,
-    "final": 0.0002,
-    "champion": 0.0,
-    "group_win": 0.0098
-   },
-   "NOR": {
-    "r32": 0.8434,
-    "r16": 0.5134,
-    "qf": 0.2789,
-    "sf": 0.1379,
-    "final": 0.0584,
-    "champion": 0.0244,
-    "group_win": 0.2341
-   },
-   "ARG": {
-    "r32": 0.9936,
-    "r16": 0.7356,
-    "qf": 0.5936,
-    "sf": 0.4296,
-    "final": 0.2991,
-    "champion": 0.1871,
-    "group_win": 0.8092
-   },
-   "ALG": {
-    "r32": 0.663,
-    "r16": 0.2062,
-    "qf": 0.0682,
-    "sf": 0.0213,
-    "final": 0.0063,
-    "champion": 0.0009,
-    "group_win": 0.0673
-   },
-   "AUT": {
-    "r32": 0.7789,
-    "r16": 0.2719,
-    "qf": 0.1106,
-    "sf": 0.0396,
-    "final": 0.0156,
-    "champion": 0.0048,
-    "group_win": 0.1185
-   },
-   "JOR": {
-    "r32": 0.1541,
-    "r16": 0.0246,
-    "qf": 0.0049,
+    "r32": 0.0704,
+    "r16": 0.0165,
+    "qf": 0.0036,
     "sf": 0.0006,
     "final": 0.0001,
     "champion": 0.0,
-    "group_win": 0.005
+    "group_win": 0.0055
    },
-   "POR": {
-    "r32": 0.9623,
-    "r16": 0.6308,
-    "qf": 0.3898,
-    "sf": 0.2094,
-    "final": 0.1127,
-    "champion": 0.0529,
-    "group_win": 0.4881
+   "BEL": {
+    "r32": 0.8749,
+    "r16": 0.4888,
+    "qf": 0.2019,
+    "sf": 0.0622,
+    "final": 0.0239,
+    "champion": 0.0067,
+    "group_win": 0.4656
    },
-   "COD": {
-    "r32": 0.2622,
-    "r16": 0.047,
-    "qf": 0.0095,
-    "sf": 0.0008,
-    "final": 0.0001,
+   "EGY": {
+    "r32": 0.724,
+    "r16": 0.2825,
+    "qf": 0.0754,
+    "sf": 0.0179,
+    "final": 0.0054,
+    "champion": 0.0011,
+    "group_win": 0.2291
+   },
+   "IRN": {
+    "r32": 0.6168,
+    "r16": 0.2525,
+    "qf": 0.0719,
+    "sf": 0.0164,
+    "final": 0.0048,
+    "champion": 0.001,
+    "group_win": 0.2117
+   },
+   "NZL": {
+    "r32": 0.4009,
+    "r16": 0.109,
+    "qf": 0.0213,
+    "sf": 0.0028,
+    "final": 0.0009,
     "champion": 0.0001,
-    "group_win": 0.0136
+    "group_win": 0.0936
    },
-   "UZB": {
-    "r32": 0.3398,
-    "r16": 0.0682,
-    "qf": 0.016,
-    "sf": 0.0034,
-    "final": 0.0002,
-    "champion": 0.0,
-    "group_win": 0.0208
+   "ESP": {
+    "r32": 0.9643,
+    "r16": 0.731,
+    "qf": 0.5353,
+    "sf": 0.4192,
+    "final": 0.2991,
+    "champion": 0.2027,
+    "group_win": 0.719
    },
-   "COL": {
-    "r32": 0.9642,
-    "r16": 0.6227,
-    "qf": 0.3721,
-    "sf": 0.2002,
-    "final": 0.1089,
-    "champion": 0.0508,
-    "group_win": 0.4775
+   "CPV": {
+    "r32": 0.4001,
+    "r16": 0.0648,
+    "qf": 0.0132,
+    "sf": 0.0026,
+    "final": 0.0004,
+    "champion": 0.0001,
+    "group_win": 0.0332
    },
-   "ENG": {
-    "r32": 0.97,
-    "r16": 0.6858,
-    "qf": 0.4443,
-    "sf": 0.2823,
-    "final": 0.1555,
-    "champion": 0.0807,
-    "group_win": 0.6172
-   },
-   "CRO": {
-    "r32": 0.9055,
-    "r16": 0.4998,
-    "qf": 0.2472,
-    "sf": 0.1368,
-    "final": 0.064,
-    "champion": 0.0268,
-    "group_win": 0.322
-   },
-   "GHA": {
-    "r32": 0.3368,
-    "r16": 0.0751,
-    "qf": 0.0188,
-    "sf": 0.0037,
+   "KSA": {
+    "r32": 0.4953,
+    "r16": 0.095,
+    "qf": 0.0243,
+    "sf": 0.0043,
     "final": 0.001,
     "champion": 0.0001,
-    "group_win": 0.0306
+    "group_win": 0.058
+   },
+   "URU": {
+    "r32": 0.7602,
+    "r16": 0.31,
+    "qf": 0.1542,
+    "sf": 0.07,
+    "final": 0.0274,
+    "champion": 0.0081,
+    "group_win": 0.1898
+   },
+   "FRA": {
+    "r32": 0.9663,
+    "r16": 0.7473,
+    "qf": 0.5471,
+    "sf": 0.387,
+    "final": 0.2246,
+    "champion": 0.1256,
+    "group_win": 0.6196
+   },
+   "SEN": {
+    "r32": 0.7207,
+    "r16": 0.3832,
+    "qf": 0.1799,
+    "sf": 0.0767,
+    "final": 0.0296,
+    "champion": 0.0096,
+    "group_win": 0.1323
+   },
+   "IRQ": {
+    "r32": 0.1334,
+    "r16": 0.0331,
+    "qf": 0.006,
+    "sf": 0.001,
+    "final": 0.0,
+    "champion": 0.0,
+    "group_win": 0.0076
+   },
+   "NOR": {
+    "r32": 0.8548,
+    "r16": 0.5219,
+    "qf": 0.2816,
+    "sf": 0.1413,
+    "final": 0.0596,
+    "champion": 0.0216,
+    "group_win": 0.2405
+   },
+   "ARG": {
+    "r32": 0.9939,
+    "r16": 0.7347,
+    "qf": 0.5865,
+    "sf": 0.4272,
+    "final": 0.2985,
+    "champion": 0.1905,
+    "group_win": 0.8167
+   },
+   "ALG": {
+    "r32": 0.6552,
+    "r16": 0.1964,
+    "qf": 0.0663,
+    "sf": 0.0213,
+    "final": 0.0066,
+    "champion": 0.0017,
+    "group_win": 0.0633
+   },
+   "AUT": {
+    "r32": 0.7678,
+    "r16": 0.2598,
+    "qf": 0.1043,
+    "sf": 0.0407,
+    "final": 0.0132,
+    "champion": 0.0039,
+    "group_win": 0.1138
+   },
+   "JOR": {
+    "r32": 0.1672,
+    "r16": 0.0268,
+    "qf": 0.0048,
+    "sf": 0.0006,
+    "final": 0.0,
+    "champion": 0.0,
+    "group_win": 0.0062
+   },
+   "POR": {
+    "r32": 0.9597,
+    "r16": 0.6347,
+    "qf": 0.3847,
+    "sf": 0.213,
+    "final": 0.1176,
+    "champion": 0.0589,
+    "group_win": 0.4875
+   },
+   "COD": {
+    "r32": 0.2678,
+    "r16": 0.0473,
+    "qf": 0.0095,
+    "sf": 0.0022,
+    "final": 0.0001,
+    "champion": 0.0001,
+    "group_win": 0.015
+   },
+   "UZB": {
+    "r32": 0.3414,
+    "r16": 0.0726,
+    "qf": 0.0145,
+    "sf": 0.0035,
+    "final": 0.0005,
+    "champion": 0.0,
+    "group_win": 0.021
+   },
+   "COL": {
+    "r32": 0.9605,
+    "r16": 0.6284,
+    "qf": 0.3743,
+    "sf": 0.2044,
+    "final": 0.1071,
+    "champion": 0.0483,
+    "group_win": 0.4765
+   },
+   "ENG": {
+    "r32": 0.9671,
+    "r16": 0.686,
+    "qf": 0.4408,
+    "sf": 0.284,
+    "final": 0.1598,
+    "champion": 0.0883,
+    "group_win": 0.6262
+   },
+   "CRO": {
+    "r32": 0.9062,
+    "r16": 0.4941,
+    "qf": 0.2497,
+    "sf": 0.1317,
+    "final": 0.0565,
+    "champion": 0.0215,
+    "group_win": 0.3148
+   },
+   "GHA": {
+    "r32": 0.3412,
+    "r16": 0.0748,
+    "qf": 0.0196,
+    "sf": 0.0051,
+    "final": 0.0012,
+    "champion": 0.0001,
+    "group_win": 0.0323
    },
    "PAN": {
-    "r32": 0.3445,
-    "r16": 0.0736,
-    "qf": 0.0195,
-    "sf": 0.005,
-    "final": 0.0007,
-    "champion": 0.0002,
-    "group_win": 0.0302
+    "r32": 0.3467,
+    "r16": 0.0703,
+    "qf": 0.0204,
+    "sf": 0.0043,
+    "final": 0.0005,
+    "champion": 0.0001,
+    "group_win": 0.0267
    }
   }
  }

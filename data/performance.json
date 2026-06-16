@@ -5,5 +5,31 @@
  "brier_sum": 12.208702510000002,
  "hit_1x2_rate": 0.375,
  "hit_exact_rate": 0.062,
- "avg_brier": 0.763
+ "avg_brier": 0.763,
+ "brier_uniform": 0.6667,
+ "brier_backtest": 0.5894,
+ "skill_vs_uniform": -0.145,
+ "logloss": 1.199,
+ "mean_pick_conf": 0.578,
+ "calib_gap": -0.203,
+ "reliability": [
+  {
+   "band": "alacsony (&lt;45%)",
+   "n": 3,
+   "pred": 0.413,
+   "obs": 1.0
+  },
+  {
+   "band": "közepes (45–55%)",
+   "n": 5,
+   "pred": 0.522,
+   "obs": 0.0
+  },
+  {
+   "band": "magas (&gt;55%)",
+   "n": 8,
+   "pred": 0.674,
+   "obs": 0.375
+  }
+ ]
 }
