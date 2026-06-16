@@ -129,7 +129,13 @@ class Simulator:
                 gh, ga = o["gh"], o["ga"]
                 hw = gh > ga or (gh == ga and o.get("winner_home", True))
             else:
-                gh, ga = self._sample(h, a, m["venue_country"])
+                # altitude must match the per-match KO prediction: pass the
+                # venue city (e.g. Estadio Azteca, 2240 m) so adapted sides keep
+                # their edge in the sim too. Deliberately NOT passed: per-match
+                # suspension/injury elo_adj (one-match, short-lived — wrong to
+                # apply across a full-tournament run) and the MD3 "locked-fate"
+                # penalty (endogenous to each simulated table).
+                gh, ga = self._sample(h, a, m["venue_country"], None, m.get("venue"))
                 if gh != ga:
                     hw = gh > ga
                 else:
