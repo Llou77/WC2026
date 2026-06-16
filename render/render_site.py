@@ -184,12 +184,116 @@ def _mc_section(mc, teams, sims):
             'hosszabbítás/tizenegyes-modellt alkalmazza. A már lejátszott mérkőzések '
             'eredménye rögzített. Részletek: MODEL.md.</div></section>')
 
-def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0, perf=None):
+def _perf_section(perf):
+    n = perf["evaluated"]
+    hr = perf["hit_1x2_rate"]
+    se = (hr * (1 - hr) / n) ** 0.5 if n else 0.5   # binomial noise of the hit-rate
+    skill = perf.get("skill_vs_uniform", 0.0)
+    gap = perf.get("calib_gap", 0.0)
+    mc_conf = perf.get("mean_pick_conf", 0.0)
+    direction = "alulmagabiztos" if gap > 0 else "túlmagabiztos"
+    if abs(gap) <= max(se, 0.03):
+        verdict = (f"a tippek átlagos magabiztossága ({mc_conf*100:.0f}%) a tényleges "
+                   f"{hr*100:.0f}%-os találati arány ingadozásán belül van "
+                   f"(egyelőre jól kalibrált)")
+    elif abs(gap) <= 2 * se:
+        verdict = (f"enyhe jel {direction} irányba (átlag {mc_conf*100:.0f}% vs tény "
+                   f"{hr*100:.0f}%), de a {n} meccs még a zajtartományban van")
+    else:
+        verdict = (f"a modell {direction} — átlag {mc_conf*100:.0f}%-os magabiztosság "
+                   f"mellett {hr*100:.0f}% jött be, a mintán túlmutató eltérés")
+    skill_txt = f"+{skill*100:.0f}%" if skill >= 0 else f"{skill*100:.0f}%"
+    tr = ""
+    for b in perf.get("reliability", []):
+        tr += (f'<tr><td>{b["band"]}</td><td>{b["n"]}</td>'
+               f'<td>{b["pred"]*100:.0f}%</td><td>{b["obs"]*100:.0f}%</td></tr>')
+    table = (('<table class="st"><tr><th>Magabiztossági sáv</th><th>Meccs</th>'
+              '<th>Modell átlag</th><th>Tényleges</th></tr>' + tr + '</table>')
+             if tr else "")
+    caveat = ('<div class="note">Kis minta — a sávos bontás tájékoztató; a torna '
+              'előrehaladtával egyre megbízhatóbb. A Brier annál jobb, minél kisebb '
+              '(0 = tökéletes, 0.667 = egyenletes tipp).</div>' if n < 40 else "")
+    return (f'<section class="sect" id="rel"><h2 class="gh disp">Megbízhatóság'
+            f'<small>a modell saját pontossága az eddigi {n} lejátszott meccsen</small></h2>'
+            f'<p>Brier-pontszám <b>{perf["avg_brier"]:.3f}</b> '
+            f'(egyenletes tipp: {perf["brier_uniform"]:.3f}, backtest-elvárás: '
+            f'{perf["brier_backtest"]:.3f}) — <b>{skill_txt}</b> az egyenletes tipphez '
+            f'képest. Log-loss {perf["logloss"]:.3f}. Kalibráció: {verdict}.</p>'
+            f'{table}{caveat}</section>')
+
+
+def _surprise_section(entries, teams, seed_elo=None):
+    # "favourite/underdog" is judged by PRE-TOURNAMENT Elo (the consensus prior):
+    # a calibrated model always tips its *current* favourite, so the only honest
+    # surprises are relative to where the teams started.
+    elo = seed_elo or {c: t["elo"] for c, t in teams.items()}
+    rows = []
+    for e in entries:
+        if e.get("status") == "done" or not e.get("pred"):
+            continue
+        m = e["match"]; h, a = m["home"], m["away"]
+        if h not in teams or a not in teams:
+            continue
+        p = e["pred"]
+        eh, ea = elo[h], elo[a]
+        under, p_under = (a, p["p2"]) if eh >= ea else (h, p["p1"])
+        fav = h if under == a else a
+        if p["p1"] >= max(p["px"], p["p2"]):
+            tip = teams[h]["name"]
+        elif p["px"] >= p["p2"]:
+            tip = "döntetlen"
+        else:
+            tip = teams[a]["name"]
+        rows.append(dict(hn=teams[h]["name"], an=teams[a]["name"],
+                         under=teams[under]["name"], favn=teams[fav]["name"],
+                         p_under=p_under, p_draw=p["px"], tip=tip,
+                         tip_is_underdog=(tip == teams[under]["name"])))
+    if not rows:
+        return ""
+    sub = lambda t: f'<div style="font:700 15px Barlow;margin:18px 0 4px">{t}</div>'
+    ups = sorted(rows, key=lambda r: r["p_under"], reverse=True)[:8]
+    tr1 = "".join(f'<tr><td>{r["under"]}</td><td><b>{r["p_under"]*100:.0f}%</b></td>'
+                  f'<td>{r["favn"]}</td><td>{r["tip"]}</td></tr>' for r in ups)
+    dr = sorted(rows, key=lambda r: r["p_draw"], reverse=True)[:8]
+    tr2 = "".join(f'<tr><td>{r["hn"]} – {r["an"]}</td><td><b>{r["p_draw"]*100:.0f}%</b></td>'
+                  f'<td>{r["tip"]}</td></tr>' for r in dr)
+    bold = sorted((r for r in rows if r["tip_is_underdog"]),
+                  key=lambda r: r["p_under"], reverse=True)
+    tr3 = ("".join(f'<tr><td>{r["under"]}</td><td>{r["favn"]}</td>'
+                   f'<td><b>{r["p_under"]*100:.0f}%</b></td></tr>' for r in bold)
+           or '<tr><td colspan="3">A modell jelenleg minden hátralévő meccsen a '
+              'magasabb Elójú felet tartja favoritnak — nincs papírforma-ellenes tippje.</td></tr>')
+    return (
+        '<section class="sect" id="surprise"><h2 class="gh disp">Meglepetés-radar'
+        '<small>ahol a modell a legtöbb meglepetést látja — a tippek kalibráltak maradnak</small></h2>'
+        '<p>A meccsenkénti „tipp" mindig a legvalószínűbb <i>egyetlen</i> kimenet, ezért a '
+        'meglepetések esélye elrejtőzik benne (egy 33%-os döntetlen is láthatatlan, ha a '
+        'favorit 40%). Az „esélytelen"/„favorit" itt a <b>torna előtti</b> Elo szerint értendő — '
+        'egy kalibrált modell ugyanis mindig a <i>jelenlegi</i> favoritját tippeli, így valódi '
+        'meglepetés csak a kiindulóponthoz képest létezik.</p>'
+        + sub("Élő bravúrok — torna előtti esélytelenek a legnagyobb jelenlegi győzelmi eséllyel")
+        + '<table class="st"><tr><th>Torna előtti esélytelen</th><th>Győzelmi esély</th>'
+          '<th>Torna előtti favorit</th><th>Modell tippje</th></tr>' + tr1 + '</table>'
+        + sub("Döntetlen-figyelő — ahol a meglepő iksz a legvalószínűbb")
+        + '<table class="st"><tr><th>Mérkőzés</th><th>Döntetlen esélye</th>'
+          '<th>Modell tippje</th></tr>' + tr2 + '</table>'
+        + sub("Merész értékelések — ahol a modell a torna előtti esélytelent tippeli (megfordult a kép)")
+        + '<table class="st"><tr><th>A modell tippje</th><th>Torna előtti favorit</th>'
+          '<th>Esélye</th></tr>' + tr3 + '</table>'
+        '<div class="note">A „tipp" osztály-konzisztens módusz; a bravúr-/döntetlen-esélyek '
+        'a teljes 1X2-eloszlásból származnak. Ez megjelenítés, nem külön előrejelzés — és nem '
+        'jelent fogadási tanácsot.</div></section>')
+
+
+def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0, perf=None, seed_elo=None):
     groups = "ABCDEFGHIJKL"
     nav = '<button class="on" onclick="tab(\'today\',this)">Aktuális</button>'
     nav += "".join(f'<button onclick="tab(\'g{g}\',this)">{g} csoport</button>' for g in groups)
     nav += '<button onclick="tab(\'ko\',this)">Kieséses szakasz</button>'
     nav += '<button onclick="tab(\'mc\',this)">Esélyek</button>'
+    if perf and perf.get("evaluated"):
+        nav += '<button onclick="tab(\'rel\',this)">Megbízhatóság</button>'
+    nav += '<button onclick="tab(\'surprise\',this)">Meglepetés-radar</button>'
 
     by_group = {g: [] for g in groups}
     ko, upcoming = [], []
@@ -225,13 +329,18 @@ def render(entries, tables, teams, generated_at, applied_count, mc=None, sims=0,
               'eredmények alapján rögzíti.</div></section>')
     if mc:
         sects += _mc_section(mc, teams, sims)
+    if perf and perf.get("evaluated"):
+        sects += _perf_section(perf)
+    sects += _surprise_section(entries, teams, seed_elo)
 
     perf_line = ""
     if perf and perf.get("evaluated"):
         perf_line = (f' Modell-teljesítmény eddig: 1X2-találat {perf["hit_1x2"]}/'
-                     f'{perf["evaluated"]} ({perf["hit_1x2_rate"]*100:.0f}%), pontos eredmény '
-                     f'{perf["hit_exact"]}/{perf["evaluated"]}, Brier {perf["avg_brier"]:.3f} '
-                     f'(referencia: 0.667 = uniform).')
+                     f'{perf["evaluated"]} ({perf["hit_1x2_rate"]*100:.0f}%), Brier '
+                     f'{perf["avg_brier"]:.3f} (egyenletes 0.667, backtest-elvárás '
+                     f'{perf.get("brier_backtest", 0.589):.3f}; skill '
+                     f'{perf.get("skill_vs_uniform", 0)*100:+.0f}%) — részletes kalibráció '
+                     f'a „Megbízhatóság" fülön.')
     return f"""<!DOCTYPE html><html lang="hu"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VB 2026 — ML előrejelző</title>
