@@ -36,7 +36,13 @@ Terv:
 - [x] 30. Kiírt-módusz hiba javítva: a kártyatető „várható" kijelzése is az osztály-konzisztens tip mezőt használja (104 meccsből a kiírt döntetlen 18+ -> 1); döntetlen-kalibráció ellenőrizve: modell-átlag 25,7% = tényleges ~27%, nincs torzítás
 - [x] 31. Hiányzás-csatorna kiszélesítve (demonstrált hiba: a 3 valós eltiltás — Montes/Sithole/Zwane — eddig −0 Elo volt, mert nem voltak a 3 nevű kulcslistán). Most: nem-listás eltiltás −12, listás kulcsjátékos −25, kézi `out` (sérülés) csatorna a teams.json-ban (string vagy {name,elo}), játékosonkénti dedup, csapatonként −60 plafon; szöveg↔szám egyezik. Élesben tesztelve (Montes 4. meccs −1,3 pp MEX-győzelem; ESP out string+súly OK). Magnitúdók a ratings.py-ban hangolhatók, nem backtestelhetők.
 
-Aktuális állapot: KÉSZ (31). Folytatáshoz: eredmények a data/observed.json-ba
+- [x] 32. Élő megbízhatóság-műszer: a meccs-előtti predikciókra skill-score (uniform 0.667 + backtest-elvárás 0.589 viszonyában), log-loss, over/under-magabiztosság és magabiztossági sávonkénti reliability-bontás (performance.json + új „Megbízhatóság" fül). Zaj-tudatos kalibrációs ítélet (binomiális szóráshoz mérve) — kis mintán nincs hamis riasztás. Élő állás: 12 meccs, Brier 0.654 (skill +2%), egyelőre jól kalibrált. Mérőeszköz, a kimeneteket nem módosítja.
+
+- [x] 33. Korrektségi audit (simulate/standings/predict): a Monte Carlo a kieséses meccseket magaslat (venue_city) nélkül mintázta, miközben a meccsenkénti KO-predikció a magaslattal számol — inkonzisztencia javítva (2 Azteca KO-meccs: R32 #79, R16 #92). Hatás: adaptált csapatok mélyebbre jutása nő (MEX negyeddöntő 23,4%->25,1%, ECU elődöntő 8,1%->9,2%). Megerősítve, hogy a knockout flag csak összegző mezőt ad (a rácsot nem), és a MC azt maga reprodukálja; az eltiltás/locked-levonás MC-ből való kihagyása szándékos és dokumentált. Más valódi hiba nem találva.
+
+- [x] 34. Meglepetés-radar (új fül): a modell saját 1X2-eloszlásából kiemeli, hol a legélőbb a bravúr / a döntetlen / a papírforma-ellenes tipp — a predikciók módosítása NÉLKÜL. Kulcsdöntés: az 'esélytelen/favorit' a TORNA ELŐTTI (seed) Elo szerint értendő, mert egy kalibrált modell mindig a jelenlegi favoritját tippeli (élő Elóval a 'merész' lista tautologikusan üres). Felszínre hozza: Ausztrália 46% / USA 45% / Németország 38% a torna előtti favoritjuk ellen — a modell mindháromban az esélytelent tippeli. Megerősített tervezési igazság: 'izgalmasabb upset-tippek' = rosszabb kalibráció; a radar a MEGLÉVŐ jelet mutatja, nem gyárt újat.
+
+Aktuális állapot: KÉSZ (34). Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), kézi hiányzók a teams.json `out` mezőjébe, majd
 `python update.py`.
 

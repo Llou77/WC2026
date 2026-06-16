@@ -190,6 +190,17 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
    gólkülönbség-súlyozás formája a harness szerkezete miatt nem validálható —
    ezek konvenció szerinti értéken állnak. Protokoll és részletek:
    `backtest/REPORT.md`, újrafuttatás: `python backtest/backtest.py`.
+
+   **Élő megbízhatóság-műszer (a tornán):** a meccs-előtti (szivárgásmentes)
+   előrejelzéseket a lejátszott eredményekkel folyamatosan értékeli a
+   `data/performance.json` és az oldal „Megbízhatóság" füle: élő Brier az
+   egyenletes (0.667) és a backtest-elvárás (0.589) viszonyában, skill-score,
+   log-loss, valamint magabiztossági sávonkénti reliability-bontás. A
+   kalibrációs ítélet **zaj-tudatos**: a magabiztosság és a tényleges találati
+   arány eltérését a találati arány binomiális szórásához méri, így kis mintán
+   (a torna elején) nem ad hamis „rosszul kalibrált" riasztást, a torna
+   végére viszont a valós eltérés kimutatható. Ez mérőeszköz, nem új
+   modell-feltevés — a kimeneteket nem módosítja.
 1. **Nagy szórás**: a futballmeccs alacsony gólszámú, nagy zajú folyamat; a
    legvalószínűbb pontos eredmény tipikus valószínűsége 8–13%. A modell
    kalibrált eloszlást ad, nem determinisztikus jóslatot.
@@ -310,3 +321,29 @@ valószínűség a csoporttabellák „Tovább%" oszlopában is megjelenik. A
 szimulátor emellett minden kieséses mérkőzésre rögzíti az egyes párosítások
 előfordulási gyakoriságát; a vetített kártyákon ezért szerepel, hogy az adott
 párosítás a szimulációk hány százalékában jön létre.
+
+A szimuláció erősség-számítása a meccsenkénti előrejelzéssel **konzisztens**:
+ugyanazt a `ratings.predict` gól-rácsot mintázza, a fordulóprofil-offszettel és
+a magaslati előnnyel együtt — utóbbi a kieséses mérkőzésekre is (pl. az Estadio
+Aztecában játszott R32/R16), így a magaslathoz szokott csapatok ott is megtartják
+az előnyüket. Szándékosan **kimarad** a szimulációból a meccsenkénti
+eltiltás/sérülés-levonás (egy meccsre szól, rövid életű — hibás volna egy teljes
+tornára kiterjeszteni) és a 3. fordulós „biztos sors"-levonás (az minden
+szimulált tabellában máshogy dől el, tehát endogén).
+
+## 12. Meglepetés-radar (megjelenítés, nem predikció)
+
+Az oldal „Meglepetés-radar" füle a modell saját 1X2-eloszlásából emeli ki, hol a
+legélőbb (a) egy esélytelen győzelme, (b) egy meglepő döntetlen, és (c) ahol a
+modell a papírforma-esélytelent tippeli. Fontos tervezési döntés: az
+„esélytelen/favorit" megkülönböztetés a **torna előtti (kiinduló) Elo** szerint
+történik, nem a frissített érték szerint. Ennek oka elvi: egy kalibrált modell a
+meccsenkénti (osztály-konzisztens módusz) tippnél mindig a **jelenlegi**
+favoritját adja, így a jelenlegi erősséghez képest definíció szerint soha nincs
+„meglepő" tipp — valódi meglepetés csak a kiindulóponthoz (a konszenzus-prior
+közelítéséhez) képest értelmezhető. A radar tehát a már meglévő jelet teszi
+láthatóvá (a moduszra szűkített tipp elrejti a 30%+ döntetlen- vagy a közeli
+bravúr-esélyeket), és **nem** módosítja a valószínűségeket. Következmény, amit
+érdemes kimondani: a „tippeljen több meglepetést" igény matematikailag a
+kalibráció rontásával egyenértékű — a modell akkor jó, ha a favoritot adja, amikor
+az a legvalószínűbb; a radar ezt nem írja felül, csak kontextust ad mellé.

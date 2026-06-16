@@ -9,7 +9,7 @@ in chronological order (incremental Elo/att-def, no refitting), then every
 remaining match is re-predicted and the site is regenerated. Typical runtime
 is well under one second.
 """
-import copy, json, os, sys, datetime
+import copy, json, math, os, sys, datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from model import ratings, standings, analysis, simulate
@@ -61,6 +61,7 @@ def main():
         if a_.startswith("--sims="):
             sims = int(a_.split("=")[1])
     teams = {t["code"]: copy.deepcopy(t) for t in load("teams.json")}
+    seed_elo = {c: t["elo"] for c, t in teams.items()}   # pre-tournament Elo (for surprise radar)
     try:
         lines = load("lineups.json").get("lines", {})
         for c, ln in lines.items():
@@ -284,6 +285,11 @@ def main():
                 ts0 = p.get("tip") or p["top_scores"][0]
                 perf["hit_exact"] += (ts0["h"], ts0["a"]) == (r["gh"], r["ga"])
                 perf["brier_sum"] += sum((pp - oo) ** 2 for pp, oo in zip(probs, o))
+                p_top = max(probs)
+                perf.setdefault("_rel", []).append(
+                    (round(p_top, 4),
+                     int(probs.index(p_top) == o.index(1)),   # top-pick hit?
+                     round(probs[o.index(1)], 4)))            # prob of actual outcome
             e["analysis"] = [f"Végeredmény: {th['name']} {observed[key]['gh']}–"
                              f"{observed[key]['ga']} {ta['name']}. Az eredmény beépült a "
                              f"modellbe (Elo- és támadó/védő-frissítés)."]
@@ -362,15 +368,40 @@ def main():
         entries.append(e)
 
     if perf["evaluated"]:
-        perf["hit_1x2_rate"] = round(perf["hit_1x2"] / perf["evaluated"], 3)
-        perf["hit_exact_rate"] = round(perf["hit_exact"] / perf["evaluated"], 3)
-        perf["avg_brier"] = round(perf["brier_sum"] / perf["evaluated"], 4)
+        n = perf["evaluated"]
+        perf["hit_1x2_rate"] = round(perf["hit_1x2"] / n, 3)
+        perf["hit_exact_rate"] = round(perf["hit_exact"] / n, 3)
+        perf["avg_brier"] = round(perf["brier_sum"] / n, 4)
+        rel = perf.pop("_rel", [])
+        # --- live reliability instrument (no new model assumptions) ---
+        B_UNIFORM = 2.0 / 3.0           # Brier of an always-uniform 1X2 forecast
+        perf["brier_uniform"] = round(B_UNIFORM, 4)
+        perf["brier_backtest"] = 0.5894  # validated holdout expectation (MODEL.md)
+        perf["skill_vs_uniform"] = round(1 - perf["avg_brier"] / B_UNIFORM, 3)
+        eps = 1e-9
+        perf["logloss"] = round(sum(-math.log(max(eps, pa)) for _, _, pa in rel) / n, 3)
+        mean_conf = sum(pt for pt, _, _ in rel) / n
+        perf["mean_pick_conf"] = round(mean_conf, 3)
+        # calibration gap: observed hit-rate minus mean stated confidence of the
+        # pick; >0 = under-confident, <0 = over-confident.
+        perf["calib_gap"] = round(perf["hit_1x2_rate"] - mean_conf, 3)
+        bands = [(0.0, 0.45, "alacsony (&lt;45%)"),
+                 (0.45, 0.55, "közepes (45–55%)"),
+                 (0.55, 1.01, "magas (&gt;55%)")]
+        buckets = []
+        for lo, hi, lab in bands:
+            sel = [(pt, h) for pt, h, _ in rel if lo <= pt < hi]
+            if sel:
+                buckets.append({"band": lab, "n": len(sel),
+                                "pred": round(sum(pt for pt, _ in sel) / len(sel), 3),
+                                "obs": round(sum(h for _, h in sel) / len(sel), 3)})
+        perf["reliability"] = buckets
     with open(os.path.join(ROOT, "data", "performance.json"), "w", encoding="utf-8") as f:
         json.dump(perf, f, ensure_ascii=False, indent=1)
 
     # 5) render
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-    html_out = render(entries, tables, teams, now, applied, mc, sims, perf)
+    html_out = render(entries, tables, teams, now, applied, mc, sims, perf, seed_elo)
     out_path = os.path.join(ROOT, "index.html")
     with open(out_path + ".tmp", "w", encoding="utf-8") as f:
         f.write(html_out)

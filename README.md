@@ -97,7 +97,7 @@ data/matches.json           ← 104 meccs menetrendje
 data/observed.json          ← lejátszott meccsek adatai (generált + kézi)
 data/stats_overlay.json     ← kézi statisztika-felülírás
 data/predictions.json       ← gépi kimenet (predikciók + Monte Carlo)
-data/performance.json       ← önellenőrzés (1X2-találat, Brier)
+data/performance.json       ← élő megbízhatóság (Brier, skill, log-loss, kalibráció)
 data/player_form.json       ← csapatonkénti legjobb játékos (generált)
 model/ render/              ← modell és oldalgenerátor
 backtest/                   ← validáció + kalibráció (REPORT.md, újrafuttatható)
