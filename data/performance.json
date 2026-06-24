@@ -1,16 +1,16 @@
 {
- "evaluated": 44,
- "hit_1x2": 28,
+ "evaluated": 48,
+ "hit_1x2": 31,
  "hit_exact": 5,
- "brier_sum": 24.12161005999999,
- "hit_1x2_rate": 0.636,
- "hit_exact_rate": 0.114,
- "avg_brier": 0.5482,
+ "brier_sum": 25.74251370999999,
+ "hit_1x2_rate": 0.646,
+ "hit_exact_rate": 0.104,
+ "avg_brier": 0.5363,
  "brier_uniform": 0.6667,
  "brier_backtest": 0.5894,
- "skill_vs_uniform": 0.178,
- "logloss": 0.904,
- "mean_pick_conf": 0.593,
+ "skill_vs_uniform": 0.196,
+ "logloss": 0.886,
+ "mean_pick_conf": 0.603,
  "calib_gap": 0.043,
  "reliability": [
   {
@@ -27,9 +27,9 @@
   },
   {
    "band": "magas (&gt;55%)",
-   "n": 24,
-   "pred": 0.691,
-   "obs": 0.667
+   "n": 28,
+   "pred": 0.693,
+   "obs": 0.679
   }
  ]
 }
