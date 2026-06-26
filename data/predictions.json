@@ -973,98 +973,88 @@
   {
    "home_name": "Törökország",
    "away_name": "Egyesült Államok",
+   "status": "done",
+   "result": {
+    "gh": 3,
+    "ga": 2
+   },
    "pred": {
-    "lh": 0.8,
-    "la": 1.63,
-    "btts": 0.4526,
-    "over25": 0.42,
-    "p1": 0.1739,
-    "px": 0.2845,
-    "p2": 0.5415,
+    "lh": 0.93,
+    "la": 1.75,
+    "btts": 0.5086,
+    "over25": 0.4834,
+    "p1": 0.1887,
+    "px": 0.2687,
+    "p2": 0.5426,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1376
+      "p": 0.134
      },
      {
       "h": 0,
       "a": 1,
-      "p": 0.1329
+      "p": 0.1117
      },
      {
       "h": 0,
       "a": 2,
-      "p": 0.1116
+      "p": 0.101
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.1329
+     "p": 0.1117
     }
    },
-   "conf_score": 0.609,
-   "conf_label": "KÖZEPES",
-   "status": "sched",
    "analysis": [
-    "Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
-    "Játékkép — Törökország: Montella irányítása alatt kreatív, támadószellemű generáció; a csoport legmagasabb potenciálú nem kiemelt csapata. Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball.",
-    "Meghatározó játékosok — Törökország: Hakan Çalhanoğlu, Arda Güler, Kenan Yıldız; Egyesült Államok: Christian Pulisic, Weston McKennie, Matt Turner.",
-    "Törökország tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 2 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 5 találkozó — Törökország 2 győzelem, 1 döntetlen, 2 vereség; legutóbb 2025-ben (felkészülési): Törökország 2–1 Egyesült Államok. Törökország formája a torna előtti 8 mérkőzésen: 7 győzelem, 1 döntetlen, 0 vereség, 22–5 gólkülönbség. Egyesült Államok formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 16–15 gólkülönbség. Meglepetés-kockázati jelzés: az esélyes Egyesült Államok gyenge formában (1.62 pont/meccs) érkezett a tornára — a hasonló helyzetű VB-esélyesek 1990 óta a mérkőzéseik 24%-án kikaptak és további 24%-án döntetleneztek.",
-    "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (D): Törökország jelenleg/várhatóan 4. (0.8 pont), Egyesült Államok 1. (7.9 pont). Törökország csoportbeli sorsa már eldőlt — a modell rotációs/motivációs levonással számol. Egyesült Államok csoportbeli sorsa már eldőlt — a modell rotációs/motivációs levonással számol.",
-    "Modellverdikt: Törökország győzelmi valószínűsége 17%, a döntetlené 28%, Egyesült Államok győzelméé 54%. A legvalószínűbb kimenetel Egyesült Államok győzelme (54%), ezen belül a legvalószínűbb végeredmény 0–1 (13.3%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.8%), 0–1 (13.3%), 0–2 (11.2%). Indoklás: a becslés alapja a várható gólszám-pár (0.80, illetve 1.63), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 45%, 2,5 gól feletti összgólszám 42%."
+    "Végeredmény: Törökország 3–2 Egyesült Államok. Az eredmény beépült a modellbe (Elo- és támadó/védő-frissítés)."
    ],
    "id": 23
   },
   {
    "home_name": "Paraguay",
    "away_name": "Ausztrália",
+   "status": "done",
+   "result": {
+    "gh": 0,
+    "ga": 0
+   },
    "pred": {
-    "lh": 1.1,
-    "la": 1.06,
-    "btts": 0.4456,
-    "over25": 0.3481,
-    "p1": 0.3423,
-    "px": 0.338,
-    "p2": 0.3197,
+    "lh": 1.22,
+    "la": 1.18,
+    "btts": 0.4969,
+    "over25": 0.4107,
+    "p1": 0.3526,
+    "px": 0.3163,
+    "p2": 0.3312,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1593
+      "p": 0.1556
      },
      {
       "h": 0,
       "a": 0,
-      "p": 0.1363
+      "p": 0.108
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1169
+      "p": 0.1025
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1169
+     "p": 0.1025
     }
    },
-   "conf_score": 0.195,
-   "conf_label": "ALACSONY",
-   "status": "sched",
    "analysis": [
-    "Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
-    "Játékkép — Paraguay: Alguacil-féle kemény, kompakt dél-amerikai iskola, erős párharcjáték. Ausztrália: Szervezett mélyvédekezés, pontrúgások és bedobás-variációk.",
-    "Meghatározó játékosok — Paraguay: Miguel Almirón, Julio Enciso, Antonio Sanabria; Ausztrália: Jackson Irvine, Mathew Ryan, Craig Goodwin.",
-    "Paraguay tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Ausztrália tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 5 találkozó — Paraguay 0 győzelem, 3 döntetlen, 2 vereség; legutóbb 2010-ben (felkészülési): Paraguay 0–1 Ausztrália. Paraguay formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 12–9 gólkülönbség. Ausztrália formája a torna előtti 8 mérkőzésen: 3 győzelem, 1 döntetlen, 4 vereség, 9–9 gólkülönbség.",
-    "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (D): Paraguay jelenleg/várhatóan 2. (4.4 pont), Ausztrália 3. (4.3 pont).",
-    "Modellverdikt: Paraguay győzelmi valószínűsége 34%, a döntetlené 34%, Ausztrália győzelméé 32%. A legvalószínűbb kimenetel Paraguay győzelme (34%), ezen belül a legvalószínűbb végeredmény 1–0 (11.7%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.9%), 0–0 (13.6%), 1–0 (11.7%). Indoklás: a becslés alapja a várható gólszám-pár (1.10, illetve 1.06), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 45%, 2,5 gól feletti összgólszám 35%."
+    "Végeredmény: Paraguay 0–0 Ausztrália. Az eredmény beépült a modellbe (Elo- és támadó/védő-frissítés)."
    ],
    "id": 24
   },
@@ -1247,99 +1237,88 @@
   {
    "home_name": "Curaçao",
    "away_name": "Elefántcsontpart",
+   "status": "done",
+   "result": {
+    "gh": 0,
+    "ga": 2
+   },
    "pred": {
-    "lh": 0.57,
-    "la": 1.91,
-    "btts": 0.3808,
-    "over25": 0.435,
-    "p1": 0.0981,
-    "px": 0.2385,
-    "p2": 0.6634,
+    "lh": 0.7,
+    "la": 2.03,
+    "btts": 0.4439,
+    "over25": 0.4959,
+    "p1": 0.1122,
+    "px": 0.2281,
+    "p2": 0.6597,
     "top_scores": [
      {
       "h": 0,
-      "a": 1,
-      "p": 0.1491
+      "a": 2,
+      "p": 0.1304
      },
      {
       "h": 0,
-      "a": 2,
-      "p": 0.1465
+      "a": 1,
+      "p": 0.1246
      },
      {
       "h": 1,
       "a": 1,
-      "p": 0.1104
+      "p": 0.1119
      }
     ],
     "tip": {
      "h": 0,
-     "a": 1,
-     "p": 0.1491
+     "a": 2,
+     "p": 0.1304
     }
    },
-   "conf_score": 0.709,
-   "conf_label": "MAGAS",
-   "status": "sched",
    "analysis": [
-    "Erőviszonyok: Elefántcsontpart kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Curaçao eredményes szereplése jelentős meglepetést jelentene.",
-    "Játékkép — Curaçao: A VB-történet legkisebb országa; Dick Advocaat pragmatikus mélyvédekezése. Elefántcsontpart: Afrikai bajnoki rutin (2024), fizikális középpálya, gyors szélsők.",
-    "Meghatározó játékosok — Curaçao: Leandro Bacuna, Kenji Gorré; Elefántcsontpart: Sébastien Haller, Franck Kessié, Simon Adingra.",
-    "Curaçao tornán mutatott mérlege: 0 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Elefántcsontpart tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — A két válogatott tétmérkőzésen még nem találkozott a nyilvántartott történelemben. Curaçao formája a torna előtti 8 mérkőzésen: 3 győzelem, 2 döntetlen, 3 vereség, 16–12 gólkülönbség. Elefántcsontpart formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 17–7 gólkülönbség.",
-    "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (E): Curaçao jelenleg/várhatóan 4. (1.5 pont), Elefántcsontpart 2. (5.2 pont).",
-    "Keretinformációk, aktualitások — Curaçao: Felemás felkészülés: 1-4 Skócia ellen, 4-0 Aruba ellen.",
-    "Modellverdikt: Curaçao győzelmi valószínűsége 10%, a döntetlené 24%, Elefántcsontpart győzelméé 66%. A legvalószínűbb kimenetel Elefántcsontpart győzelme (66%), ezen belül a legvalószínűbb végeredmény 0–1 (14.9%). Az eloszlás egészének legsűrűbb pontjai: 0–1 (14.9%), 0–2 (14.6%), 1–1 (11.0%). Indoklás: a becslés alapja a várható gólszám-pár (0.57, illetve 1.91), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 38%, 2,5 gól feletti összgólszám 44%."
+    "Végeredmény: Curaçao 0–2 Elefántcsontpart. Az eredmény beépült a modellbe (Elo- és támadó/védő-frissítés)."
    ],
    "id": 29
   },
   {
    "home_name": "Ecuador",
    "away_name": "Németország",
+   "status": "done",
+   "result": {
+    "gh": 2,
+    "ga": 1
+   },
    "pred": {
-    "lh": 1.01,
-    "la": 1.27,
-    "btts": 0.4659,
-    "over25": 0.3789,
-    "p1": 0.2773,
-    "px": 0.3239,
-    "p2": 0.3989,
+    "lh": 1.08,
+    "la": 1.47,
+    "btts": 0.5173,
+    "over25": 0.4502,
+    "p1": 0.263,
+    "px": 0.2976,
+    "p2": 0.4394,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.156
-     },
-     {
-      "h": 0,
-      "a": 0,
-      "p": 0.1217
+      "p": 0.1481
      },
      {
       "h": 0,
       "a": 1,
-      "p": 0.1199
+      "p": 0.1064
+     },
+     {
+      "h": 0,
+      "a": 0,
+      "p": 0.093
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.1199
+     "p": 0.1064
     }
    },
-   "conf_score": 0.492,
-   "conf_label": "KÖZEPES",
-   "status": "sched",
    "analysis": [
-    "Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
-    "Játékkép — Ecuador: A selejtezők egyik legjobb védelme; Caicedo köré épülő, érett csapat. Németország: Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel.",
-    "Meghatározó játékosok — Ecuador: Moisés Caicedo, Piero Hincapié, Kendry Páez; Németország: Jamal Musiala, Florian Wirtz, Joshua Kimmich.",
-    "Ecuador tornán mutatott mérlege: 0 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Németország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 2 találkozó — Ecuador 0 győzelem, 0 döntetlen, 2 vereség; legutóbb 2013-ben (felkészülési): Ecuador 2–4 Németország. Ecuador formája a torna előtti 8 mérkőzésen: 3 győzelem, 5 döntetlen, 0 vereség, 11–5 gólkülönbség. Németország formája a torna előtti 8 mérkőzésen: 8 győzelem, 0 döntetlen, 0 vereség, 25–5 gólkülönbség.",
-    "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (E): Ecuador jelenleg/várhatóan 3. (2.1 pont), Németország 1. (7.6 pont). Németország csoportbeli sorsa már eldőlt — a modell rotációs/motivációs levonással számol.",
-    "Modellverdikt: Ecuador győzelmi valószínűsége 28%, a döntetlené 32%, Németország győzelméé 40%. A legvalószínűbb kimenetel Németország győzelme (40%), ezen belül a legvalószínűbb végeredmény 0–1 (12.0%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.6%), 0–0 (12.2%), 0–1 (12.0%). Indoklás: a becslés alapja a várható gólszám-pár (1.01, illetve 1.27), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 47%, 2,5 gól feletti összgólszám 38%."
+    "Végeredmény: Ecuador 2–1 Németország. Az eredmény beépült a modellbe (Elo- és támadó/védő-frissítés)."
    ],
    "id": 30
   },
@@ -1522,98 +1501,88 @@
   {
    "home_name": "Japán",
    "away_name": "Svédország",
+   "status": "done",
+   "result": {
+    "gh": 1,
+    "ga": 1
+   },
    "pred": {
-    "lh": 1.7,
-    "la": 0.86,
-    "btts": 0.4781,
-    "over25": 0.4507,
-    "p1": 0.5459,
-    "px": 0.2756,
-    "p2": 0.1785,
+    "lh": 1.83,
+    "la": 0.99,
+    "btts": 0.5347,
+    "over25": 0.5157,
+    "p1": 0.5467,
+    "px": 0.2602,
+    "p2": 0.1932,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1358
+      "p": 0.1303
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.123
+      "p": 0.1021
      },
      {
       "h": 2,
       "a": 0,
-      "p": 0.1075
+      "p": 0.0962
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.123
+     "p": 0.1021
     }
    },
-   "conf_score": 0.625,
-   "conf_label": "MAGAS",
-   "status": "sched",
    "analysis": [
-    "Erőviszonyok: az erősorrend Japán felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
-    "Játékkép — Japán: Magas intenzitás, gyors szélső rotációk; nagy csapatok ellen is bizonyított. Svédország: Pótselejtezőn keresztül kvalifikált; a Gyökeres–Isak támadópáros a mezőny egyik legmagasabb egyéni minőségét képviseli.",
-    "Meghatározó játékosok — Japán: Takefusa Kubo, Kaoru Mitoma, Wataru Endo; Svédország: Viktor Gyökeres, Alexander Isak, Dejan Kulusevski.",
-    "Japán tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Svédország tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 4 találkozó — Japán 0 győzelem, 3 döntetlen, 1 vereség; legutóbb 2002-ben (felkészülési): Japán 1–1 Svédország. Japán formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 13–6 gólkülönbség. Svédország formája a torna előtti 8 mérkőzésen: 2 győzelem, 2 döntetlen, 4 vereség, 11–16 gólkülönbség.",
-    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Svédország támadósora a(z) Japán-védelem ellen (+2.2 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Csoporthelyzet (F): Japán jelenleg/várhatóan 2. (5.9 pont), Svédország 3. (3.8 pont).",
-    "Modellverdikt: Japán győzelmi valószínűsége 55%, a döntetlené 28%, Svédország győzelméé 18%. A legvalószínűbb kimenetel Japán győzelme (55%), ezen belül a legvalószínűbb végeredmény 1–0 (12.3%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.6%), 1–0 (12.3%), 2–0 (10.8%). Indoklás: a becslés alapja a várható gólszám-pár (1.70, illetve 0.86), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 48%, 2,5 gól feletti összgólszám 45%."
+    "Végeredmény: Japán 1–1 Svédország. Az eredmény beépült a modellbe (Elo- és támadó/védő-frissítés)."
    ],
    "id": 35
   },
   {
    "home_name": "Tunézia",
    "away_name": "Hollandia",
+   "status": "done",
+   "result": {
+    "gh": 1,
+    "ga": 3
+   },
    "pred": {
-    "lh": 0.37,
-    "la": 2.19,
-    "btts": 0.2808,
-    "over25": 0.4577,
-    "p1": 0.047,
-    "px": 0.1832,
-    "p2": 0.7698,
+    "lh": 0.53,
+    "la": 2.26,
+    "btts": 0.3741,
+    "over25": 0.5117,
+    "p1": 0.068,
+    "px": 0.1887,
+    "p2": 0.7433,
     "top_scores": [
      {
       "h": 0,
       "a": 2,
-      "p": 0.1806
+      "p": 0.1532
      },
      {
       "h": 0,
       "a": 1,
-      "p": 0.1599
+      "p": 0.1316
      },
      {
       "h": 0,
       "a": 3,
-      "p": 0.1319
+      "p": 0.1153
      }
     ],
     "tip": {
      "h": 0,
      "a": 2,
-     "p": 0.1806
+     "p": 0.1532
     }
    },
-   "conf_score": 0.845,
-   "conf_label": "MAGAS",
-   "status": "sched",
    "analysis": [
-    "Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Hollandia javára; Tunézia pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
-    "Játékkép — Tunézia: Fegyelmezett, mélyen védekező észak-afrikai iskola. Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem.",
-    "Meghatározó játékosok — Tunézia: Hannibal Mejbri, Youssef Msakni; Hollandia: Virgil van Dijk, Frenkie de Jong, Cody Gakpo.",
-    "Tunézia tornán mutatott mérlege: 0 győzelem, 0 döntetlen, 2 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Hollandia tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 3 találkozó — Tunézia 0 győzelem, 2 döntetlen, 1 vereség; legutóbb 2009-ben (felkészülési): Tunézia 1–1 Hollandia. Tunézia formája a torna előtti 8 mérkőzésen: 2 győzelem, 3 döntetlen, 3 vereség, 8–12 gólkülönbség. Hollandia formája a torna előtti 8 mérkőzésen: 5 győzelem, 2 döntetlen, 1 vereség, 18–5 gólkülönbség.",
-    "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Csoporthelyzet (F): Tunézia jelenleg/várhatóan 4. (0.4 pont), Hollandia 1. (6.4 pont). Tunézia csoportbeli sorsa már eldőlt — a modell rotációs/motivációs levonással számol.",
-    "Modellverdikt: Tunézia győzelmi valószínűsége 5%, a döntetlené 18%, Hollandia győzelméé 77%. A legvalószínűbb kimenetel Hollandia győzelme (77%), ezen belül a legvalószínűbb végeredmény 0–2 (18.1%). Az eloszlás egészének legsűrűbb pontjai: 0–2 (18.1%), 0–1 (16.0%), 0–3 (13.2%). Indoklás: a becslés alapja a várható gólszám-pár (0.37, illetve 2.19), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 28%, 2,5 gól feletti összgólszám 46%."
+    "Végeredmény: Tunézia 1–3 Hollandia. Az eredmény beépült a modellbe (Elo- és támadó/védő-frissítés)."
    ],
    "id": 36
   },
@@ -3318,53 +3287,53 @@
   },
   {
    "home_name": "Németország",
-   "away_name": "Ausztrália",
+   "away_name": "Svédország",
    "pred": {
-    "lh": 1.78,
-    "la": 0.9,
-    "btts": 0.5013,
-    "over25": 0.4821,
-    "p1": 0.5552,
-    "px": 0.2656,
-    "p2": 0.1791,
+    "lh": 1.79,
+    "la": 1.02,
+    "btts": 0.5391,
+    "over25": 0.5122,
+    "p1": 0.5303,
+    "px": 0.2649,
+    "p2": 0.2048,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1323
+      "p": 0.1327
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.114
+      "p": 0.1011
      },
      {
       "h": 2,
-      "a": 0,
-      "p": 0.1044
+      "a": 1,
+      "p": 0.0948
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.114
+     "p": 0.1011
     },
-    "adv_h": 0.7075,
-    "adv_a": 0.2925,
+    "adv_h": 0.6797,
+    "adv_a": 0.3203,
     "favorite": "GER"
    },
-   "conf_score": 0.649,
+   "conf_score": 0.774,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.0001,
+   "pair_share": 1.0,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Németország mérhető, de nem behozhatatlan előnnyel rendelkezik; Ausztrália szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
-    "Játékkép — Németország: Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel. Ausztrália: Szervezett mélyvédekezés, pontrúgások és bedobás-variációk.",
-    "Meghatározó játékosok — Németország: Jamal Musiala, Florian Wirtz, Joshua Kimmich; Ausztrália: Jackson Irvine, Mathew Ryan, Craig Goodwin.",
-    "Németország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Ausztrália tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 6 találkozó — Németország 4 győzelem, 1 döntetlen, 1 vereség; legutóbb 2017-ben (Confederations Cup): Németország 3–2 Ausztrália. Németország formája a torna előtti 8 mérkőzésen: 8 győzelem, 0 döntetlen, 0 vereség, 25–5 gólkülönbség. Ausztrália formája a torna előtti 8 mérkőzésen: 3 győzelem, 1 döntetlen, 4 vereség, 9–9 gólkülönbség.",
-    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: a középpálya-csata Németország javára (+1.8 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Németország győzelmi valószínűsége 56%, a döntetlené 27%, Ausztrália győzelméé 18%. A legvalószínűbb kimenetel Németország győzelme (56%), ezen belül a legvalószínűbb végeredmény 1–0 (11.4%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.2%), 1–0 (11.4%), 2–0 (10.4%). Indoklás: a becslés alapja a várható gólszám-pár (1.78, illetve 0.90), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Németország (71%)."
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Németország mérhető, de nem behozhatatlan előnnyel rendelkezik; Svédország szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
+    "Játékkép — Németország: Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel. Svédország: Pótselejtezőn keresztül kvalifikált; a Gyökeres–Isak támadópáros a mezőny egyik legmagasabb egyéni minőségét képviseli.",
+    "Meghatározó játékosok — Németország: Jamal Musiala, Florian Wirtz, Joshua Kimmich; Svédország: Viktor Gyökeres, Alexander Isak, Dejan Kulusevski.",
+    "Németország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Svédország tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Előzmények és felkészülés — Egymás elleni mérleg: 37 találkozó — Németország 16 győzelem, 9 döntetlen, 12 vereség; legutóbb 2018-ben (VB): Németország 2–1 Svédország. Németország formája a torna előtti 8 mérkőzésen: 8 győzelem, 0 döntetlen, 0 vereség, 25–5 gólkülönbség. Svédország formája a torna előtti 8 mérkőzésen: 2 győzelem, 2 döntetlen, 4 vereség, 11–16 gólkülönbség.",
+    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Svédország támadósora a(z) Németország-védelem ellen (+2.5 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
+    "Modellverdikt: Németország győzelmi valószínűsége 53%, a döntetlené 26%, Svédország győzelméé 20%. A legvalószínűbb kimenetel Németország győzelme (53%), ezen belül a legvalószínűbb végeredmény 1–0 (10.1%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.3%), 1–0 (10.1%), 2–1 (9.5%). Indoklás: a becslés alapja a várható gólszám-pár (1.79, illetve 1.02), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 54%, 2,5 gól feletti összgólszám 51%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Németország (68%)."
    ],
    "id": 74
   },
@@ -3372,51 +3341,51 @@
    "home_name": "Hollandia",
    "away_name": "Marokkó",
    "pred": {
-    "lh": 1.41,
-    "la": 1.05,
-    "btts": 0.5,
-    "over25": 0.4259,
-    "p1": 0.4269,
-    "px": 0.3062,
-    "p2": 0.267,
+    "lh": 1.43,
+    "la": 1.04,
+    "btts": 0.4996,
+    "over25": 0.4278,
+    "p1": 0.4353,
+    "px": 0.3045,
+    "p2": 0.2602,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1512
+      "p": 0.1504
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1114
+      "p": 0.1122
      },
      {
       "h": 0,
       "a": 0,
-      "p": 0.1021
+      "p": 0.1014
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1114
+     "p": 0.1122
     },
-    "adv_h": 0.5893,
-    "adv_a": 0.4107,
+    "adv_h": 0.5979,
+    "adv_a": 0.4021,
     "favorite": "NED"
    },
-   "conf_score": 0.573,
+   "conf_score": 0.61,
    "conf_label": "KÖZEPES",
-   "status": "proj",
-   "pair_share": 0.657,
+   "status": "sched",
+   "pair_share": 1.0,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
+    "Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem. Marokkó: A 2022-es elődöntős váz együtt maradt: betonvédelem, halálos kontrák.",
     "Meghatározó játékosok — Hollandia: Virgil van Dijk, Frenkie de Jong, Cody Gakpo; Marokkó: Achraf Hakimi, Brahim Díaz, Yassine Bounou.",
-    "Hollandia tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Marokkó tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Hollandia tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Marokkó tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 3 találkozó — Hollandia 2 győzelem, 0 döntetlen, 1 vereség; legutóbb 2017-ben (felkészülési): Hollandia 2–1 Marokkó. Hollandia formája a torna előtti 8 mérkőzésen: 5 győzelem, 2 döntetlen, 1 vereség, 18–5 gólkülönbség. Marokkó formája a torna előtti 8 mérkőzésen: 5 győzelem, 3 döntetlen, 0 vereség, 18–3 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Modellverdikt: Hollandia győzelmi valószínűsége 43%, a döntetlené 31%, Marokkó győzelméé 27%. A legvalószínűbb kimenetel Hollandia győzelme (43%), ezen belül a legvalószínűbb végeredmény 1–0 (11.1%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.1%), 1–0 (11.1%), 0–0 (10.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.41, illetve 1.05), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 43%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Hollandia (59%)."
+    "Modellverdikt: Hollandia győzelmi valószínűsége 44%, a döntetlené 30%, Marokkó győzelméé 26%. A legvalószínűbb kimenetel Hollandia győzelme (44%), ezen belül a legvalószínűbb végeredmény 1–0 (11.2%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.0%), 1–0 (11.2%), 0–0 (10.1%). Indoklás: a becslés alapja a várható gólszám-pár (1.43, illetve 1.04), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 43%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Hollandia (60%)."
    ],
    "id": 75
   },
@@ -3424,103 +3393,103 @@
    "home_name": "Brazília",
    "away_name": "Japán",
    "pred": {
-    "lh": 1.65,
-    "la": 1.04,
-    "btts": 0.5293,
-    "over25": 0.4838,
-    "p1": 0.4934,
-    "px": 0.2797,
-    "p2": 0.2269,
+    "lh": 1.68,
+    "la": 1.02,
+    "btts": 0.5272,
+    "over25": 0.4863,
+    "p1": 0.5053,
+    "px": 0.2767,
+    "p2": 0.2181,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1399
+      "p": 0.1384
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1046
+      "p": 0.1055
      },
      {
       "h": 2,
       "a": 1,
-      "p": 0.0924
+      "p": 0.093
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1046
+     "p": 0.1055
     },
-    "adv_h": 0.6464,
-    "adv_a": 0.3536,
+    "adv_h": 0.6579,
+    "adv_a": 0.3421,
     "favorite": "BRA"
    },
-   "conf_score": 0.686,
+   "conf_score": 0.729,
    "conf_label": "MAGAS",
-   "status": "proj",
-   "pair_share": 0.5206,
+   "status": "sched",
+   "pair_share": 1.0,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Brazília mérhető, de nem behozhatatlan előnnyel rendelkezik; Japán szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
+    "Erőviszonyok: Brazília mérhető, de nem behozhatatlan előnnyel rendelkezik; Japán szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Brazília: Egyéni minőségben kiemelkedő szélső játék, Ancelotti alatt pragmatikusabb szerkezet. Japán: Magas intenzitás, gyors szélső rotációk; nagy csapatok ellen is bizonyított.",
     "Meghatározó játékosok — Brazília: Vinícius Júnior, Raphinha, Alisson; Japán: Takefusa Kubo, Kaoru Mitoma, Wataru Endo.",
-    "Brazília tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Japán tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Brazília tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Japán tornán mutatott mérlege: 1 győzelem, 2 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 14 találkozó — Brazília 11 győzelem, 2 döntetlen, 1 vereség; legutóbb 2025-ben (Kirin Cup): Brazília 2–3 Japán. Brazília formája a torna előtti 8 mérkőzésen: 5 győzelem, 1 döntetlen, 2 vereség, 22–10 gólkülönbség. Japán formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 13–6 gólkülönbség.",
     "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Brazília támadósora a(z) Japán-védelem ellen (+1.0 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Brazília győzelmi valószínűsége 49%, a döntetlené 28%, Japán győzelméé 23%. A legvalószínűbb kimenetel Brazília győzelme (49%), ezen belül a legvalószínűbb végeredmény 1–0 (10.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.0%), 1–0 (10.5%), 2–1 (9.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.65, illetve 1.04), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Brazília (65%)."
+    "Modellverdikt: Brazília győzelmi valószínűsége 51%, a döntetlené 28%, Japán győzelméé 22%. A legvalószínűbb kimenetel Brazília győzelme (51%), ezen belül a legvalószínűbb végeredmény 1–0 (10.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.8%), 1–0 (10.5%), 2–1 (9.3%). Indoklás: a becslés alapja a várható gólszám-pár (1.68, illetve 1.02), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 49%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Brazília (66%)."
    ],
    "id": 76
   },
   {
    "home_name": "Franciaország",
-   "away_name": "Svédország",
+   "away_name": "Paraguay",
    "pred": {
-    "lh": 2.34,
-    "la": 0.68,
-    "btts": 0.4545,
-    "over25": 0.567,
-    "p1": 0.7225,
-    "px": 0.1898,
-    "p2": 0.0876,
+    "lh": 2.17,
+    "la": 0.67,
+    "btts": 0.4407,
+    "over25": 0.5235,
+    "p1": 0.6932,
+    "px": 0.2095,
+    "p2": 0.0973,
     "top_scores": [
      {
       "h": 2,
       "a": 0,
-      "p": 0.1297
+      "p": 0.1333
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1074
+      "p": 0.1193
      },
      {
-      "h": 3,
-      "a": 0,
-      "p": 0.1013
+      "h": 1,
+      "a": 1,
+      "p": 0.1032
      }
     ],
     "tip": {
      "h": 2,
      "a": 0,
-     "p": 0.1297
+     "p": 0.1333
     },
-    "adv_h": 0.8411,
-    "adv_a": 0.1589,
+    "adv_h": 0.8227,
+    "adv_a": 0.1773,
     "favorite": "FRA"
    },
-   "conf_score": 0.845,
+   "conf_score": 0.975,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.008,
+   "pair_share": 0.7792,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Franciaország kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Svédország eredményes szereplése jelentős meglepetést jelentene.",
-    "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Svédország: Pótselejtezőn keresztül kvalifikált; a Gyökeres–Isak támadópáros a mezőny egyik legmagasabb egyéni minőségét képviseli.",
-    "Meghatározó játékosok — Franciaország: Kylian Mbappé, Ousmane Dembélé, Aurélien Tchouaméni; Svédország: Viktor Gyökeres, Alexander Isak, Dejan Kulusevski.",
-    "Franciaország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Svédország tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 23 találkozó — Franciaország 12 győzelem, 5 döntetlen, 6 vereség; legutóbb 2020-ben (UEFA Nations League): Franciaország 4–2 Svédország. Franciaország formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 21–8 gólkülönbség. Svédország formája a torna előtti 8 mérkőzésen: 2 győzelem, 2 döntetlen, 4 vereség, 11–16 gólkülönbség.",
-    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Franciaország támadósora a(z) Svédország-védelem ellen (+2.2 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Franciaország győzelmi valószínűsége 72%, a döntetlené 19%, Svédország győzelméé 9%. A legvalószínűbb kimenetel Franciaország győzelme (72%), ezen belül a legvalószínűbb végeredmény 2–0 (13.0%). Az eloszlás egészének legsűrűbb pontjai: 2–0 (13.0%), 1–0 (10.7%), 3–0 (10.1%). Indoklás: a becslés alapja a várható gólszám-pár (2.34, illetve 0.68), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 45%, 2,5 gól feletti összgólszám 57%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Franciaország (84%)."
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Franciaország kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Paraguay eredményes szereplése jelentős meglepetést jelentene.",
+    "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Paraguay: Alguacil-féle kemény, kompakt dél-amerikai iskola, erős párharcjáték.",
+    "Meghatározó játékosok — Franciaország: Kylian Mbappé, Ousmane Dembélé, Aurélien Tchouaméni; Paraguay: Miguel Almirón, Julio Enciso, Antonio Sanabria.",
+    "Franciaország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Paraguay tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Előzmények és felkészülés — Egymás elleni mérleg: 5 találkozó — Franciaország 3 győzelem, 2 döntetlen, 0 vereség; legutóbb 2017-ben (felkészülési): Franciaország 5–0 Paraguay. Franciaország formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 21–8 gólkülönbség. Paraguay formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 12–9 gólkülönbség.",
+    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Franciaország támadósora a(z) Paraguay-védelem ellen (+1.0 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
+    "Modellverdikt: Franciaország győzelmi valószínűsége 69%, a döntetlené 21%, Paraguay győzelméé 10%. A legvalószínűbb kimenetel Franciaország győzelme (69%), ezen belül a legvalószínűbb végeredmény 2–0 (13.3%). Az eloszlás egészének legsűrűbb pontjai: 2–0 (13.3%), 1–0 (11.9%), 1–1 (10.3%). Indoklás: a becslés alapja a várható gólszám-pár (2.17, illetve 0.67), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 44%, 2,5 gól feletti összgólszám 52%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Franciaország (82%)."
    ],
    "id": 77
   },
@@ -3528,106 +3497,105 @@
    "home_name": "Elefántcsontpart",
    "away_name": "Norvégia",
    "pred": {
-    "lh": 0.91,
-    "la": 1.88,
-    "btts": 0.5127,
-    "over25": 0.5087,
-    "p1": 0.169,
-    "px": 0.2534,
-    "p2": 0.5777,
+    "lh": 0.94,
+    "la": 1.82,
+    "btts": 0.5198,
+    "over25": 0.5036,
+    "p1": 0.1836,
+    "px": 0.2605,
+    "p2": 0.5559,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1267
+      "p": 0.1304
      },
      {
       "h": 0,
       "a": 1,
-      "p": 0.1084
+      "p": 0.1071
      },
      {
       "h": 0,
       "a": 2,
-      "p": 0.1051
+      "p": 0.1006
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.1084
+     "p": 0.1071
     },
-    "adv_h": 0.2751,
-    "adv_a": 0.7249,
+    "adv_h": 0.2947,
+    "adv_a": 0.7053,
     "favorite": "NOR"
    },
-   "conf_score": 0.691,
+   "conf_score": 0.786,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.7173,
+   "pair_share": 0.8043,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Norvégia mérhető, de nem behozhatatlan előnnyel rendelkezik; Elefántcsontpart szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Elefántcsontpart: Afrikai bajnoki rutin (2024), fizikális középpálya, gyors szélsők. Norvégia: Haaland 16 gólt lőtt a selejtezőben; direkt, gólerős gépezet, 1998 óta első VB.",
     "Meghatározó játékosok — Elefántcsontpart: Sébastien Haller, Franck Kessié, Simon Adingra; Norvégia: Erling Haaland, Martin Ødegaard, Alexander Sørloth.",
-    "Elefántcsontpart tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Norvégia tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Elefántcsontpart tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Norvégia tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — A két válogatott tétmérkőzésen még nem találkozott a nyilvántartott történelemben. Elefántcsontpart formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 17–7 gólkülönbség. Norvégia formája a torna előtti 8 mérkőzésen: 4 győzelem, 3 döntetlen, 1 vereség, 19–7 gólkülönbség.",
     "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Norvégia támadósora a(z) Elefántcsontpart-védelem ellen (+1.5 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Elefántcsontpart győzelmi valószínűsége 17%, a döntetlené 25%, Norvégia győzelméé 58%. A legvalószínűbb kimenetel Norvégia győzelme (58%), ezen belül a legvalószínűbb végeredmény 0–1 (10.8%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (12.7%), 0–1 (10.8%), 0–2 (10.5%). Indoklás: a becslés alapja a várható gólszám-pár (0.91, illetve 1.88), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 51%, 2,5 gól feletti összgólszám 51%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Norvégia (72%)."
+    "Modellverdikt: Elefántcsontpart győzelmi valószínűsége 18%, a döntetlené 26%, Norvégia győzelméé 56%. A legvalószínűbb kimenetel Norvégia győzelme (56%), ezen belül a legvalószínűbb végeredmény 0–1 (10.7%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.0%), 0–1 (10.7%), 0–2 (10.1%). Indoklás: a becslés alapja a várható gólszám-pár (0.94, illetve 1.82), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 52%, 2,5 gól feletti összgólszám 50%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Norvégia (71%)."
    ],
    "id": 78
   },
   {
    "home_name": "Mexikó",
-   "away_name": "Skócia",
+   "away_name": "Ecuador",
    "pred": {
-    "lh": 1.96,
-    "la": 0.7,
-    "btts": 0.4397,
-    "over25": 0.4787,
-    "p1": 0.6447,
-    "px": 0.2372,
-    "p2": 0.1181,
+    "lh": 1.36,
+    "la": 1.1,
+    "btts": 0.5047,
+    "over25": 0.4265,
+    "p1": 0.4047,
+    "px": 0.3084,
+    "p2": 0.2869,
     "top_scores": [
-     {
-      "h": 2,
-      "a": 0,
-      "p": 0.13
-     },
-     {
-      "h": 1,
-      "a": 0,
-      "p": 0.1287
-     },
      {
       "h": 1,
       "a": 1,
-      "p": 0.1157
+      "p": 0.1525
+     },
+     {
+      "h": 1,
+      "a": 0,
+      "p": 0.1075
+     },
+     {
+      "h": 0,
+      "a": 0,
+      "p": 0.1017
      }
     ],
     "tip": {
-     "h": 2,
+     "h": 1,
      "a": 0,
-     "p": 0.13
+     "p": 0.1075
     },
-    "adv_h": 0.7816,
-    "adv_a": 0.2184,
+    "adv_h": 0.5557,
+    "adv_a": 0.4443,
     "favorite": "MEX"
    },
-   "conf_score": 0.948,
-   "conf_label": "MAGAS",
+   "conf_score": 0.568,
+   "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.3484,
+   "pair_share": 0.846,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Mexikó felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
-    "Játékkép — Mexikó: Hazai pályán nyomást gyakorló, labdabirtoklásra törekvő csapat; az Azteca-faktor mérhető előny. Skócia: Középpályán letámadó, pontrúgás-erős brit stílus; 1998 óta első VB-jén.",
-    "Meghatározó játékosok — Mexikó: Santiago Giménez, Edson Álvarez, Luis Malagón; Skócia: Scott McTominay, John McGinn, Andy Robertson.",
-    "Mexikó tornán mutatott mérlege: 3 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Skócia tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 2 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 1 találkozó — Mexikó 1 győzelem, 0 döntetlen, 0 vereség; legutóbb 2018-ben (felkészülési): Mexikó 1–0 Skócia. Mexikó formája a torna előtti 8 mérkőzésen: 6 győzelem, 2 döntetlen, 0 vereség, 15–2 gólkülönbség. Skócia formája a torna előtti 8 mérkőzésen: 5 győzelem, 0 döntetlen, 3 vereség, 19–10 gólkülönbség.",
-    "Magaslati tényező — a mérkőzés Mexikóváros tengerszint feletti pályáján zajlik; Mexikó a magaslathoz szokott válogatott, ami a McSharry (BMJ, 2007) által leírt akklimatizációs előnyt adja. A modell ezt a saját adatán mért, konzervatív mértékkel (0.16 gól) árazza be.",
-    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: a középpálya-csata Skócia javára (+1.2 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
+    "Játékkép — Mexikó: Hazai pályán nyomást gyakorló, labdabirtoklásra törekvő csapat; az Azteca-faktor mérhető előny. Ecuador: A selejtezők egyik legjobb védelme; Caicedo köré épülő, érett csapat.",
+    "Meghatározó játékosok — Mexikó: Santiago Giménez, Edson Álvarez, Luis Malagón; Ecuador: Moisés Caicedo, Piero Hincapié, Kendry Páez.",
+    "Mexikó tornán mutatott mérlege: 3 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Ecuador tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Előzmények és felkészülés — Egymás elleni mérleg: 26 találkozó — Mexikó 14 győzelem, 8 döntetlen, 4 vereség; legutóbb 2025-ben (felkészülési): Mexikó 1–1 Ecuador. Mexikó formája a torna előtti 8 mérkőzésen: 6 győzelem, 2 döntetlen, 0 vereség, 15–2 gólkülönbség. Ecuador formája a torna előtti 8 mérkőzésen: 3 győzelem, 5 döntetlen, 0 vereség, 11–5 gólkülönbség.",
+    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: a középpálya-csata Ecuador javára (+1.0 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
     "Mexikó kerethiánya erre a mérkőzésre — eltiltva: César Montes.",
     "Keretinformációk, aktualitások — Mexikó: César Montes eltiltás miatt kihagyja a Dél-Korea elleni meccset (piros lap a nyitányon).",
-    "Modellverdikt: Mexikó győzelmi valószínűsége 64%, a döntetlené 24%, Skócia győzelméé 12%. A legvalószínűbb kimenetel Mexikó győzelme (64%), ezen belül a legvalószínűbb végeredmény 2–0 (13.0%). Az eloszlás egészének legsűrűbb pontjai: 2–0 (13.0%), 1–0 (12.9%), 1–1 (11.6%). Indoklás: a becslés alapja a várható gólszám-pár (1.96, illetve 0.70), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 44%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Mexikó (78%)."
+    "Modellverdikt: Mexikó győzelmi valószínűsége 40%, a döntetlené 31%, Ecuador győzelméé 29%. A legvalószínűbb kimenetel Mexikó győzelme (40%), ezen belül a legvalószínűbb végeredmény 1–0 (10.8%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.2%), 1–0 (10.8%), 0–0 (10.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.36, illetve 1.10), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 43%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Mexikó (56%)."
    ],
    "id": 79
   },
@@ -3671,7 +3639,7 @@
    "conf_score": 0.839,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.1825,
+   "pair_share": 0.1401,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Anglia javára; Algéria pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
     "Játékkép — Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység. Algéria: Technikás, kreatív támadósor; tornaformája hullámzó.",
@@ -3687,51 +3655,51 @@
    "home_name": "Egyesült Államok",
    "away_name": "Bosznia-Hercegovina",
    "pred": {
-    "lh": 2.01,
-    "la": 0.76,
-    "btts": 0.4679,
-    "over25": 0.5047,
-    "p1": 0.6403,
-    "px": 0.2337,
-    "p2": 0.126,
+    "lh": 1.85,
+    "la": 0.86,
+    "btts": 0.495,
+    "over25": 0.4919,
+    "p1": 0.5824,
+    "px": 0.2556,
+    "p2": 0.1619,
     "top_scores": [
-     {
-      "h": 2,
-      "a": 0,
-      "p": 0.1226
-     },
-     {
-      "h": 1,
-      "a": 0,
-      "p": 0.1185
-     },
      {
       "h": 1,
       "a": 1,
-      "p": 0.1158
+      "p": 0.1273
+     },
+     {
+      "h": 1,
+      "a": 0,
+      "p": 0.1147
+     },
+     {
+      "h": 2,
+      "a": 0,
+      "p": 0.1096
      }
     ],
     "tip": {
-     "h": 2,
+     "h": 1,
      "a": 0,
-     "p": 0.1226
+     "p": 0.1147
     },
-    "adv_h": 0.7777,
-    "adv_a": 0.2223,
+    "adv_h": 0.7269,
+    "adv_a": 0.2731,
     "favorite": "USA"
    },
-   "conf_score": 0.817,
+   "conf_score": 0.849,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.4356,
+   "pair_share": 1.0,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Egyesült Államok felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball. Bosznia-Hercegovina: Rutinos mag, beadásokra és Džeko fejjátékára építő támadójáték.",
     "Meghatározó játékosok — Egyesült Államok: Christian Pulisic, Weston McKennie, Matt Turner; Bosznia-Hercegovina: Edin Džeko, Ermedin Demirović, Sead Kolašinac.",
-    "Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Bosznia-Hercegovina tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Bosznia-Hercegovina tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 3 találkozó — Egyesült Államok 2 győzelem, 1 döntetlen, 0 vereség; legutóbb 2021-ben (felkészülési): Egyesült Államok 1–0 Bosznia-Hercegovina. Egyesült Államok formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 16–15 gólkülönbség. Bosznia-Hercegovina formája a torna előtti 8 mérkőzésen: 2 győzelem, 6 döntetlen, 0 vereség, 13–8 gólkülönbség. Meglepetés-kockázati jelzés: az esélyes Egyesült Államok gyenge formában (1.62 pont/meccs) érkezett a tornára — a hasonló helyzetű VB-esélyesek 1990 óta a mérkőzéseik 24%-án kikaptak és további 24%-án döntetleneztek.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Modellverdikt: Egyesült Államok győzelmi valószínűsége 64%, a döntetlené 23%, Bosznia-Hercegovina győzelméé 13%. A legvalószínűbb kimenetel Egyesült Államok győzelme (64%), ezen belül a legvalószínűbb végeredmény 2–0 (12.3%). Az eloszlás egészének legsűrűbb pontjai: 2–0 (12.3%), 1–0 (11.8%), 1–1 (11.6%). Indoklás: a becslés alapja a várható gólszám-pár (2.01, illetve 0.76), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 47%, 2,5 gól feletti összgólszám 50%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Egyesült Államok (78%)."
+    "Modellverdikt: Egyesült Államok győzelmi valószínűsége 58%, a döntetlené 26%, Bosznia-Hercegovina győzelméé 16%. A legvalószínűbb kimenetel Egyesült Államok győzelme (58%), ezen belül a legvalószínűbb végeredmény 1–0 (11.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (12.7%), 1–0 (11.5%), 2–0 (11.0%). Indoklás: a becslés alapja a várható gólszám-pár (1.85, illetve 0.86), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 49%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Egyesült Államok (73%)."
    ],
    "id": 81
   },
@@ -3775,7 +3743,7 @@
    "conf_score": 0.47,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.5722,
+   "pair_share": 0.4363,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Egyiptom: Salah–Marmoush támadósor, mögötte konzervatív, mélyen védekező blokk. Dél-Korea: Technikás középpálya, veszélyes kontrák; a védelem Kim Min-jaéra épül.",
@@ -3827,7 +3795,7 @@
    "conf_score": 0.592,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.3089,
+   "pair_share": 0.3064,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Portugália: Nemzetek Ligája-győztes mag; széles, kiegyensúlyozott keret, jelentős tornarutin. Horvátország: Az örök tornacsapat: Modrić utolsó VB-je, kontrollált középpálya.",
@@ -3879,7 +3847,7 @@
    "conf_score": 0.845,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.6595,
+   "pair_share": 0.6628,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Spanyolország javára; Ausztria pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
     "Játékkép — Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció. Ausztria: Rangnick-pressing: a mezőny egyik legintenzívebb letámadása.",
@@ -3931,7 +3899,7 @@
    "conf_score": 0.686,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.2151,
+   "pair_share": 0.2466,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Svájc felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Svájc: Kiegyensúlyozott, taktikailag fegyelmezett; tornákon rendre felülteljesít. Irán: Rutinos, kontrákra építő csapat — de a felkészülése súlyosan sérült.",
@@ -3984,7 +3952,7 @@
    "conf_score": 0.845,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.5179,
+   "pair_share": 0.5195,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Argentína javára; Zöld-foki Köztársaság pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
     "Játékkép — Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment. Zöld-foki Köztársaság: Történelmi első VB-részvétel; kompakt, lelkes, kontrázó csapat.",
@@ -4036,7 +4004,7 @@
    "conf_score": 0.808,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.3828,
+   "pair_share": 0.3895,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Kolumbia kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Ghána eredményes szereplése jelentős meglepetést jelentene.",
     "Játékkép — Kolumbia: Elo-alapon top-7 erő: hosszú veretlenségi sorozat, Díaz csúcsformában. Ghána: Premier League-minőségű egyéniségek, hullámzó szervezettség.",
@@ -4049,21 +4017,73 @@
    "id": 87
   },
   {
-   "home_name": "Paraguay",
+   "home_name": "Ausztrália",
    "away_name": "Belgium",
    "pred": {
     "lh": 1.11,
-    "la": 1.43,
-    "btts": 0.5178,
-    "over25": 0.4465,
-    "p1": 0.2759,
-    "px": 0.3006,
-    "p2": 0.4235,
+    "la": 1.46,
+    "btts": 0.5222,
+    "over25": 0.4537,
+    "p1": 0.272,
+    "px": 0.2978,
+    "p2": 0.4302,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1496
+      "p": 0.1484
+     },
+     {
+      "h": 0,
+      "a": 1,
+      "p": 0.104
+     },
+     {
+      "h": 0,
+      "a": 0,
+      "p": 0.0917
+     }
+    ],
+    "tip": {
+     "h": 0,
+     "a": 1,
+     "p": 0.104
+    },
+    "adv_h": 0.4122,
+    "adv_a": 0.5878,
+    "favorite": "BEL"
+   },
+   "conf_score": 0.587,
+   "conf_label": "KÖZEPES",
+   "status": "proj",
+   "pair_share": 0.5573,
+   "analysis": [
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
+    "Játékkép — Ausztrália: Szervezett mélyvédekezés, pontrúgások és bedobás-variációk. Belgium: Generációváltás Garcia alatt: Doku-féle robbanékonyság, De Bruyne rutinja.",
+    "Meghatározó játékosok — Ausztrália: Jackson Irvine, Mathew Ryan, Craig Goodwin; Belgium: Kevin De Bruyne, Jérémy Doku, Charles De Ketelaere.",
+    "Ausztrália tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Belgium tornán mutatott mérlege: 0 győzelem, 2 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Előzmények és felkészülés — Egymás elleni mérleg: 1 találkozó — Ausztrália 0 győzelem, 0 döntetlen, 1 vereség; legutóbb 2014-ben (felkészülési): Ausztrália 0–2 Belgium. Ausztrália formája a torna előtti 8 mérkőzésen: 3 győzelem, 1 döntetlen, 4 vereség, 9–9 gólkülönbség. Belgium formája a torna előtti 8 mérkőzésen: 5 győzelem, 3 döntetlen, 0 vereség, 25–6 gólkülönbség.",
+    "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: a középpálya-csata Belgium javára (+1.0 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
+    "Modellverdikt: Ausztrália győzelmi valószínűsége 27%, a döntetlené 30%, Belgium győzelméé 43%. A legvalószínűbb kimenetel Belgium győzelme (43%), ezen belül a legvalószínűbb végeredmény 0–1 (10.4%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.8%), 0–1 (10.4%), 0–0 (9.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.11, illetve 1.46), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 52%, 2,5 gól feletti összgólszám 45%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Belgium (59%)."
+   ],
+   "id": 88
+  },
+  {
+   "home_name": "Németország",
+   "away_name": "Franciaország",
+   "pred": {
+    "lh": 0.94,
+    "la": 1.89,
+    "btts": 0.5231,
+    "over25": 0.5177,
+    "p1": 0.174,
+    "px": 0.2526,
+    "p2": 0.5734,
+    "top_scores": [
+     {
+      "h": 1,
+      "a": 1,
+      "p": 0.1265
      },
      {
       "h": 0,
@@ -4072,8 +4092,8 @@
      },
      {
       "h": 0,
-      "a": 0,
-      "p": 0.0943
+      "a": 2,
+      "p": 0.1022
      }
     ],
     "tip": {
@@ -4081,74 +4101,22 @@
      "a": 1,
      "p": 0.105
     },
-    "adv_h": 0.4183,
-    "adv_a": 0.5817,
-    "favorite": "BEL"
-   },
-   "conf_score": 0.445,
-   "conf_label": "ALACSONY",
-   "status": "proj",
-   "pair_share": 0.1935,
-   "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
-    "Játékkép — Paraguay: Alguacil-féle kemény, kompakt dél-amerikai iskola, erős párharcjáték. Belgium: Generációváltás Garcia alatt: Doku-féle robbanékonyság, De Bruyne rutinja.",
-    "Meghatározó játékosok — Paraguay: Miguel Almirón, Julio Enciso, Antonio Sanabria; Belgium: Kevin De Bruyne, Jérémy Doku, Charles De Ketelaere.",
-    "Paraguay tornán mutatott mérlege: 1 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Belgium tornán mutatott mérlege: 0 győzelem, 2 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 3 találkozó — Paraguay 1 győzelem, 1 döntetlen, 1 vereség; legutóbb 1998-ben (felkészülési): Paraguay 0–1 Belgium. Paraguay formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 12–9 gólkülönbség. Belgium formája a torna előtti 8 mérkőzésen: 5 győzelem, 3 döntetlen, 0 vereség, 25–6 gólkülönbség.",
-    "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Modellverdikt: Paraguay győzelmi valószínűsége 28%, a döntetlené 30%, Belgium győzelméé 42%. A legvalószínűbb kimenetel Belgium győzelme (42%), ezen belül a legvalószínűbb végeredmény 0–1 (10.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (15.0%), 0–1 (10.5%), 0–0 (9.4%). Indoklás: a becslés alapja a várható gólszám-pár (1.11, illetve 1.43), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 52%, 2,5 gól feletti összgólszám 45%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Belgium (58%)."
-   ],
-   "id": 88
-  },
-  {
-   "home_name": "Németország",
-   "away_name": "Franciaország",
-   "pred": {
-    "lh": 0.99,
-    "la": 1.81,
-    "btts": 0.5324,
-    "over25": 0.5106,
-    "p1": 0.1953,
-    "px": 0.2624,
-    "p2": 0.5422,
-    "top_scores": [
-     {
-      "h": 1,
-      "a": 1,
-      "p": 0.1315
-     },
-     {
-      "h": 0,
-      "a": 1,
-      "p": 0.1031
-     },
-     {
-      "h": 0,
-      "a": 2,
-      "p": 0.0961
-     }
-    ],
-    "tip": {
-     "h": 0,
-     "a": 1,
-     "p": 0.1031
-    },
-    "adv_h": 0.3087,
-    "adv_a": 0.6913,
+    "adv_h": 0.2803,
+    "adv_a": 0.7197,
     "favorite": "FRA"
    },
-   "conf_score": 0.742,
+   "conf_score": 0.817,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.481,
+   "pair_share": 0.4466,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Franciaország felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Németország: Nagelsmann-féle pozíciós játék Musiala–Wirtz kreatív tengellyel. Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n.",
     "Meghatározó játékosok — Németország: Jamal Musiala, Florian Wirtz, Joshua Kimmich; Franciaország: Kylian Mbappé, Ousmane Dembélé, Aurélien Tchouaméni.",
-    "Németország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Franciaország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Németország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Franciaország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 35 találkozó — Németország 11 győzelem, 8 döntetlen, 16 vereség; legutóbb 2025-ben (UEFA Nations League): Németország 0–2 Franciaország. Németország formája a torna előtti 8 mérkőzésen: 8 győzelem, 0 döntetlen, 0 vereség, 25–5 gólkülönbség. Franciaország formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 21–8 gólkülönbség.",
     "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Franciaország támadósora a(z) Németország-védelem ellen (+2.2 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Németország győzelmi valószínűsége 20%, a döntetlené 26%, Franciaország győzelméé 54%. A legvalószínűbb kimenetel Franciaország győzelme (54%), ezen belül a legvalószínűbb végeredmény 0–1 (10.3%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.2%), 0–1 (10.3%), 0–2 (9.6%). Indoklás: a becslés alapja a várható gólszám-pár (0.99, illetve 1.81), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 51%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Franciaország (69%)."
+    "Modellverdikt: Németország győzelmi valószínűsége 17%, a döntetlené 25%, Franciaország győzelméé 57%. A legvalószínűbb kimenetel Franciaország győzelme (57%), ezen belül a legvalószínűbb végeredmény 0–1 (10.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (12.7%), 0–1 (10.5%), 0–2 (10.2%). Indoklás: a becslés alapja a várható gólszám-pár (0.94, illetve 1.89), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 52%, 2,5 gól feletti összgólszám 52%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Franciaország (72%)."
    ],
    "id": 89
   },
@@ -4156,51 +4124,51 @@
    "home_name": "Kanada",
    "away_name": "Hollandia",
    "pred": {
-    "lh": 0.83,
-    "la": 1.9,
-    "btts": 0.488,
-    "over25": 0.4956,
-    "p1": 0.1511,
-    "px": 0.2496,
-    "p2": 0.5993,
+    "lh": 0.82,
+    "la": 1.92,
+    "btts": 0.485,
+    "over25": 0.4971,
+    "p1": 0.1468,
+    "px": 0.2471,
+    "p2": 0.6062,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1242
+      "p": 0.1228
      },
      {
       "h": 0,
       "a": 1,
-      "p": 0.1158
+      "p": 0.1163
      },
      {
       "h": 0,
       "a": 2,
-      "p": 0.1133
+      "p": 0.1149
      }
     ],
     "tip": {
      "h": 0,
      "a": 1,
-     "p": 0.1158
+     "p": 0.1163
     },
-    "adv_h": 0.2522,
-    "adv_a": 0.7478,
+    "adv_h": 0.2463,
+    "adv_a": 0.7537,
     "favorite": "NED"
    },
-   "conf_score": 0.852,
+   "conf_score": 0.889,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.2456,
+   "pair_share": 0.3698,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Hollandia mérhető, de nem behozhatatlan előnnyel rendelkezik; Kanada szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Kanada: Atletikus, intenzív letámadás; hazai közönség előtt extra lendület. Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem.",
     "Meghatározó játékosok — Kanada: Alphonso Davies, Jonathan David, Stephen Eustáquio; Hollandia: Virgil van Dijk, Frenkie de Jong, Cody Gakpo.",
-    "Kanada tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Hollandia tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Kanada tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Hollandia tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 2 találkozó — Kanada 0 győzelem, 0 döntetlen, 2 vereség; legutóbb 2024-ben (felkészülési): Kanada 0–4 Hollandia. Kanada formája a torna előtti 8 mérkőzésen: 2 győzelem, 5 döntetlen, 1 vereség, 7–4 gólkülönbség. Hollandia formája a torna előtti 8 mérkőzésen: 5 győzelem, 2 döntetlen, 1 vereség, 18–5 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Modellverdikt: Kanada győzelmi valószínűsége 15%, a döntetlené 25%, Hollandia győzelméé 60%. A legvalószínűbb kimenetel Hollandia győzelme (60%), ezen belül a legvalószínűbb végeredmény 0–1 (11.6%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (12.4%), 0–1 (11.6%), 0–2 (11.3%). Indoklás: a becslés alapja a várható gólszám-pár (0.83, illetve 1.90), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 49%, 2,5 gól feletti összgólszám 50%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Hollandia (75%)."
+    "Modellverdikt: Kanada győzelmi valószínűsége 15%, a döntetlené 25%, Hollandia győzelméé 61%. A legvalószínűbb kimenetel Hollandia győzelme (61%), ezen belül a legvalószínűbb végeredmény 0–1 (11.6%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (12.3%), 0–1 (11.6%), 0–2 (11.5%). Indoklás: a becslés alapja a várható gólszám-pár (0.82, illetve 1.92), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 48%, 2,5 gól feletti összgólszám 50%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Hollandia (75%)."
    ],
    "id": 90
   },
@@ -4244,7 +4212,7 @@
    "conf_score": 0.596,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.3858,
+   "pair_share": 0.37,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Brazília: Egyéni minőségben kiemelkedő szélső játék, Ancelotti alatt pragmatikusabb szerkezet. Norvégia: Haaland 16 gólt lőtt a selejtezőben; direkt, gólerős gépezet, 1998 óta első VB.",
@@ -4296,7 +4264,7 @@
    "conf_score": 0.602,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.4862,
+   "pair_share": 0.389,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Anglia mérhető, de nem behozhatatlan előnnyel rendelkezik; Mexikó szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Mexikó: Hazai pályán nyomást gyakorló, labdabirtoklásra törekvő csapat; az Azteca-faktor mérhető előny. Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység.",
@@ -4351,7 +4319,7 @@
    "conf_score": 0.741,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.3293,
+   "pair_share": 0.3337,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Spanyolország felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
     "Játékkép — Portugália: Nemzetek Ligája-győztes mag; széles, kiegyensúlyozott keret, jelentős tornarutin. Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció.",
@@ -4367,51 +4335,51 @@
    "home_name": "Egyesült Államok",
    "away_name": "Egyiptom",
    "pred": {
-    "lh": 1.87,
-    "la": 0.87,
-    "btts": 0.4993,
-    "over25": 0.4968,
-    "p1": 0.5827,
-    "px": 0.2545,
-    "p2": 0.1629,
+    "lh": 1.71,
+    "la": 0.98,
+    "btts": 0.5191,
+    "over25": 0.4836,
+    "p1": 0.5197,
+    "px": 0.2742,
+    "p2": 0.2062,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.1269
+      "p": 0.137
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.113
+      "p": 0.1084
      },
      {
       "h": 2,
       "a": 0,
-      "p": 0.1087
+      "p": 0.0953
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.113
+     "p": 0.1084
     },
-    "adv_h": 0.7257,
-    "adv_a": 0.2743,
+    "adv_h": 0.6665,
+    "adv_a": 0.3335,
     "favorite": "USA"
    },
-   "conf_score": 0.591,
-   "conf_label": "KÖZEPES",
+   "conf_score": 0.62,
+   "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.2627,
+   "pair_share": 0.2416,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Egyesült Államok mérhető, de nem behozhatatlan előnnyel rendelkezik; Egyiptom szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball. Egyiptom: Salah–Marmoush támadósor, mögötte konzervatív, mélyen védekező blokk.",
     "Meghatározó játékosok — Egyesült Államok: Christian Pulisic, Weston McKennie, Matt Turner; Egyiptom: Mohamed Salah, Omar Marmoush, Mostafa Mohamed.",
-    "Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Egyiptom tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
-    "Előzmények és felkészülés — Egymás elleni mérleg: 2 találkozó — Egyesült Államok 1 győzelem, 0 döntetlen, 1 vereség; legutóbb 2009-ben (Confederations Cup): Egyesült Államok 3–0 Egyiptom. Egyesült Államok formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 16–15 gólkülönbség. Egyiptom formája a torna előtti 8 mérkőzésen: 4 győzelem, 2 döntetlen, 2 vereség, 12–6 gólkülönbség. Meglepetés-kockázati jelzés: az esélyes Egyesült Államok gyenge formában (1.62 pont/meccs) érkezett a tornára — a hasonló helyzetű VB-esélyesek 1990 óta a mérkőzéseik 24%-án kikaptak és további 24%-án döntetleneztek.",
+    "Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Egyiptom tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Előzmények és felkészülés — Egymás elleni mérleg: 2 találkozó — Egyesült Államok 1 győzelem, 0 döntetlen, 1 vereség; legutóbb 2009-ben (Confederations Cup): Egyesült Államok 3–0 Egyiptom. Egyesült Államok formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 16–15 gólkülönbség. Egyiptom formája a torna előtti 8 mérkőzésen: 4 győzelem, 2 döntetlen, 2 vereség, 12–6 gólkülönbség.",
     "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Egyiptom támadósora a(z) Egyesült Államok-védelem ellen (+1.0 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Egyesült Államok győzelmi valószínűsége 58%, a döntetlené 25%, Egyiptom győzelméé 16%. A legvalószínűbb kimenetel Egyesült Államok győzelme (58%), ezen belül a legvalószínűbb végeredmény 1–0 (11.3%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (12.7%), 1–0 (11.3%), 2–0 (10.9%). Indoklás: a becslés alapja a várható gólszám-pár (1.87, illetve 0.87), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 50%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Egyesült Államok (73%)."
+    "Modellverdikt: Egyesült Államok győzelmi valószínűsége 52%, a döntetlené 27%, Egyiptom győzelméé 21%. A legvalószínűbb kimenetel Egyesült Államok győzelme (52%), ezen belül a legvalószínűbb végeredmény 1–0 (10.8%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.7%), 1–0 (10.8%), 2–0 (9.5%). Indoklás: a becslés alapja a várható gólszám-pár (1.71, illetve 0.98), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 52%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Egyesült Államok (67%)."
    ],
    "id": 94
   },
@@ -4455,7 +4423,7 @@
    "conf_score": 0.95,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.3047,
+   "pair_share": 0.2958,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Argentína kiemelt esélyesként lép pályára; az aktuális erősorrend alapján Belgium eredményes szereplése jelentős meglepetést jelentene.",
     "Játékkép — Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment. Belgium: Generációváltás Garcia alatt: Doku-féle robbanékonyság, De Bruyne rutinja.",
@@ -4507,7 +4475,7 @@
    "conf_score": 0.602,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.3263,
+   "pair_share": 0.3325,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Svájc: Kiegyensúlyozott, taktikailag fegyelmezett; tornákon rendre felülteljesít. Kolumbia: Elo-alapon top-7 erő: hosszú veretlenségi sorozat, Díaz csúcsformában.",
@@ -4523,51 +4491,51 @@
    "home_name": "Franciaország",
    "away_name": "Hollandia",
    "pred": {
-    "lh": 1.67,
-    "la": 1.03,
-    "btts": 0.5284,
-    "over25": 0.4854,
-    "p1": 0.5,
-    "px": 0.278,
-    "p2": 0.2221,
+    "lh": 1.65,
+    "la": 1.04,
+    "btts": 0.5297,
+    "over25": 0.4836,
+    "p1": 0.4918,
+    "px": 0.2801,
+    "p2": 0.2281,
     "top_scores": [
      {
       "h": 1,
       "a": 1,
-      "p": 0.139
+      "p": 0.1401
      },
      {
       "h": 1,
       "a": 0,
-      "p": 0.1051
+      "p": 0.1045
      },
      {
       "h": 2,
       "a": 1,
-      "p": 0.0928
+      "p": 0.0923
      }
     ],
     "tip": {
      "h": 1,
      "a": 0,
-     "p": 0.1051
+     "p": 0.1045
     },
-    "adv_h": 0.6526,
-    "adv_a": 0.3474,
+    "adv_h": 0.6448,
+    "adv_a": 0.3552,
     "favorite": "FRA"
    },
-   "conf_score": 0.671,
+   "conf_score": 0.684,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.1556,
+   "pair_share": 0.2399,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: az erősorrend Franciaország felé billen, a különbség azonban abban a tartományban van, ahol a napi forma és a taktikai felkészültség érdemben módosíthatja a kimenetelt.",
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Hollandia: Strukturált felépítés hátulról, van Dijk vezérelte stabil védelem.",
     "Meghatározó játékosok — Franciaország: Kylian Mbappé, Ousmane Dembélé, Aurélien Tchouaméni; Hollandia: Virgil van Dijk, Frenkie de Jong, Cody Gakpo.",
-    "Franciaország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Hollandia tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Franciaország tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Hollandia tornán mutatott mérlege: 2 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 31 találkozó — Franciaország 15 győzelem, 5 döntetlen, 11 vereség; legutóbb 2024-ben (UEFA Euro): Franciaország 0–0 Hollandia. Franciaország formája a torna előtti 8 mérkőzésen: 6 győzelem, 1 döntetlen, 1 vereség, 21–8 gólkülönbség. Hollandia formája a torna előtti 8 mérkőzésen: 5 győzelem, 2 döntetlen, 1 vereség, 18–5 gólkülönbség.",
     "Párharc-kép — A profil-összevetés legnagyobb aszimmetriája: Franciaország támadósora a(z) Hollandia-védelem ellen (+1.2 centírozott vonal-pont) — a modell ezt a gólvárakozásban korlátozott mértékben árazza.",
-    "Modellverdikt: Franciaország győzelmi valószínűsége 50%, a döntetlené 28%, Hollandia győzelméé 22%. A legvalószínűbb kimenetel Franciaország győzelme (50%), ezen belül a legvalószínűbb végeredmény 1–0 (10.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.9%), 1–0 (10.5%), 2–1 (9.3%). Indoklás: a becslés alapja a várható gólszám-pár (1.67, illetve 1.03), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 49%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Franciaország (65%)."
+    "Modellverdikt: Franciaország győzelmi valószínűsége 49%, a döntetlené 28%, Hollandia győzelméé 23%. A legvalószínűbb kimenetel Franciaország győzelme (49%), ezen belül a legvalószínűbb végeredmény 1–0 (10.4%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (14.0%), 1–0 (10.4%), 2–1 (9.2%). Indoklás: a becslés alapja a várható gólszám-pár (1.65, illetve 1.04), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 53%, 2,5 gól feletti összgólszám 48%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Franciaország (64%)."
    ],
    "id": 97
   },
@@ -4575,51 +4543,51 @@
    "home_name": "Spanyolország",
    "away_name": "Egyesült Államok",
    "pred": {
-    "lh": 1.81,
-    "la": 0.88,
-    "btts": 0.4962,
-    "over25": 0.4851,
-    "p1": 0.5697,
-    "px": 0.2609,
-    "p2": 0.1694,
+    "lh": 1.97,
+    "la": 0.77,
+    "btts": 0.4712,
+    "over25": 0.499,
+    "p1": 0.6286,
+    "px": 0.239,
+    "p2": 0.1323,
     "top_scores": [
-     {
-      "h": 1,
-      "a": 1,
-      "p": 0.1298
-     },
-     {
-      "h": 1,
-      "a": 0,
-      "p": 0.1151
-     },
      {
       "h": 2,
       "a": 0,
-      "p": 0.1076
+      "p": 0.1206
+     },
+     {
+      "h": 1,
+      "a": 0,
+      "p": 0.1189
+     },
+     {
+      "h": 1,
+      "a": 1,
+      "p": 0.1185
      }
     ],
     "tip": {
-     "h": 1,
+     "h": 2,
      "a": 0,
-     "p": 0.1151
+     "p": 0.1206
     },
-    "adv_h": 0.7265,
-    "adv_a": 0.2735,
+    "adv_h": 0.7761,
+    "adv_a": 0.2239,
     "favorite": "ESP"
    },
-   "conf_score": 0.672,
+   "conf_score": 0.901,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.2914,
+   "pair_share": 0.2613,
    "analysis": [
-    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Spanyolország mérhető, de nem behozhatatlan előnnyel rendelkezik; Egyesült Államok szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
+    "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a mérkőzés kimenetele szempontjából jelentős, 250 Elo-pontot meghaladó különbség áll fenn Spanyolország javára; Egyesült Államok pontszerzése statisztikai értelemben kivételes kimenetelnek számítana.",
     "Játékkép — Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció. Egyesült Államok: Hazai pályán, Pochettino irányításával intenzív, vertikális futball.",
     "Meghatározó játékosok — Spanyolország: Lamine Yamal, Pedri, Rodri; Egyesült Államok: Christian Pulisic, Weston McKennie, Matt Turner.",
-    "Spanyolország tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
+    "Spanyolország tornán mutatott mérlege: 1 győzelem, 1 döntetlen, 0 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel. Egyesült Államok tornán mutatott mérlege: 2 győzelem, 0 döntetlen, 1 vereség — ez a teljesítmény a frissített erősség-mutatókban már szerepel.",
     "Előzmények és felkészülés — Egymás elleni mérleg: 5 találkozó — Spanyolország 4 győzelem, 0 döntetlen, 1 vereség; legutóbb 2011-ben (felkészülési): Spanyolország 4–0 Egyesült Államok. Spanyolország formája a torna előtti 8 mérkőzésen: 5 győzelem, 3 döntetlen, 0 vereség, 19–4 gólkülönbség. Egyesült Államok formája a torna előtti 8 mérkőzésen: 4 győzelem, 1 döntetlen, 3 vereség, 16–15 gólkülönbség.",
     "Párharc-kép — A két csapat erősség-profilja kiegyenlített, kiugró vonal-aszimmetria nélkül.",
-    "Modellverdikt: Spanyolország győzelmi valószínűsége 57%, a döntetlené 26%, Egyesült Államok győzelméé 17%. A legvalószínűbb kimenetel Spanyolország győzelme (57%), ezen belül a legvalószínűbb végeredmény 1–0 (11.5%). Az eloszlás egészének legsűrűbb pontjai: 1–1 (13.0%), 1–0 (11.5%), 2–0 (10.8%). Indoklás: a becslés alapja a várható gólszám-pár (1.81, illetve 0.88), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 50%, 2,5 gól feletti összgólszám 49%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Spanyolország (73%)."
+    "Modellverdikt: Spanyolország győzelmi valószínűsége 63%, a döntetlené 24%, Egyesült Államok győzelméé 13%. A legvalószínűbb kimenetel Spanyolország győzelme (63%), ezen belül a legvalószínűbb végeredmény 2–0 (12.1%). Az eloszlás egészének legsűrűbb pontjai: 2–0 (12.1%), 1–0 (11.9%), 1–1 (11.8%). Indoklás: a becslés alapja a várható gólszám-pár (1.97, illetve 0.77), amelyet az aktuális Elo-erőkülönbség, a tornán mért támadó- és védekezőteljesítmény, valamint a pályaelőny együttesen határoz meg; a pontos eredmény egy nagy szórású eloszlás móduszaként értelmezendő, nem determinisztikus előrejelzésként. További eloszlási mutatók: mindkét csapat szerez gólt 47%, 2,5 gól feletti összgólszám 50%. Egyenes kieséses mérkőzés lévén döntetlen állás esetén hosszabbítás, illetve tizenegyespárbaj következik; ezek figyelembevételével a továbbjutásra esélyesebb fél Spanyolország (78%)."
    ],
    "id": 98
   },
@@ -4663,7 +4631,7 @@
    "conf_score": 0.537,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1649,
+   "pair_share": 0.1546,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Brazília: Egyéni minőségben kiemelkedő szélső játék, Ancelotti alatt pragmatikusabb szerkezet. Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység.",
@@ -4715,7 +4683,7 @@
    "conf_score": 0.708,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.2361,
+   "pair_share": 0.2383,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Argentína mérhető, de nem behozhatatlan előnnyel rendelkezik; Kolumbia szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment. Kolumbia: Elo-alapon top-7 erő: hosszú veretlenségi sorozat, Díaz csúcsformában.",
@@ -4767,7 +4735,7 @@
    "conf_score": 0.543,
    "conf_label": "KÖZEPES",
    "status": "proj",
-   "pair_share": 0.1496,
+   "pair_share": 0.1664,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: kiegyenlített párosítás, amelyben egyik fél sem rendelkezik statisztikailag meghatározó előnnyel; a modell kimeneti eloszlása ennek megfelelően széles.",
     "Játékkép — Franciaország: A mezőny legmélyebb kerete; két döntő az előző két VB-n. Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció.",
@@ -4819,7 +4787,7 @@
    "conf_score": 0.65,
    "conf_label": "MAGAS",
    "status": "proj",
-   "pair_share": 0.1395,
+   "pair_share": 0.1331,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: Argentína mérhető, de nem behozhatatlan előnnyel rendelkezik; Anglia szervezett teljesítménnyel reális eséllyel pályázhat pontszerzésre.",
     "Játékkép — Anglia: Tuchel irányításával hibátlan, kapott gól nélküli selejtezősorozat; kiemelkedő keretmélység. Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment.",
@@ -4923,7 +4891,7 @@
    "conf_score": 0.443,
    "conf_label": "ALACSONY",
    "status": "proj",
-   "pair_share": 0.1128,
+   "pair_share": 0.1189,
    "analysis": [
     "Megjegyzés: vetített párosítás — a végleges résztvevőket a korábbi körök tényleges eredményei határozzák meg. Erőviszonyok: a két csapat aktuális erőssége közel azonos; a mérkőzést várhatóan a részletek — pontrúgás-hatékonyság, a cserepad minősége, egyéni megoldások — döntik el.",
     "Játékkép — Spanyolország: A világranglista-vezető: Eb-címvédő, dominánsan labdabirtokló, mély rotáció. Argentína: Címvédő; a Scaloni-éra alatt kiforrott tornastruktúra, kiemelkedő mérkőzésmenedzsment.",
@@ -4941,29 +4909,29 @@
   "probabilities": {
    "MEX": {
     "r32": 1.0,
-    "r16": 0.7091,
-    "qf": 0.3525,
-    "sf": 0.1319,
-    "final": 0.0416,
-    "champion": 0.0131,
+    "r16": 0.5853,
+    "qf": 0.2859,
+    "sf": 0.1138,
+    "final": 0.0351,
+    "champion": 0.0125,
     "group_win": 1.0
    },
    "RSA": {
     "r32": 1.0,
-    "r16": 0.3839,
-    "qf": 0.0885,
-    "sf": 0.0151,
-    "final": 0.0027,
-    "champion": 0.0003,
+    "r16": 0.3954,
+    "qf": 0.0817,
+    "sf": 0.0168,
+    "final": 0.0025,
+    "champion": 0.0001,
     "group_win": 0.0
    },
    "KOR": {
-    "r32": 0.92,
-    "r16": 0.3686,
-    "qf": 0.0989,
-    "sf": 0.0156,
-    "final": 0.0037,
-    "champion": 0.0009,
+    "r32": 0.6548,
+    "r16": 0.2612,
+    "qf": 0.0911,
+    "sf": 0.0161,
+    "final": 0.0031,
+    "champion": 0.0007,
     "group_win": 0.0
    },
    "CZE": {
@@ -4977,20 +4945,20 @@
    },
    "CAN": {
     "r32": 1.0,
-    "r16": 0.6161,
-    "qf": 0.1752,
-    "sf": 0.046,
-    "final": 0.0126,
-    "champion": 0.002,
+    "r16": 0.6046,
+    "qf": 0.1631,
+    "sf": 0.0438,
+    "final": 0.011,
+    "champion": 0.0028,
     "group_win": 0.0
    },
    "BIH": {
     "r32": 1.0,
-    "r16": 0.2214,
-    "qf": 0.0672,
-    "sf": 0.0147,
-    "final": 0.0029,
-    "champion": 0.0003,
+    "r16": 0.2648,
+    "qf": 0.1067,
+    "sf": 0.0163,
+    "final": 0.0028,
+    "champion": 0.0004,
     "group_win": 0.0
    },
    "QAT": {
@@ -5004,28 +4972,28 @@
    },
    "SUI": {
     "r32": 1.0,
-    "r16": 0.6748,
-    "qf": 0.3035,
-    "sf": 0.1074,
-    "final": 0.0471,
-    "champion": 0.0172,
+    "r16": 0.6684,
+    "qf": 0.3059,
+    "sf": 0.1048,
+    "final": 0.0432,
+    "champion": 0.0154,
     "group_win": 1.0
    },
    "BRA": {
     "r32": 1.0,
-    "r16": 0.6345,
-    "qf": 0.3711,
-    "sf": 0.2138,
-    "final": 0.0942,
-    "champion": 0.0424,
+    "r16": 0.6417,
+    "qf": 0.3746,
+    "sf": 0.2148,
+    "final": 0.098,
+    "champion": 0.0432,
     "group_win": 1.0
    },
    "MAR": {
     "r32": 1.0,
-    "r16": 0.4427,
-    "qf": 0.3126,
-    "sf": 0.123,
-    "final": 0.0457,
+    "r16": 0.3922,
+    "qf": 0.281,
+    "sf": 0.1126,
+    "final": 0.0426,
     "champion": 0.0148,
     "group_win": 0.0
    },
@@ -5039,112 +5007,112 @@
     "group_win": 0.0
    },
    "SCO": {
-    "r32": 0.3544,
-    "r16": 0.0764,
-    "qf": 0.0184,
-    "sf": 0.0039,
-    "final": 0.0004,
+    "r32": 0.1056,
+    "r16": 0.0206,
+    "qf": 0.0042,
+    "sf": 0.0011,
+    "final": 0.0003,
     "champion": 0.0001,
     "group_win": 0.0
    },
    "USA": {
     "r32": 1.0,
-    "r16": 0.7459,
-    "qf": 0.5448,
-    "sf": 0.2089,
-    "final": 0.0966,
-    "champion": 0.0374,
-    "group_win": 0.998
+    "r16": 0.7352,
+    "qf": 0.4828,
+    "sf": 0.148,
+    "final": 0.0583,
+    "champion": 0.0187,
+    "group_win": 1.0
    },
    "PAR": {
-    "r32": 0.8059,
-    "r16": 0.253,
-    "qf": 0.0673,
-    "sf": 0.0222,
-    "final": 0.005,
-    "champion": 0.0004,
-    "group_win": 0.0003
+    "r32": 0.9993,
+    "r16": 0.1894,
+    "qf": 0.072,
+    "sf": 0.0243,
+    "final": 0.0065,
+    "champion": 0.0014,
+    "group_win": 0.0
    },
    "AUS": {
-    "r32": 0.9307,
-    "r16": 0.3597,
-    "qf": 0.0748,
-    "sf": 0.0218,
-    "final": 0.005,
-    "champion": 0.0009,
-    "group_win": 0.0017
+    "r32": 1.0,
+    "r16": 0.4715,
+    "qf": 0.0902,
+    "sf": 0.0291,
+    "final": 0.0081,
+    "champion": 0.0016,
+    "group_win": 0.0
    },
    "TUR": {
-    "r32": 0.0581,
-    "r16": 0.0117,
-    "qf": 0.0039,
-    "sf": 0.0017,
-    "final": 0.0004,
+    "r32": 0.0,
+    "r16": 0.0,
+    "qf": 0.0,
+    "sf": 0.0,
+    "final": 0.0,
     "champion": 0.0,
     "group_win": 0.0
    },
    "GER": {
     "r32": 1.0,
-    "r16": 0.7185,
-    "qf": 0.283,
-    "sf": 0.1602,
-    "final": 0.06,
-    "champion": 0.0224,
-    "group_win": 0.9968
+    "r16": 0.6686,
+    "qf": 0.2448,
+    "sf": 0.119,
+    "final": 0.0481,
+    "champion": 0.0153,
+    "group_win": 1.0
    },
    "CUW": {
-    "r32": 0.0997,
-    "r16": 0.007,
-    "qf": 0.0006,
+    "r32": 0.0,
+    "r16": 0.0,
+    "qf": 0.0,
     "sf": 0.0,
     "final": 0.0,
     "champion": 0.0,
     "group_win": 0.0
    },
    "CIV": {
-    "r32": 0.9671,
-    "r16": 0.2435,
-    "qf": 0.0672,
-    "sf": 0.0195,
-    "final": 0.0055,
-    "champion": 0.0012,
-    "group_win": 0.0032
+    "r32": 1.0,
+    "r16": 0.2613,
+    "qf": 0.0775,
+    "sf": 0.0231,
+    "final": 0.0049,
+    "champion": 0.0008,
+    "group_win": 0.0
    },
    "ECU": {
-    "r32": 0.2492,
-    "r16": 0.0967,
-    "qf": 0.0399,
-    "sf": 0.0137,
-    "final": 0.0041,
-    "champion": 0.0013,
+    "r32": 1.0,
+    "r16": 0.4352,
+    "qf": 0.1981,
+    "sf": 0.0819,
+    "final": 0.0285,
+    "champion": 0.0101,
     "group_win": 0.0
    },
    "NED": {
     "r32": 1.0,
-    "r16": 0.5507,
-    "qf": 0.3965,
-    "sf": 0.2013,
-    "final": 0.0892,
-    "champion": 0.0376,
-    "group_win": 0.657
+    "r16": 0.6078,
+    "qf": 0.4742,
+    "sf": 0.2323,
+    "final": 0.1046,
+    "champion": 0.0479,
+    "group_win": 1.0
    },
    "JPN": {
     "r32": 1.0,
-    "r16": 0.4128,
-    "qf": 0.2206,
-    "sf": 0.0926,
-    "final": 0.0306,
-    "champion": 0.0114,
-    "group_win": 0.2991
+    "r16": 0.3583,
+    "qf": 0.1572,
+    "sf": 0.0672,
+    "final": 0.0247,
+    "champion": 0.0068,
+    "group_win": 0.0
    },
    "SWE": {
-    "r32": 0.9251,
-    "r16": 0.249,
-    "qf": 0.0819,
-    "sf": 0.0195,
-    "final": 0.0048,
-    "champion": 0.0006,
-    "group_win": 0.0439
+    "r32": 1.0,
+    "r16": 0.3314,
+    "qf": 0.0785,
+    "sf": 0.0282,
+    "final": 0.0088,
+    "champion": 0.0024,
+    "group_win": 0.0
    },
    "TUN": {
     "r32": 0.0,
@@ -5156,99 +5124,99 @@
     "group_win": 0.0
    },
    "BEL": {
-    "r32": 0.8958,
-    "r16": 0.5134,
-    "qf": 0.1521,
-    "sf": 0.0515,
-    "final": 0.0168,
-    "champion": 0.0053,
-    "group_win": 0.182
+    "r32": 0.8782,
+    "r16": 0.5083,
+    "qf": 0.1556,
+    "sf": 0.0514,
+    "final": 0.0183,
+    "champion": 0.0039,
+    "group_win": 0.1963
    },
    "EGY": {
     "r32": 1.0,
-    "r16": 0.4977,
-    "qf": 0.1528,
-    "sf": 0.0332,
-    "final": 0.0078,
+    "r16": 0.4796,
+    "qf": 0.1654,
+    "sf": 0.0331,
+    "final": 0.0094,
     "champion": 0.002,
-    "group_win": 0.61
+    "group_win": 0.5964
    },
    "IRN": {
-    "r32": 0.6434,
-    "r16": 0.2684,
-    "qf": 0.073,
-    "sf": 0.0166,
-    "final": 0.0046,
-    "champion": 0.0005,
-    "group_win": 0.208
+    "r32": 0.6341,
+    "r16": 0.2633,
+    "qf": 0.0762,
+    "sf": 0.0145,
+    "final": 0.0027,
+    "champion": 0.0007,
+    "group_win": 0.2073
    },
    "NZL": {
-    "r32": 0.1035,
-    "r16": 0.0264,
-    "qf": 0.0032,
-    "sf": 0.0005,
-    "final": 0.0002,
+    "r32": 0.1115,
+    "r16": 0.028,
+    "qf": 0.0033,
+    "sf": 0.0004,
+    "final": 0.0,
     "champion": 0.0,
     "group_win": 0.0
    },
    "ESP": {
     "r32": 1.0,
-    "r16": 0.8073,
-    "qf": 0.5829,
-    "sf": 0.459,
-    "final": 0.3167,
-    "champion": 0.1993,
-    "group_win": 0.904
+    "r16": 0.8099,
+    "qf": 0.5841,
+    "sf": 0.4842,
+    "final": 0.331,
+    "champion": 0.2129,
+    "group_win": 0.9032
    },
    "CPV": {
-    "r32": 0.6304,
-    "r16": 0.0591,
-    "qf": 0.0148,
-    "sf": 0.0018,
-    "final": 0.0001,
+    "r32": 0.6187,
+    "r16": 0.0609,
+    "qf": 0.0164,
+    "sf": 0.0027,
+    "final": 0.0006,
     "champion": 0.0,
-    "group_win": 0.0135
+    "group_win": 0.0145
    },
    "KSA": {
-    "r32": 0.3705,
-    "r16": 0.0338,
-    "qf": 0.0103,
-    "sf": 0.0023,
-    "final": 0.0005,
+    "r32": 0.3733,
+    "r16": 0.0342,
+    "qf": 0.0097,
+    "sf": 0.0022,
+    "final": 0.0003,
     "champion": 0.0,
     "group_win": 0.0
    },
    "URU": {
-    "r32": 0.3315,
-    "r16": 0.1172,
-    "qf": 0.0466,
-    "sf": 0.0166,
-    "final": 0.0054,
-    "champion": 0.0016,
-    "group_win": 0.0825
+    "r32": 0.3192,
+    "r16": 0.1386,
+    "qf": 0.062,
+    "sf": 0.0239,
+    "final": 0.0082,
+    "champion": 0.0021,
+    "group_win": 0.0823
    },
    "FRA": {
     "r32": 1.0,
-    "r16": 0.8259,
-    "qf": 0.5979,
-    "sf": 0.4323,
-    "final": 0.2496,
-    "champion": 0.1415,
-    "group_win": 0.816
+    "r16": 0.8294,
+    "qf": 0.6224,
+    "sf": 0.4447,
+    "final": 0.2598,
+    "champion": 0.1492,
+    "group_win": 0.8043
    },
    "SEN": {
-    "r32": 0.5849,
-    "r16": 0.1994,
-    "qf": 0.0801,
-    "sf": 0.0243,
-    "final": 0.008,
-    "champion": 0.0018,
+    "r32": 0.4451,
+    "r16": 0.1737,
+    "qf": 0.0725,
+    "sf": 0.0208,
+    "final": 0.0067,
+    "champion": 0.0027,
     "group_win": 0.0
    },
    "IRQ": {
-    "r32": 0.0196,
-    "r16": 0.0038,
-    "qf": 0.0006,
+    "r32": 0.0032,
+    "r16": 0.0005,
+    "qf": 0.0,
     "sf": 0.0,
     "final": 0.0,
     "champion": 0.0,
@@ -5256,44 +5224,44 @@
    },
    "NOR": {
     "r32": 1.0,
-    "r16": 0.7346,
-    "qf": 0.3638,
-    "sf": 0.1953,
-    "final": 0.0784,
-    "champion": 0.0313,
-    "group_win": 0.184
+    "r16": 0.7189,
+    "qf": 0.3726,
+    "sf": 0.1968,
+    "final": 0.0772,
+    "champion": 0.0283,
+    "group_win": 0.1957
    },
    "ARG": {
     "r32": 1.0,
-    "r16": 0.8821,
-    "qf": 0.7386,
-    "sf": 0.5391,
-    "final": 0.3796,
-    "champion": 0.2414,
-    "group_win": 0.9999
+    "r16": 0.8833,
+    "qf": 0.7427,
+    "sf": 0.546,
+    "final": 0.3813,
+    "champion": 0.2356,
+    "group_win": 0.9997
    },
    "ALG": {
-    "r32": 0.7658,
-    "r16": 0.1819,
-    "qf": 0.059,
-    "sf": 0.0155,
-    "final": 0.0035,
-    "champion": 0.0012,
+    "r32": 0.6494,
+    "r16": 0.1612,
+    "qf": 0.0515,
+    "sf": 0.0134,
+    "final": 0.0031,
+    "champion": 0.0004,
     "group_win": 0.0
    },
    "AUT": {
-    "r32": 0.9631,
-    "r16": 0.2349,
-    "qf": 0.0838,
-    "sf": 0.0322,
-    "final": 0.0087,
-    "champion": 0.0022,
-    "group_win": 0.0001
+    "r32": 0.8993,
+    "r16": 0.2133,
+    "qf": 0.0733,
+    "sf": 0.0288,
+    "final": 0.0106,
+    "champion": 0.0027,
+    "group_win": 0.0003
    },
    "JOR": {
-    "r32": 0.0039,
-    "r16": 0.0005,
-    "qf": 0.0002,
+    "r32": 0.0017,
+    "r16": 0.0001,
+    "qf": 0.0,
     "sf": 0.0,
     "final": 0.0,
     "champion": 0.0,
@@ -5301,71 +5269,71 @@
    },
    "POR": {
     "r32": 1.0,
-    "r16": 0.6639,
-    "qf": 0.3247,
-    "sf": 0.1788,
-    "final": 0.0914,
-    "champion": 0.0391,
-    "group_win": 0.3168
+    "r16": 0.6715,
+    "qf": 0.3296,
+    "sf": 0.1871,
+    "final": 0.0919,
+    "champion": 0.0388,
+    "group_win": 0.3132
    },
    "COD": {
-    "r32": 0.3854,
-    "r16": 0.0562,
-    "qf": 0.0113,
-    "sf": 0.0025,
-    "final": 0.0003,
-    "champion": 0.0,
+    "r32": 0.3898,
+    "r16": 0.0546,
+    "qf": 0.0101,
+    "sf": 0.0015,
+    "final": 0.0005,
+    "champion": 0.0001,
     "group_win": 0.0
    },
    "UZB": {
-    "r32": 0.0246,
-    "r16": 0.0029,
-    "qf": 0.0006,
-    "sf": 0.0001,
+    "r32": 0.0044,
+    "r16": 0.0003,
+    "qf": 0.0,
+    "sf": 0.0,
     "final": 0.0,
     "champion": 0.0,
     "group_win": 0.0
    },
    "COL": {
     "r32": 1.0,
-    "r16": 0.6986,
-    "qf": 0.4098,
-    "sf": 0.1939,
-    "final": 0.1063,
-    "champion": 0.0473,
-    "group_win": 0.6832
+    "r16": 0.6977,
+    "qf": 0.4054,
+    "sf": 0.1941,
+    "final": 0.1022,
+    "champion": 0.0457,
+    "group_win": 0.6868
    },
    "ENG": {
     "r32": 1.0,
-    "r16": 0.7749,
-    "qf": 0.4795,
-    "sf": 0.2841,
-    "final": 0.14,
-    "champion": 0.0714,
-    "group_win": 0.8457
+    "r16": 0.7652,
+    "qf": 0.4544,
+    "sf": 0.2723,
+    "final": 0.1338,
+    "champion": 0.0697,
+    "group_win": 0.8364
    },
    "CRO": {
-    "r32": 0.9603,
-    "r16": 0.4072,
-    "qf": 0.1781,
-    "sf": 0.0732,
-    "final": 0.0273,
-    "champion": 0.0093,
-    "group_win": 0.1063
+    "r32": 0.909,
+    "r16": 0.3847,
+    "qf": 0.1611,
+    "sf": 0.0745,
+    "final": 0.0284,
+    "champion": 0.0097,
+    "group_win": 0.1198
    },
    "GHA": {
-    "r32": 1.0,
-    "r16": 0.2333,
-    "qf": 0.0676,
+    "r32": 0.9997,
+    "r16": 0.2293,
+    "qf": 0.0622,
     "sf": 0.0144,
-    "final": 0.0027,
+    "final": 0.0029,
     "champion": 0.0005,
-    "group_win": 0.048
+    "group_win": 0.0438
    },
    "PAN": {
-    "r32": 0.0071,
+    "r32": 0.0037,
     "r16": 0.0006,
-    "qf": 0.0003,
+    "qf": 0.0,
     "sf": 0.0,
     "final": 0.0,
     "champion": 0.0,
