@@ -1,23 +1,23 @@
 {
- "evaluated": 65,
- "hit_1x2": 42,
- "hit_exact": 6,
- "brier_sum": 33.54116563999999,
- "hit_1x2_rate": 0.646,
- "hit_exact_rate": 0.092,
- "avg_brier": 0.516,
+ "evaluated": 72,
+ "hit_1x2": 46,
+ "hit_exact": 7,
+ "brier_sum": 36.69205111999998,
+ "hit_1x2_rate": 0.639,
+ "hit_exact_rate": 0.097,
+ "avg_brier": 0.5096,
  "brier_uniform": 0.6667,
  "brier_backtest": 0.5894,
- "skill_vs_uniform": 0.226,
- "logloss": 0.866,
- "mean_pick_conf": 0.592,
- "calib_gap": 0.054,
+ "skill_vs_uniform": 0.236,
+ "logloss": 0.858,
+ "mean_pick_conf": 0.587,
+ "calib_gap": 0.052,
  "reliability": [
   {
    "band": "alacsony (&lt;45%)",
-   "n": 9,
-   "pred": 0.398,
-   "obs": 0.556
+   "n": 13,
+   "pred": 0.397,
+   "obs": 0.462
   },
   {
    "band": "közepes (45–55%)",
@@ -27,9 +27,9 @@
   },
   {
    "band": "magas (&gt;55%)",
-   "n": 36,
-   "pred": 0.689,
-   "obs": 0.75
+   "n": 39,
+   "pred": 0.693,
+   "obs": 0.769
   }
  ]
 }
