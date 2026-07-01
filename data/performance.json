@@ -2,10 +2,10 @@
  "evaluated": 74,
  "hit_1x2": 47,
  "hit_exact": 7,
- "brier_sum": 38.12894483999998,
+ "brier_sum": 38.125917059999985,
  "hit_1x2_rate": 0.635,
  "hit_exact_rate": 0.095,
- "avg_brier": 0.5153,
+ "avg_brier": 0.5152,
  "brier_uniform": 0.6667,
  "brier_backtest": 0.5894,
  "skill_vs_uniform": 0.227,
@@ -22,7 +22,7 @@
   {
    "band": "közepes (45–55%)",
    "n": 22,
-   "pred": 0.504,
+   "pred": 0.503,
    "obs": 0.5
   },
   {
