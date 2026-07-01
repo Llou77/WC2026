@@ -109,7 +109,9 @@ class Simulator:
                         key=lambda x: (x[0][0], x[0][1] - x[0][2], x[0][1],
                                        rng.random()), reverse=True)
         best8 = {g: c for _, g, c in thirds[:8]}
-        assign = standings._assign_thirds(self.third_slots, best8)
+        qualified = frozenset(best8)
+        assign = (standings._annex_c_assign(qualified, dict(self.third_slots))
+                  or standings._assign_thirds(self.third_slots, best8))
         # --- knockout ---
         winners, losers = {}, {}
         for m in self.ko:

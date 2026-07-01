@@ -81,6 +81,36 @@ def _h2h_rerank(out, matches, observed, group):
 
 GROUPS = list("ABCDEFGHIJKL")
 
+# FIFA 2026 Annex C — official mapping of qualified third-place GROUPS to the
+# eight R32 third-place slots, keyed first by the SET of the eight groups whose
+# thirds qualified, then by each slot's allowed-group set. Only combinations
+# actually needed are tabulated; an untabulated combination falls back to a
+# constraint-satisfying approximation (_assign_thirds). Source: FIFA regulations
+# Annex C (cross-checked against the published R32 bracket).
+_ANNEX_C = {
+    # thirds qualified from groups B, D, E, F, I, J, K, L (2026 actual)
+    frozenset("BDEFIJKL"): {
+        frozenset("ABCDF"): "D", frozenset("CDFGH"): "F",
+        frozenset("CEFHI"): "E", frozenset("EHIJK"): "K",
+        frozenset("BEFIJ"): "B", frozenset("AEHIJ"): "I",
+        frozenset("EFGIJ"): "J", frozenset("DEIJL"): "L",
+    },
+}
+
+def _annex_c_assign(qualified, third_slots):
+    """Return {match_id: group} from the official Annex C table, or None if the
+    qualified-thirds combination (or a slot within it) is not tabulated."""
+    table = _ANNEX_C.get(qualified)
+    if not table:
+        return None
+    out = {}
+    for mid, allowed in third_slots.items():
+        g = table.get(frozenset(allowed))
+        if g is None:
+            return None
+        out[mid] = g
+    return out
+
 def resolve_bracket(matches, observed, teams):
     """Returns {match_id: (home_code, away_code, projected_bool)} for KO matches.
     Third-place slots are filled with a constraint-satisfying assignment
@@ -92,8 +122,11 @@ def resolve_bracket(matches, observed, teams):
     best8 = thirds[:8]
     third_slots = {m["id"]: set(m["away"].split(":")[1]) for m in matches
                    if m["stage"] == "r32" and m["away"].startswith("T:")}
-    assign = _assign_thirds(sorted(third_slots.items()),
-                            {t["group"]: t["code"] for t in best8})
+    qualified = frozenset(t["group"] for t in best8)
+    assign = _annex_c_assign(qualified, third_slots)     # official FIFA table
+    if assign is None:                                   # untabulated -> approximate
+        assign = _assign_thirds(sorted(third_slots.items()),
+                                {t["group"]: t["code"] for t in best8})
     resolved, proj_flag = {}, {}
     ko = sorted((m for m in matches if m["stage"] != "group"), key=lambda m: m["id"])
     for m in ko:
