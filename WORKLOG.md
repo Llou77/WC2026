@@ -42,7 +42,9 @@ Terv:
 
 - [x] 34. Meglepetés-radar (új fül): a modell saját 1X2-eloszlásából kiemeli, hol a legélőbb a bravúr / a döntetlen / a papírforma-ellenes tipp — a predikciók módosítása NÉLKÜL. Kulcsdöntés: az 'esélytelen/favorit' a TORNA ELŐTTI (seed) Elo szerint értendő, mert egy kalibrált modell mindig a jelenlegi favoritját tippeli (élő Elóval a 'merész' lista tautologikusan üres). Felszínre hozza: Ausztrália 46% / USA 45% / Németország 38% a torna előtti favoritjuk ellen — a modell mindháromban az esélytelent tippeli. Megerősített tervezési igazság: 'izgalmasabb upset-tippek' = rosszabb kalibráció; a radar a MEGLÉVŐ jelet mutatja, nem gyárt újat.
 
-Aktuális állapot: KÉSZ (34). Folytatáshoz: eredmények a data/observed.json-ba
+- [x] 35. KIESÉSES BRACKET-HIBA javítva (felhasználó jelezte): a harmadik-helyek ágra sorolása backtrackinggel EGY érvényes, de nem a FIFA Annex C szerinti hozzárendelést adott -> 2 csere, 4 rossz R32-párosítás (Németország–Svédország/Franciaország–Paraguay és Belgium–Algéria/Svájc–Szenegál felcserélve). Súlyosbító: a #74 MÁR LEJÁTSZOTT (GER 3–4), és a rossz párosítás miatt az eredmény rossz csapathoz került — a modell Svédországot léptette tovább Paraguay helyett. Javítás: hivatalos Annex C tábla a tényleges kombinációra (B,D,E,F,I,J,K,L) a standings.py-ban ÉS a simulate.py MC-jében; backtracking marad tartalék. Ellenőrizve: mind a 16 R32-párosítás egyezik a hivatalos brackettel (CBS/ESPN), downstream körök és az Esélyek-fül konzisztens. Másodlagos hiba nincs.
+
+Aktuális állapot: KÉSZ (35). Folytatáshoz: eredmények a data/observed.json-ba
 (fetch_data.py vagy kézzel), kézi hiányzók a teams.json `out` mezőjébe, majd
 `python update.py`.
 

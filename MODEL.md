@@ -149,9 +149,11 @@ backtest/REPORT.md. A rácsból származik minden kimeneti mutató (kiegészítv
   egészül ki (`3·P(győzelem) + P(döntetlen)` a hátralévő meccsekre), és a
   párosítás **„vetített"** jelölést kap.
 - **Harmadik helyezettek**: a 12 harmadikból a legjobb 8 jut tovább (pont,
-  gólkülönbség, lőtt gól); ágra sorolásuk a FIFA Annex C 495 kombinációjának
-  érvényes, backtracking-alapú közelítése. A tényleges FIFA-hozzárendelés
-  ettől eltérhet — a betöltött valós eredmény ezt mindig felülírja.
+  gólkülönbség, lőtt gól); ágra sorolásuk a **hivatalos FIFA Annex C** táblából
+  történik a ténylegesen kvalifikált nyolc csoport kombinációjára (2026:
+  B, D, E, F, I, J, K, L). Nem tabulált kombinációra (pl. korábbi
+  csoportkör-állásból vetített ág) érvényes, backtracking-alapú közelítés a
+  tartalék. A betöltött valós eredmény mindig felülír mindent.
 - **Kötelező továbbjutó**: kieséses meccsen a döntetlen valószínűségi tömege
   szétosztásra kerül a két fél között a hosszabbítás/tizenegyes-fázisra
   kalibrált aránnyal:
@@ -212,7 +214,7 @@ kimenet reprodukálható, újrafuttatáskor nem változik.
 4. **Hírek hatása**: a `news` mező szabad szövege csak az elemzésben jelenik
    meg. Strukturált, számszerű hiányzás-hatás a `teams.json` `out` mezőjén át
    vihető be (lásd 8b — eltiltás/hiányzás-csatorna).
-5. **Annex C-közelítés**: a harmadikok ágra sorolása érvényes, de nem
+5. **Harmadik-hely ágra sorolás**: a ténylegesen kvalifikált kombinációra a hivatalos FIFA Annex C tábla dönt; csak nem tabulált (vetített) kombinációnál lép be a backtracking-közelítés.
    garantáltan a FIFA által választott hozzárendelés (lásd 6. pont).
 6. **Csoportrangsor**: a sorrend pont → gólkülönbség → lőtt gól → **egymás
    elleni eredmény** (pont, gólkülönbség, lőtt gól a holtversenyben állók
